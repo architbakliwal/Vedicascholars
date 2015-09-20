@@ -1,0 +1,13 @@
+# disable directory browsing
+Options All -Indexes
+
+# secure htaccess file
+<Files .htaccess>
+   order allow,deny
+   deny from all
+</Files>
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^jbims\.edu$ [OR]
+#RewriteCond %{HTTP_HOST} ^www\.jbims\.edu$
+#RewriteCond %{REMOTE_ADDR} !=120.61.160.49
+#RewriteRule ^(.*)$ "http\:\/\/jbims\.edu\/maintenance.php" [R=302,L]
