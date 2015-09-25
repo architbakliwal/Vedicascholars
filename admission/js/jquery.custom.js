@@ -1,8 +1,8 @@
 var emailregex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 var alphabetsregex = "^[A-z]+$";
-/*	--------------------------------------------------
-	:: Tooltips
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Tooltips
+    -------------------------------------------------- */
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
         $('input, select').each(function(index, element) {
@@ -14,10 +14,19 @@ jQuery.noConflict()(function($) {
             position: 'top'
         });
 
-        $('#tooltip-help').tooltipster({
+        $('#tooltip-help').each(function(index, element) {
+            console.log(index);
+            $(this).tooltipster({
+                iconDesktop: true,
+                iconTouch: true
+            });
+        });
+
+
+        /*$('#tooltip-help').tooltipster({
             iconDesktop: true,
             iconTouch: true
-        });
+        });*/
 
         // $(document).ajaxStop($('input, select').tooltipster('hide'));
 
@@ -43,9 +52,9 @@ jQuery.noConflict()(function($) {
 
 
 
-/*	--------------------------------------------------
-	:: Activation Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Activation Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -63,9 +72,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Complete Social Register Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Complete Social Register Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -109,9 +118,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Forgot Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Forgot Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -159,9 +168,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Login Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Login Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -213,9 +222,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: New Password Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: New Password Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -263,9 +272,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Register Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Register Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -342,9 +351,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Resend Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Resend Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -392,9 +401,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Update Account Info Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Update Account Info Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -437,9 +446,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Update Email Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Update Email Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -480,9 +489,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Update Password Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Update Password Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -530,9 +539,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Update Username Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Update Username Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {
@@ -572,9 +581,9 @@ jQuery.noConflict()(function($) {
     });
 });
 
-/*	--------------------------------------------------
-	:: Update Social Account Form
-	-------------------------------------------------- */
+/*  --------------------------------------------------
+    :: Update Social Account Form
+    -------------------------------------------------- */
 
 jQuery.noConflict()(function($) {
     $(document).ready(function() {

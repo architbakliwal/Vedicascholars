@@ -40,9 +40,21 @@
 								</div>
 								<div id="workex-super-div" style="display:none;">
 									<div class="box-header" style="text-align:left">
-									    <h3>Latest Work Experience</h3>
+									    <h3>Work Experience</h3>
 									</div>
 									<div class="box-section center toclone">
+										<div class="column-four">
+											<div class="select-group irequire">
+												<label for="employementtype" class="group custom-select">
+													<select id="employementtype" name="employementtype" class="select">
+													    <option value="">Employement Type</option>
+														<option value="Full Time">Full Time</option>
+														<option value="Part Time">Part Time</option>
+														<option value="Internship">Internship</option>
+													</select>
+												</label>
+									        </div>
+										</div>
 										<div class="column-four">
 											<div class="input-group-right irequire">
 											    <label for="organizationname" class="group label-input">
@@ -70,95 +82,6 @@
 											<div class="input-group-right" id="organizationtypeother-div">
 												<label for="organizationtypeother" class="group label-input">
 					                                <input type="text" id="organizationtypeother" name="organizationtypeother" class="input-right" placeholder="If other, please specify">
-												</label>
-										    </div>
-										</div>
-										<div class="column-four">
-											<div class="select-group irequire">
-											    <label for="industrytype" class="group custom-select">
-					                                <select id="industrytype" name="industrytype" class="select">
-														<option value="">Select Industry Type</option>
-														<option value="01">Agriculture, Agriculture</option>
-														<option value="02">Agriculture, Climate Change</option>
-														<option value="03">Agriculture, Food Processing</option>
-														<option value="04">Agriculture, Water</option>
-														<option value="66">Industrial Competitiveness, Climate Change</option>
-														<option value="67">Industrial Competitiveness, Competitiveness</option>
-														<option value="68">Industrial Competitiveness, Design</option>
-														<option value="69">Industrial Competitiveness, Human Resource Development</option>
-														<option value="70">Industrial Competitiveness, Knowledge Management</option>
-														<option value="71">Industrial Competitiveness, Logistics</option>
-														<option value="72">Industrial Competitiveness, Micro, Medium &amp; Small Scale Industry</option>
-														<option value="73">Industrial Competitiveness, Safety and Security</option>
-														<option value="74">Industrial Competitiveness, Skills Development</option>
-														<option value="75">Industrial Competitiveness, Technology</option>
-														<option value="05">Infrastructure, Bio Fuels</option>
-														<option value="06">Infrastructure, Civil Aviation</option>
-														<option value="07">Infrastructure, Climate Change</option>
-														<option value="08">Infrastructure, Energy</option>
-														<option value="09">Infrastructure, Housing</option>
-														<option value="10">Infrastructure, Hydrocarbons</option>
-														<option value="11">Infrastructure, Infrastructure</option>
-														<option value="12">Infrastructure, Oil and Gas</option>
-														<option value="13">Infrastructure, Petrochemicals</option>
-														<option value="14">Infrastructure, Petroleum</option>
-														<option value="15">Infrastructure, Power</option>
-														<option value="16">Infrastructure, Real Estate</option>
-														<option value="17">Infrastructure, Renewable Energy</option>
-														<option value="18">Infrastructure, Surface Transport</option>
-														<option value="19">Infrastructure, Urban Development</option>
-														<option value="79">International Agency(such as UNDP, Ford Foundation etc.)</option>
-														<option value="20">Manufacturing, Aerospace</option>
-														<option value="21">Manufacturing, Auto Components</option>
-														<option value="22">Manufacturing, Automobiles</option>
-														<option value="23">Manufacturing, Capital Goods</option>
-														<option value="24">Manufacturing, Chemicals</option>
-														<option value="25">Manufacturing, Climate Change</option>
-														<option value="26">Manufacturing, Competitiveness</option>
-														<option value="27">Manufacturing, Defence</option>
-														<option value="28">Manufacturing, Design</option>
-														<option value="29">Manufacturing, Energy</option>
-														<option value="30">Manufacturing, Engineering</option>
-														<option value="31">Manufacturing, Family Business</option>
-														<option value="32">Manufacturing, Fast Moving Consumer Goods (FMCG)</option>
-														<option value="33">Manufacturing, Gems and Jewellery </option>
-														<option value="34">Manufacturing, Human Resource Development</option>
-														<option value="35">Manufacturing, ICTE Manufacturing</option>
-														<option value="36">Manufacturing, Industrial Relations</option>
-														<option value="80">Manufacturing, Information Technology Products</option>
-														<option value="37">Manufacturing, Innovation</option>
-														<option value="38">Manufacturing, Intellectual Property Rights (IPR)</option>
-														<option value="39">Manufacturing, Leather and Leather Products</option>
-														<option value="40">Manufacturing, Manufacturing</option>
-														<option value="41">Manufacturing, Micro, Medium &amp; Small Scale Industry</option>
-														<option value="42">Manufacturing, Mining</option>
-														<option value="43">Manufacturing, Safety and Security</option>
-														<option value="44">Manufacturing, Steel &amp; Non-Ferrous Metals</option>
-														<option value="45">Manufacturing, Technology</option>
-														<option value="46">Manufacturing, Textiles &amp; Apparel</option>
-														<option value="77">Others</option>
-														<option value="47">Services, Biotechnology</option>
-														<option value="48">Services, Business Process Outsourcing</option>
-														<option value="49">Services, Climate Change</option>
-														<option value="50">Services, Competitiveness</option>
-														<option value="51">Services, Design</option>
-														<option value="52">Services, Education</option>
-														<option value="53">Services, Family Business</option>
-														<option value="76">Services, Finance &amp; Banking</option>
-														<option value="54">Services, Healthcare</option>
-														<option value="55">Services, Human Resource Development</option>
-														<option value="56">Services, Industrial Relations</option>
-														<option value="57">Services, Information &amp; Communication Technology</option>
-														<option value="78">Services, Insurance</option>
-														<option value="58">Services, Intellectual Property Rights (IPR)</option>
-														<option value="59">Services, Knowledge Management</option>
-														<option value="60">Services, Media &amp; Entertainment</option>
-														<option value="61">Services, Micro, Medium &amp; Small Scale Industry</option>
-														<option value="62">Services, Retail</option>
-														<option value="63">Services, Technology</option>
-														<option value="64">Services, Telecommunications</option>
-														<option value="65">Services, Tourism &amp; Hospitality</option>
-													</select>
 												</label>
 										    </div>
 										</div>
@@ -238,7 +161,7 @@
 										</div>
 										<div class="column-four">
 											<div class="input-group-right">
-												<p>If currently working, please calculate as of 31st January, 2015.</p>
+												<p>If currently working, please calculate as of today.</p>
 										    </div>
 										</div>
 									</div>

@@ -115,7 +115,7 @@ if ( $user['application_status'] == "Completed" ) {
 						<span><?php echo $lang['section_academic'];?></span>
 						<span><?php echo $lang['section_workex'];?></span>
 						<span><?php echo $lang['section_reference'];?></span>
-						<span><?php echo $lang['section_scores'];?></span>
+						<span><?php echo $lang['section_additional_info'];?></span>
 						<span><?php echo $lang['section_docs'];?></span>
 
 						<ul>
@@ -140,7 +140,7 @@ if ( $user['application_status'] == "Completed" ) {
 							</li>
 
 							<li class="sky-tab-content-6">
-								<?php include 'sections/score_details.php'; ?>
+								<?php include 'sections/additional_details.php'; ?>
 							</li>
 
 							<li class="sky-tab-content-7">

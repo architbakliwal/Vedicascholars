@@ -769,27 +769,48 @@
 						<div class="column-twelve">
 						    <div class="box">
 							    <div class="box-header" style="text-align:left">
-								    <h3>Emergency Contact</h3>
+								    <h3>Parent’s/Guardian’s Details</h3>
 								</div>
 								<div class="box-section center">
 									<div class="column-four">
 										<div class="input-group-right">
-										    <label for="emergencyname" class="group label-input">
-				                                <input type="text" id="emergencyname" name="emergencyname" class="input-right" placeholder="Name of contact">
+										    <label for="parentname" class="group label-input">
+				                                <input type="text" id="parentname" name="parentname" class="input-right" placeholder="Full Name">
 											</label>
 									    </div>
 									</div>
 									<div class="column-four">
 										<div class="input-group-right">
-											<label for="emergencymobile" class="group label-input">
-				                                <input type="text" id="emergencymobile" name="emergencymobile" class="input-right" placeholder="Mobile number of the contact">
+											<label for="parentmobile" class="group label-input">
+				                                <input type="text" id="parentmobile" name="parentmobile" class="input-right" placeholder="Mobile number">
 											</label>
 									    </div>
 									</div>
 									<div class="column-four">
 										<div class="input-group-right">
-											<label for="emergencyrelation" class="group label-input">
-				                                <input type="text" id="emergencyrelation" name="emergencyrelation" class="input-right" placeholder="Your relation to the contact">
+											<label for="parentrelation" class="group label-input">
+				                                <input type="text" id="parentrelation" name="parentrelation" class="input-right" placeholder="Your relation to the contact">
+											</label>
+									    </div>
+									</div>
+									<div class="column-four">
+										<div class="input-group-right">
+										    <label for="parentorganisation" class="group label-input">
+				                                <input type="text" id="parentorganisation" name="parentorganisation" class="input-right" placeholder="Organisation">
+											</label>
+									    </div>
+									</div>
+									<div class="column-four">
+										<div class="input-group-right">
+											<label for="parentdesignation" class="group label-input">
+				                                <input type="text" id="parentdesignation" name="parentdesignation" class="input-right" placeholder="Designation">
+											</label>
+									    </div>
+									</div>
+									<div class="column-four">
+										<div class="input-group-right">
+											<label for="parentqualification" class="group label-input">
+				                                <input type="text" id="parentqualification" name="parentqualification" class="input-right" placeholder="Academic Qualification">
 											</label>
 									    </div>
 									</div>

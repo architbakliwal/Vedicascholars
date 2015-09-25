@@ -1498,7 +1498,7 @@
 						<div class="column-eight">
 							<div class="textarea-group">
 							    <label for="academicachivements" class="group label-textarea">
-	                                <textarea rows="5" id="academicachivements" name="academicachivements" class="textarea resisable" placeholder="Please enter you academic awards, extra-curricular achievements and positions of responsibility held, if any. (Max 200 words)"></textarea>
+	                                <textarea rows="5" id="academicachivements" name="academicachivements" class="textarea no-resisable" placeholder="Please enter you academic awards, extra-curricular achievements and positions of responsibility held, if any. (Max 200 words)"></textarea>
 								</label>
 						    </div>
 						</div>

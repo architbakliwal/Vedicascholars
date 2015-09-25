@@ -43,7 +43,7 @@
 	
 	// Dashboard Form
 	
-	$lang['dashboard_title']		                    = 'Online Application for Admissions 2015-2017';
+	$lang['dashboard_title']		                    = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN 2016';
 	$lang['application_id']		                    	= 'Application ID: ';
 	$lang['dashboard_subtitle_password']		        = 'Update your Password';
 	$lang['dashboard_subtitle_email']		            = 'Update your Email';
@@ -63,12 +63,11 @@
 
 	$lang['section_personal']		                    = 'Personal Details';
 	$lang['section_contact']		                    = 'Contact Details';
-	$lang['section_academic']		                    = 'Academic qualifications';
-	$lang['section_workex']		                    	= 'Work experience';
+	$lang['section_academic']		                    = 'Academic Qualifications';
+	$lang['section_workex']		                    	= 'Work Experience';
 	$lang['section_reference']		                    = 'References';
-	$lang['section_scores']		                    	= 'Test score details';
-	$lang['section_docs']		                    	= 'Document & Additional information';
-	$lang['section_payment']		                    = 'Payment';
+	$lang['section_additional_info']		            = 'Additional Information';
+	$lang['section_docs']		                    	= 'Document Uploads';
 
 	
 	// Update Password Form
@@ -219,7 +218,7 @@
     $lang['account_creation_wrong_security_token']		= '<div class="error-message"><i class="icon-close"></i>Attention! Security Token is not Valid</div>'; 
    	$lang['account_creation_subject']				    = 'Activate your account';
 	$lang['account_creation_successful']				= '<div class="success-message"><i class="icon-checkmark"></i>Congratulations! Your registration was successfully! A confirmation email has been sent to '.$_POST['useremail'].' with link to activate your Account</div>';
-	$lang['account_creation_unsuccessful']				= '<div class="error-message"><i class="icon-close"></i>There is an Error when sending activation email </br>Please wait for few minutes and click <a href="http://jbims.edu/admission/resend.php?lang=">Resend Activation Link</a></div>';
+	$lang['account_creation_unsuccessful']				= '<div class="error-message"><i class="icon-close"></i>There is an Error when sending activation email </br>Please wait for few minutes and click <a href="' .$baseurl.'resend.php?lang=">Resend Activation Link</a></div>';
 	$lang['account_creation_duplicate_email']			= '<div class="error-message"><i class="icon-close"></i>There are already a member with this email '.$_POST['useremail'].'</div>'; 
 	$lang['account_creation_duplicate_username']		= '<div class="error-message"><i class="icon-close"></i>There are already a member with this username '.$_POST['username'].'</div>'; 
 	$lang['account_creation_failed_connect_with_db']	= '<div class="error-message"><i class="icon-close"></i>There are an error when connect to database</div>';	
@@ -236,7 +235,7 @@
 	$lang['form_register_placeholder_password']		    = 'Enter your Password'; 
     $lang['form_register_placeholder_retype_password']  = 'Repeat your Password'; 
     $lang['form_register_placeholder_captcha']		    = 'Enter Verification Code';
-	$lang['form_register_terms_of_service']			    = 'By proceeding, you agree with <a href="http://jbims.edu/admission/terms.php" target="_blank">Terms & Conditions</a>'; 
+	$lang['form_register_terms_of_service']			    = 'By proceeding, you agree with <a href="' .$baseurl.'terms.php" target="_blank">Terms & Conditions</a>'; 
 	$lang['form_register_button_register']		        = 'Register your Account'; 
 	$lang['form_register_link_login']		            = 'Login your Account'; 
     $lang['form_register_link_forgot_password']     	= 'Forgot Password'; 
