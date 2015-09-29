@@ -667,7 +667,7 @@ jQuery.noConflict()(function($) {
 
         });
 
-        $("#back-button-score").click(function() {
+        $("#back-button-additional").click(function() {
             $("#sky-tab5").prop("checked", true);
             $("body").scrollTop(0);
         });
@@ -854,8 +854,8 @@ jQuery.noConflict()(function($) {
                         scorestatus = false;
                     }
 
-                    // if (personalstatus && contactstatus && academicestatus && workexstatus && refreestatus && scorestatus && docstatus) {
-                    if (docstatus) {
+                    if (personalstatus && contactstatus && academicestatus && workexstatus && refreestatus && scorestatus && docstatus) {
+                        // if (docstatus) {
                         isApplicationValid = true;
                         if (response.status === 'P') {
                             window.location = response.msg + "admin/ddredirect.php";
@@ -919,7 +919,7 @@ jQuery.noConflict()(function($) {
                 success: function(responseText) {
                     checktimeout(responseText);
                     if (responseText == 'success') {
-                        window.location = "http://jbims.edu/admission/admin/done.php";
+                        window.location = "#";
                     } else {}
                 }
             });
@@ -936,7 +936,7 @@ jQuery.noConflict()(function($) {
                 success: function(responseText) {
                     checktimeout(responseText);
                     if (responseText == 'success') {
-                        window.location = "http://jbims.edu/admission/admin/done.php";
+                        window.location = "#";
                     } else {}
                 }
             });
@@ -1150,7 +1150,7 @@ jQuery.noConflict()(function($) {
         function checktimeout(text) {
             if (text == 'timeout') {
                 alert("Your session timed out. Please login again.");
-                window.open('http://jbims.edu/admission/login.php?lang=', '_self');
+                window.open('#', '_self');
                 return false;
             }
         }

@@ -13,18 +13,18 @@
 	} else {
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admission";
-	    $username_Connection = "admissions";
-	    $password_Connection = "pass@123";
+	    $username_Connection = "vedica_admission";
+	    $password_Connection = "vedica_admission";
 
 	    // Enter your URL here without http:// only domain!
-		$url = 'vedicascholars.com';
+		$url = 'intranet.vedicascholars.com';
 		
 		if ($_SERVER['SERVER_NAME'] == $url) {
 		    // Enter your BASEURL here without WWW!
-			$baseurl = 'http://jbims.edu/admission/';
+			$baseurl = 'http://intranet.vedicascholars.com/admission/';
 		} else {
 		    // Enter your BASEURL here with WWW!
-			$baseurl = 'http://www.jbims.edu/admission/';
+			$baseurl = 'http://www.intranet.vedicascholars.com/admission/';
 		}
 	}
 
@@ -41,15 +41,15 @@
 	// Turn true SMTP if you want don´t forget to turn false sendmail and mail
 
 	$sendmail = false;
-	$mail = false;
+	$mail = true;
 
-	$SMTP = true;
+	$SMTP = false;
 	
 	$protocol = '';                       					// Can be 'ssl' or 'tls' or ''
 	$host = 'jbi.jbims.edu';
 	$port = 25;                             				// Can be 465, 587, 25
 	$smtpusername = 'admissions@vedicascholars.com';        // Need to be equal to $youremail
-	$smtppassword = 'pass@123';
+	$smtppassword = 'vedica15';
 
 	// If you want file upload turn this to true!
 	$upload = true;

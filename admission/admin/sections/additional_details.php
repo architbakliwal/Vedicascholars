@@ -55,13 +55,13 @@
 							</div>
 						</div>
 						<div class="column-two">
-							<button type="button" id="back-button-doc" class="button button-large button-blue">Back</button>
+							<button type="button" id="back-button-additional" class="button button-large button-blue">Back</button>
 						</div>
 						<div class="column-two">
-							<button type="button" id="save-button-doc" class="button button-large button-blue">Save</button>
+							<button type="button" id="save-button-additional" class="button button-large button-blue">Save</button>
 						</div>
 						<div class="column-two">
-							<button type="button" id="continue-button-doc" class="button button-large button-green">Save and Continue</button>
+							<button type="button" id="continue-button-additional" class="button button-large button-green">Save and Continue</button>
 						</div>						
 					</div>
 				</fieldset>

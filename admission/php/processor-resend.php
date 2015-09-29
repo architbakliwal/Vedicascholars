@@ -4,7 +4,7 @@ include dirname( __FILE__ ).'/csrf_protection/csrf-token.php';
 include dirname( __FILE__ ).'/csrf_protection/csrf-class.php';
 
 if ( !isset( $_SESSION ) ) {
-	$some_name = session_name( "JBIMSAdmission" );
+	$some_name = session_name( "VedicaAdmission" );
 	session_start();
 }
 

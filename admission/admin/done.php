@@ -4,7 +4,7 @@
 	include '../php/csrf_protection/csrf-class.php';
 
 	if(!isset($_SESSION)){
-		$some_name = session_name( "JBIMSAdmission" );
+		$some_name = session_name( "VedicaAdmission" );
 	    session_start();
 	}
     
@@ -85,7 +85,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 					<?php
 	if ( $registration_closed == 'Y' ) {
 		echo '<div class="column-twelve" style="color: red; font-weight: bold;">
-						<p><marquee scrollamount="6">Online Registrations are closed for MMS/MSc 2015-2017 batch.</marquee></p>
+						<p><marquee scrollamount="6">Online Registrations are closed for 2016 batch.</marquee></p>
 						</div>';
 	}
 ?>
@@ -108,40 +108,8 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 										    <div class="box">
 												<div class="box-section center">
 													<div class="column-twelve" style="margin:30px;">
-														<h3 style="text-align: center;">Congratulations! Your application has been successfully submitted for the batch of 2015-2017 at Jamnalal Bajaj Institute of Management Studies, Mumbai.</h3>
+														<h3 style="text-align: center;">Congratulations! Your application has been successfully submitted for the batch of 2016 at Vedica Scholars.</h3>
 													</div>
-
-													<?php if($mh_cet_open == 'Y' && $is_mh_cet == 'Y'){ ?>
-															
-													<div class="column-twelve">
-														<h3>MH-CET Details</h3>
-													</div>
-													<div class="column-four">
-														<div class="input-group-right irequire">
-															<label for="cetrollnumber" class="group label-input">
-																<input type="text" id="cetrollnumber" name="cetrollnumber" class="input-right" placeholder="MH-CET Roll Number">
-															</label>
-														</div>
-													</div>
-													<div class="column-four">
-														<div class="input-group-right irequire">
-															<label for="cetmarks" class="group label-input">
-																<input type="text" id="cetmarks" name="cetmarks" class="input-right" placeholder="Overall marks scored">
-															</label>
-														</div>
-													</div>
-													<div class="column-four">
-														<div class="input-group-right irequire">
-															<label for="cetpercentile" class="group label-input">
-																<input type="text" id="cetpercentile" name="cetpercentile" class="input-right" placeholder="Overall Percentile">
-															</label>
-														</div>
-													</div>
-													<div class="column-two">
-														<button type="button" id="cet-save-button" class="button button-large button-blue space">Save</button>
-													</div>
-
-													<?php } ?>
 
 													<div class="column-twelve" style="margin: 60px 30px; font-size: 20px;font-weight: bold;">
 														<a href="<?php echo $baseurl;?>secure/application/document/go/document.php" style="color: blue; text-decoration: underline; padding: 0; display: inline;">Download Application Form</a>

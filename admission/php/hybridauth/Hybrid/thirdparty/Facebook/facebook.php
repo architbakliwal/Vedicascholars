@@ -47,7 +47,7 @@ class Facebook extends BaseFacebook
   public function __construct( $config ) {
     if ( !session_id() ) {
       if ( !isset( $_SESSION ) ) {
-        $some_name = session_name( "JBIMSAdmission" );
+        $some_name = session_name( "VedicaAdmission" );
         session_start();
       }
     }

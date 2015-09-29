@@ -4,7 +4,7 @@ include dirname( __FILE__ ).'/csrf_protection/csrf-token.php';
 include dirname( __FILE__ ).'/csrf_protection/csrf-class.php';
 
 if ( !isset( $_SESSION ) ) {
-	$some_name = session_name( "JBIMSAdmission" );
+	$some_name = session_name( "VedicaAdmission" );
 	session_start();
 }
 
@@ -113,30 +113,6 @@ if ( $mysql == true ) {
 
 			die(); //Ensure no more processing is done
 		}
-	}
-
-
-	$sqltestgmat = "INSERT INTO `vedica_admission`.`users_documents_uploads` (`application_id`, `passport_photo`, `how_did_you_hear_of_jbims`, `applied_to_jbims_before`, `applied_to_jbims_before_year`, `other_support_information`) VALUES (
-			'".mysql_real_escape_string( $finalapplicationid )."',
-			'".mysql_real_escape_string( $finalname0 )."',
-			'".mysql_real_escape_string( $finalhearaboutjbims )."',
-			'".mysql_real_escape_string( $finalappliedbefore )."',
-			'".mysql_real_escape_string( $finalappliedyear )."',
-			'".mysql_real_escape_string( $finalsupportinfo )."'
-			)
-		ON DUPLICATE KEY
-		UPDATE
-		passport_photo = VALUES(passport_photo),
-		how_did_you_hear_of_jbims = VALUES(how_did_you_hear_of_jbims),
-		applied_to_jbims_before = VALUES(applied_to_jbims_before),
-		applied_to_jbims_before_year = VALUES(applied_to_jbims_before_year),
-		other_support_information = VALUES(other_support_information)
-		;";
-
-	$inserttestgmat = mysql_query( $sqltestgmat );
-
-	if ( ! $inserttestgmat ) {
-		die( 'Could not enter data: ' . mysql_error() );
 	}
 
 	$doc_response['status'] = 'P';

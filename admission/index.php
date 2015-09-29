@@ -1,7 +1,7 @@
 <?php
 
 if ( !isset( $_SESSION ) ) {
-	$some_name = session_name( "JBIMSAdmission" );
+	$some_name = session_name( "VedicaAdmission" );
 	session_set_cookie_params( 0, '/', '127.0.0.1' );
 	session_start();
 }
@@ -57,7 +57,7 @@ if ( $registration_closed == 'Y' ) {
 			<div class="section">
 				<div class="grid-container">
 					<div class="column-twelve">
-						<p>Please read the <a href="http://www.jbims.edu/August%202014/form.pdf" target="_blank">instructions</a> before applying</p>
+						<p>Please read the <a href="#" target="_blank">instructions</a> before applying</p>
 					</div>
 					<div class="column-six">
 						<div class="box" id="box-1" style="background-color: #E66222;">

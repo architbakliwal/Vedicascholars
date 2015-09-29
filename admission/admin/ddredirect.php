@@ -1,5 +1,5 @@
 <?php
-$some_name = session_name( "JBIMSAdmission" );
+$some_name = session_name( "VedicaAdmission" );
 session_start();
 
 include '../php/csrf_protection/csrf-token.php';
