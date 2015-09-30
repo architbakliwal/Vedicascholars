@@ -2,7 +2,7 @@
 
 if ( !isset( $_SESSION ) ) {
 	$some_name = session_name( "VedicaAdmission" );
-	session_set_cookie_params( 0, '/', '127.0.0.1' );
+	// session_set_cookie_params( 0, '/', '127.0.0.1' );
 	session_start();
 }
 
