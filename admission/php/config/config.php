@@ -30,6 +30,8 @@
 
 	error_reporting(0);
 
+	$mailallowed = true;
+
 	// error_reporting(E_ALL & ~E_NOTICE);
 
 	// Enter your Name here!

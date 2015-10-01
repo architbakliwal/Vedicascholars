@@ -43,7 +43,7 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 
     </head>
 
-    <body>
+    <body id="dashboard-body">
 
 	    <?php
 

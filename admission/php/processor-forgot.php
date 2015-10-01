@@ -39,7 +39,7 @@ if ( !CSRF::check( 'forgot-form' ) ) {
 	$resultid = mysql_num_rows( $searchid );
 	$queryid = mysql_fetch_array( $searchid );
 
-	if ( $SMTP == true ) {
+	if ( $mailallowed == true ) {
 		if ( $mysql == true ) {
 			if ( $datetime > $blockResult['login_system_forgot_password_blocked_time'] ) {
 				$search = mysql_query( "SELECT application_id, f_name, l_name FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );

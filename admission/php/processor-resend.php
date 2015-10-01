@@ -35,7 +35,7 @@ if ( !CSRF::check( 'resend-form' ) ) {
 	$resultblock = mysql_num_rows( $searchblock );
 	$blockResult = mysql_fetch_array( $searchblock );
 
-	if ( $SMTP == true ) {
+	if ( $mailallowed == true ) {
 		if ( $mysql == true ) {
 			if ( $blockResult['login_system_email_activation_status'] == 0 ) {
 				if ( $datetime > $blockResult['login_system_email_activation_blocked_time'] ) {

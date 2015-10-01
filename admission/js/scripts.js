@@ -1001,128 +1001,130 @@ jQuery.noConflict()(function($) {
             });
         });
 
-        $.ajax({
-            url: '../php/processor-populate.php',
-            type: "post",
-            beforeSend: function() {
-                $.blockUI();
-            },
-            success: function(data) {
-                checktimeout(data);
-                if (isValid(data)) {
-                    applicantdata = JSON.parse(data);
-                    // console.log(applicantdata);
-                    if (isValid(applicantdata[0])) {
-                        $('#section_personal').loadJSON(applicantdata[0]);
-                    }
-                    if (isValid(applicantdata[1])) {
-                        $('#section_contact').loadJSON(applicantdata[1]);
-                    }
-                    if (isValid(applicantdata[2])) {
-                        if (applicantdata[2].extraacademiccount > 0) {
-                            $('#section_academic .toclone').css('display', 'block');
-                            $('#extraacademiccount').val('1');
-                            $("#add-extra-academic").css('display', 'none');
+        $('#dashboard-body').load(function() {
+            $.ajax({
+                url: '../php/processor-populate.php',
+                type: "post",
+                beforeSend: function() {
+                    $.blockUI();
+                },
+                success: function(data) {
+                    checktimeout(data);
+                    if (isValid(data)) {
+                        applicantdata = JSON.parse(data);
+                        // console.log(applicantdata);
+                        if (isValid(applicantdata[0])) {
+                            $('#section_personal').loadJSON(applicantdata[0]);
                         }
-                        for (var i = 0; i < applicantdata[2].extraacademiccount - 1; i++) {
-                            $('#academic-clone').triggerHandler('clone_clone', [$('#academic-clone .clone:first')]);
+                        if (isValid(applicantdata[1])) {
+                            $('#section_contact').loadJSON(applicantdata[1]);
                         }
-                        setTimeout(function() {
-                            $('#section_academic').loadJSON(applicantdata[2]);
-                        }, 1000);
-                    }
-                    if (isValid(applicantdata[3])) {
-                        for (var i = 0; i < applicantdata[3].extraworkexcount; i++) {
-                            $('#workex-clone').triggerHandler('clone_clone', [$('#workex-clone .clone:first')]);
+                        if (isValid(applicantdata[2])) {
+                            if (applicantdata[2].extraacademiccount > 0) {
+                                $('#section_academic .toclone').css('display', 'block');
+                                $('#extraacademiccount').val('1');
+                                $("#add-extra-academic").css('display', 'none');
+                            }
+                            for (var i = 0; i < applicantdata[2].extraacademiccount - 1; i++) {
+                                $('#academic-clone').triggerHandler('clone_clone', [$('#academic-clone .clone:first')]);
+                            }
+                            setTimeout(function() {
+                                $('#section_academic').loadJSON(applicantdata[2]);
+                            }, 1000);
                         }
-                        setTimeout(function() {
-                            $('#section_workex').loadJSON(applicantdata[3]);
-                        }, 1000);
-                    }
-                    if (isValid(applicantdata[4])) {
-                        $('#section_reference').loadJSON(applicantdata[4]);
-                    }
-                    if (isValid(applicantdata[5])) {
-                        $('#section_scores').loadJSON(applicantdata[5]);
-                        if (applicantdata[5].testappearing.indexOf("CAT") > -1) {
-                            $(":checkbox[name='testappearing[]'][id='cattest']").attr('checked', true);
+                        if (isValid(applicantdata[3])) {
+                            for (var i = 0; i < applicantdata[3].extraworkexcount; i++) {
+                                $('#workex-clone').triggerHandler('clone_clone', [$('#workex-clone .clone:first')]);
+                            }
+                            setTimeout(function() {
+                                $('#section_workex').loadJSON(applicantdata[3]);
+                            }, 1000);
                         }
-                        if (applicantdata[5].testappearing.indexOf("CET") > -1) {
-                            $(":checkbox[name='testappearing[]'][id='cettest']").attr('checked', true);
+                        if (isValid(applicantdata[4])) {
+                            $('#section_reference').loadJSON(applicantdata[4]);
                         }
-                    }
-                    if (isValid(applicantdata[6])) {
-                        $('#section_docs').loadJSON(applicantdata[6]);
-                    }
-                    if (isValid(applicantdata[7])) {
-                        $('#section_payment').loadJSON(applicantdata[7]);
+                        if (isValid(applicantdata[5])) {
+                            $('#section_scores').loadJSON(applicantdata[5]);
+                            if (applicantdata[5].testappearing.indexOf("CAT") > -1) {
+                                $(":checkbox[name='testappearing[]'][id='cattest']").attr('checked', true);
+                            }
+                            if (applicantdata[5].testappearing.indexOf("CET") > -1) {
+                                $(":checkbox[name='testappearing[]'][id='cettest']").attr('checked', true);
+                            }
+                        }
+                        if (isValid(applicantdata[6])) {
+                            $('#section_docs').loadJSON(applicantdata[6]);
+                        }
+                        if (isValid(applicantdata[7])) {
+                            $('#section_payment').loadJSON(applicantdata[7]);
+                        }
+
+                        if (isValid(applicantdata[11])) {
+                            if (applicantdata[11].personalstatus == 'true') {
+                                personalstatus = true;
+                                $("label[for='sky-tab1']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab1']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].contactstatus == 'true') {
+                                contactstatus = true;
+                                $("label[for='sky-tab2']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab2']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].academicestatus == 'true') {
+                                academicestatus = true;
+                                $("label[for='sky-tab3']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab3']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].workexstatus == 'true') {
+                                workexstatus = true;
+                                $("label[for='sky-tab4']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab4']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].refreestatus == 'true') {
+                                refreestatus = true;
+                                $("label[for='sky-tab5']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab5']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].scorestatus == 'true') {
+                                scorestatus = true;
+                                $("label[for='sky-tab6']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab6']").css('background-color', '#F22613');
+                            }
+                            if (applicantdata[11].docstatus == 'true') {
+                                docstatus = true;
+                                $("label[for='sky-tab7']").css('background-color', '#26C281');
+                            } else {
+                                $("label[for='sky-tab7']").css('background-color', '#F22613');
+                            }
+                        }
+                        if (isValid(applicantdata[12])) {
+                            $('#section_done_cet').loadJSON(applicantdata[12]);
+                        }
                     }
 
-                    if (isValid(applicantdata[11])) {
-                        if (applicantdata[11].personalstatus == 'true') {
-                            personalstatus = true;
-                            $("label[for='sky-tab1']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab1']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].contactstatus == 'true') {
-                            contactstatus = true;
-                            $("label[for='sky-tab2']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab2']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].academicestatus == 'true') {
-                            academicestatus = true;
-                            $("label[for='sky-tab3']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab3']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].workexstatus == 'true') {
-                            workexstatus = true;
-                            $("label[for='sky-tab4']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab4']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].refreestatus == 'true') {
-                            refreestatus = true;
-                            $("label[for='sky-tab5']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab5']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].scorestatus == 'true') {
-                            scorestatus = true;
-                            $("label[for='sky-tab6']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab6']").css('background-color', '#F22613');
-                        }
-                        if (applicantdata[11].docstatus == 'true') {
-                            docstatus = true;
-                            $("label[for='sky-tab7']").css('background-color', '#26C281');
-                        } else {
-                            $("label[for='sky-tab7']").css('background-color', '#F22613');
-                        }
+                    if (personalstatus && contactstatus && academicestatus && workexstatus && refreestatus && scorestatus && docstatus) {
+                        $("#sky-tab8,#sky-tab9").prop("checked", true);
+                        // $("#sky-tabs #sky-tab9").attr('id', 'sky-tab8');
+                        $("body").scrollTop(0);
+                    } else {
+
                     }
-                    if (isValid(applicantdata[12])) {
-                        $('#section_done_cet').loadJSON(applicantdata[12]);
-                    }
+
+                    $.unblockUI();
+
+                    // $("ul :input").attr("disabled", true);
+                    // $("ul :button").attr("disabled", true);
+                },
+                error: function(xhr, status, error) {
+                    $.unblockUI();
                 }
-
-                if (personalstatus && contactstatus && academicestatus && workexstatus && refreestatus && scorestatus && docstatus) {
-                    $("#sky-tab8,#sky-tab9").prop("checked", true);
-                    // $("#sky-tabs #sky-tab9").attr('id', 'sky-tab8');
-                    $("body").scrollTop(0);
-                } else {
-
-                }
-
-                $.unblockUI();
-
-                // $("ul :input").attr("disabled", true);
-                // $("ul :button").attr("disabled", true);
-            },
-            error: function(xhr, status, error) {
-                $.unblockUI();
-            }
+            });
         });
 
         function changeSectionStatus() {

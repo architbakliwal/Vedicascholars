@@ -39,7 +39,7 @@ $finalretypepass = htmlspecialchars( $retypepassword, ENT_QUOTES, 'UTF-8' );
 $finalverification = htmlspecialchars( $verification, ENT_QUOTES, 'UTF-8' );
 
 
-if ( $SMTP == true ) {
+if ( $mailallowed == true ) {
 	if ( $mysql == true ) {
 		$duplicate = mysql_query( "SELECT * FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
 		$result = mysql_num_rows( $duplicate );
