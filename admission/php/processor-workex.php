@@ -44,10 +44,10 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 
 $applicationid = strip_tags( trim( $_SESSION['userName'] ) );
 $isworkex = strip_tags( trim( $_POST['isworkex'] ) );
+$employementtype = strip_tags( trim( $_POST['employementtype'] ) );
 $organizationname = strip_tags( trim( $_POST['organizationname'] ) );
 $organizationtype = strip_tags( trim( $_POST['organizationtype'] ) );
 $organizationtypeother = strip_tags( trim( $_POST['organizationtypeother'] ) );
-$industrytype = strip_tags( trim( $_POST['industrytype'] ) );
 $workstarted = strip_tags( trim( $_POST['workstarted'] ) );
 $workcompleted = strip_tags( trim( $_POST['workcompleted'] ) );
 $comapnyjoinedas = strip_tags( trim( $_POST['comapnyjoinedas'] ) );
@@ -61,10 +61,10 @@ $totalworkex = strip_tags( trim( $_POST['totalworkex'] ) );
 
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
 $finalisworkex = htmlspecialchars( $isworkex, ENT_QUOTES, 'UTF-8' );
+$finalemployementtype = htmlspecialchars( $employementtype, ENT_QUOTES, 'UTF-8' );
 $finalorganizationname = htmlspecialchars( $organizationname, ENT_QUOTES, 'UTF-8' );
 $finalorganizationtype = htmlspecialchars( $organizationtype, ENT_QUOTES, 'UTF-8' );
 $finalorganizationtypeother = htmlspecialchars( $organizationtypeother, ENT_QUOTES, 'UTF-8' );
-$finalindustrytype = htmlspecialchars( $industrytype, ENT_QUOTES, 'UTF-8' );
 $finalworkstarted = htmlspecialchars( $workstarted, ENT_QUOTES, 'UTF-8' );
 $finalworkcompleted = htmlspecialchars( $workcompleted, ENT_QUOTES, 'UTF-8' );
 $finalcomapnyjoinedas = htmlspecialchars( $comapnyjoinedas, ENT_QUOTES, 'UTF-8' );
@@ -77,13 +77,13 @@ $finaltotalworkex = htmlspecialchars( $totalworkex, ENT_QUOTES, 'UTF-8' );
 
 
 if ( $mysql == true ) {
-	$sqlworkex = "INSERT INTO `vedica_admission`.`users_work_experience_details` (`application_id`, `work_experience`, `name_of_organization`, `organization_type`, `organization_type_other`, `industry_type`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`, `extra_workex_count`, `total_work_experience`) VALUES (
+	$sqlworkex = "INSERT INTO `vedica_admission`.`users_work_experience_details` (`application_id`, `work_experience`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`, `extra_workex_count`, `total_work_experience`) VALUES (
 				'".mysql_real_escape_string( $finalapplicationid )."',
 				'".mysql_real_escape_string( $finalisworkex )."',
+				'".mysql_real_escape_string( $finalemployementtype )."',
 				'".mysql_real_escape_string( $finalorganizationname )."',
 				'".mysql_real_escape_string( $finalorganizationtype )."',
 				'".mysql_real_escape_string( $finalorganizationtypeother )."',
-				'".mysql_real_escape_string( $finalindustrytype )."',
 				'".mysql_real_escape_string( $finalworkstarted )."',
 				'".mysql_real_escape_string( $finalworkcompleted )."',
 				'".mysql_real_escape_string( $finalcomapnyjoinedas )."',
@@ -96,10 +96,10 @@ if ( $mysql == true ) {
 			ON DUPLICATE KEY
 			UPDATE
 			work_experience = VALUES(work_experience),
+			employement_type = VALUES(employement_type),
 			name_of_organization = VALUES(name_of_organization),
 			organization_type = VALUES(organization_type),
 			organization_type_other = VALUES(organization_type_other),
-			industry_type = VALUES(industry_type),
 			started_work_date = VALUES(started_work_date),
 			completed_work_date = VALUES(completed_work_date),
 			joined_as = VALUES(joined_as),
@@ -128,7 +128,7 @@ if ( $mysql == true ) {
 	for ( $x=1; $x<=$finalextraworkexcount; $x++ ) {
 
 
-		$iisworkex = "isworkex{$x}";
+		$iemployementtype = "employementtype{$x}";
 		$iorganizationname = "organizationname{$x}";
 		$iorganizationtype = "organizationtype{$x}";
 		$iorganizationtypeother = "organizationtypeother{$x}";
@@ -143,8 +143,7 @@ if ( $mysql == true ) {
 		$itotalworkex = "totalworkex{$x}";
 
 
-		${'isworkex' . $x} = strip_tags( trim( $_POST[$iisworkex] ) );
-		${'organizationname' . $x} = strip_tags( trim( $_POST[$iorganizationname] ) );
+		${'employementtype' . $x} = strip_tags( trim( $_POST[$iemployementtype] ) );
 		${'organizationtype' . $x} = strip_tags( trim( $_POST[$iorganizationtype] ) );
 		${'organizationtypeother' . $x} = strip_tags( trim( $_POST[$iorganizationtypeother] ) );
 		${'industrytype' . $x} = strip_tags( trim( $_POST[$iindustrytype] ) );
@@ -157,7 +156,7 @@ if ( $mysql == true ) {
 		${'extraworkexcount' . $x} = strip_tags( trim( $_POST[$iextraworkexcount] ) );
 		${'totalworkex' . $x} = strip_tags( trim( $_POST[$itotalworkex] ) );
 
-		${'finalisworkex' . $x} = htmlspecialchars( ${'isworkex' . $x}, ENT_QUOTES, 'UTF-8' );
+		${'finalemployementtype' . $x} = htmlspecialchars( ${'employementtype' . $x}, ENT_QUOTES, 'UTF-8' );
 		${'finalorganizationname' . $x} = htmlspecialchars( ${'organizationname' . $x}, ENT_QUOTES, 'UTF-8' );
 		${'finalorganizationtype' . $x} = htmlspecialchars( ${'organizationtype' . $x}, ENT_QUOTES, 'UTF-8' );
 		${'finalorganizationtypeother' . $x} = htmlspecialchars( ${'organizationtypeother' . $x}, ENT_QUOTES, 'UTF-8' );
@@ -172,13 +171,12 @@ if ( $mysql == true ) {
 		${'finaltotalworkex' . $x} = htmlspecialchars( ${'totalworkex' . $x}, ENT_QUOTES, 'UTF-8' );
 
 
-		$sqlworkexextra = "INSERT INTO `vedica_admission`.`added_work_experience_details` (`application_id`, `work_experience`, `name_of_organization`, `organization_type`, `organization_type_other`, `industry_type`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`) VALUES (
+		$sqlworkexextra = "INSERT INTO `vedica_admission`.`added_work_experience_details` (`application_id`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`) VALUES (
 				'".mysql_real_escape_string( $finalapplicationid )."',
-				'".mysql_real_escape_string( ${'finalisworkex' . $x} )."',
+				'".mysql_real_escape_string( ${'finalemployementtype' . $x} )."',
 				'".mysql_real_escape_string( ${'finalorganizationname' . $x} )."',
 				'".mysql_real_escape_string( ${'finalorganizationtype' . $x} )."',
 				'".mysql_real_escape_string( ${'finalorganizationtypeother' . $x} )."',
-				'".mysql_real_escape_string( ${'finalindustrytype' . $x} )."',
 				'".mysql_real_escape_string( ${'finalworkstarted' . $x} )."',
 				'".mysql_real_escape_string( ${'finalworkcompleted' . $x} )."',
 				'".mysql_real_escape_string( ${'finalcomapnyjoinedas' . $x} )."',
@@ -192,7 +190,6 @@ if ( $mysql == true ) {
 		if ( ! $insertworkexextra ) {
 			die( 'Could not enter data: ' . mysql_error() );
 		}
-		echo 'success';
 
 	}
 

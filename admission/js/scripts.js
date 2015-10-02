@@ -392,6 +392,28 @@ jQuery.noConflict()(function($) {
             $("body").scrollTop(0);
         });
 
+        $("#continue-button-additional").click(function() {
+            jQuery('#section_additional_info').ajaxSubmit({
+                beforeSubmit: function() {
+                    // $('#register-button').attr('disabled', 'disabled');
+                },
+                success: function(responseText, statusText, xhr, $form) {
+                    checktimeout(responseText);
+                    if ($("#section_additional_info").valid()) {
+                        additionalinfostatus = true;
+                        $("label[for='sky-tab6']").css('background-color', '#26C281');
+                    } else {
+                        $("label[for='sky-tab6']").css('background-color', '#F22613');
+                        additionalinfostatus = false;
+                    }
+                    $("#sky-tab7").prop("checked", true);
+                    $("body").scrollTop(0);
+
+                    changeSectionStatus();
+                },
+            });
+        });
+
         $("#back-button-additional").click(function() {
             $("#sky-tab5").prop("checked", true);
             $("body").scrollTop(0);
@@ -645,12 +667,18 @@ jQuery.noConflict()(function($) {
 
         function checktimeout(text) {
             if (isValid(text)) {
-                var response = JSON.parse(text);
-                if (response.status === 'timeout') {
-                    alert("Your session timed out. Please login again.");
-                    window.open(baseurl + 'login.php', '_self');
+                try {
+                    var response = JSON.parse(text);
+                    if (response.status === 'timeout') {
+                        alert("Your session timed out. Please login again.");
+                        window.open(baseurl + 'login.php', '_self');
+                        return false;
+                    }
+                } catch (e) {
+                    alert(e);
                     return false;
                 }
+
             }
 
         }

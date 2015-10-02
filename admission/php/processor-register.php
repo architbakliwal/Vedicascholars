@@ -99,19 +99,6 @@ if ( $SMTP == true ) {
 			$insertcontact = mysql_query( $sqlcontact );
 
 
-			$sqlpayment = "INSERT INTO `vedica_admission`.`users_payment_details` (`application_id`, `dd_email_address`) VALUES (
-					'".mysql_real_escape_string( $finalusername )."',
-					'".mysql_real_escape_string( $finaluseremail )."'
-					)
-				ON DUPLICATE KEY
-				UPDATE
-				dd_email_address = VALUES(dd_email_address)
-				;";
-
-			$insertpayment = mysql_query( $sqlpayment );
-
-
-
 			include dirname( __FILE__ ).'/phpmailer/PHPMailerAutoload.php';
 			include dirname( __FILE__ ).'/messages/automessageemail.php';
 
@@ -129,7 +116,7 @@ if ( $SMTP == true ) {
 			$automail->CharSet = "UTF-8";
 			$automail->Encoding = "base64";
 			$automail->Timeout = 200;
-			$automail->SMTPDebug = 0; // 0 = off (for production use) // 1 = client messages // 2 = client and server messages
+			$automail->SMTPDebug = 2; // 0 = off (for production use) // 1 = client messages // 2 = client and server messages
 			$automail->ContentType = "text/html";
 			$automail->AddAddress( $finaluseremail );
 			$automail->Subject = $lang['account_creation_subject'];
@@ -140,6 +127,7 @@ if ( $SMTP == true ) {
 				echo $lang['account_creation_successful'];
 				redirect_time( $baseurl.'login.php?lang='.$_GET['lang'].'' );
 			} else {
+				// echo "Mailer Error: " . $automail->ErrorInfo;
 				echo $lang['account_creation_unsuccessful'];
 			}
 		} else {

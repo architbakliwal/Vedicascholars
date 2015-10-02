@@ -10,7 +10,6 @@ jQuery.noConflict()(function($) {
         $("input[name=annualrenumeration]").ForceNumericOnly();
         $("input[name=totalworkex]").ForceNumericOnly();
         $("input[name=refreecontact]").ForceNumericOnly();
-        $("input[name=paymentamount]").ForceNumericOnly();
 
 
         $("input[name=firstname]").ForceAlphabestOnly();
@@ -206,75 +205,15 @@ jQuery.noConflict()(function($) {
             });
         });
 
-        $("#section_scores").validate({
 
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#section_scores .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-        $("#window_cat").validate({
+        $("#section_additional_info").validate({
 
             rules: {
-                catexamdate: {
+                refreeemail: {
                     required: true,
-                    dpDate: true
+                    regexemail: emailregex
                 }
             },
-
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#window_cat .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-        $("#window_cet").validate({
-
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#window_cet .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-
-        $("#section_done_cet").validate({
 
             errorPlacement: function(error, element) {
                 $(element).tooltipster('update', $(error).text());
@@ -288,63 +227,13 @@ jQuery.noConflict()(function($) {
         });
 
         // the following method must come AFTER .validate()
-        $('#section_done_cet .itrequired').each(function() {
+        $('#section_additional_info .itrequired').each(function() {
             $(this).rules('add', {
                 required: true,
             });
         });
 
-        $("#window_gre").validate({
-            rules: {
-                gredate: {
-                    required: true,
-                    dpDate: true
-                }
-            },
 
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#window_gre .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-        $("#window_gmat").validate({
-            rules: {
-                gmatdate: {
-                    required: true,
-                    dpDate: true
-                }
-            },
-
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#window_gmat .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
 
         $("#section_docs").validate({
 
@@ -361,55 +250,6 @@ jQuery.noConflict()(function($) {
 
         // the following method must come AFTER .validate()
         $('#section_docs .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-        $("#section_payment").validate({
-
-            rules: {
-                paymentemailid: {
-                    required: true,
-                    regexemail: emailregex
-                },
-                paymentdate: {
-                    required: true,
-                    dpDate: true
-                }
-            },
-
-            errorPlacement: function(error, element) {
-                $(element).tooltipster('update', $(error).text());
-
-            },
-            success: function(label, element) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#section_payment .itrequired').each(function() {
-            $(this).rules('add', {
-                required: true,
-            });
-        });
-
-        $("#ddreference").validate({
-
-            errorPlacement: function(error, element) {
-
-            },
-            success: function(label, element) {
-
-            },
-            submitHandler: function(form) {
-
-            }
-        });
-
-        // the following method must come AFTER .validate()
-        $('#ddreference .itrequired').each(function() {
             $(this).rules('add', {
                 required: true,
             });

@@ -45,9 +45,9 @@
 
 	$SMTP = true;
 	
-	$protocol = '';                       					// Can be 'ssl' or 'tls' or ''
-	$host = 'localhost';
-	$port = 25;                             				// Can be 465, 587, 25
+	$protocol = 'ssl';                       					// Can be 'ssl' or 'tls' or ''
+	$host = 'smtp.gmail.com';
+	$port = 465;                             				// Can be 465, 587, 25
 	$smtpusername = 'admissions@vedicascholars.com';        // Need to be equal to $youremail
 	$smtppassword = 'vedica15';
 

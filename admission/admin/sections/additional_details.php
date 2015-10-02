@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="section inner_section">
-			<form method="post" action="" id="section_additional_info">
+			<form method="post" action="#" id="section_additional_info">
 				<fieldset>
 					<div class="grid-container">
 						<div class="column-twelve">

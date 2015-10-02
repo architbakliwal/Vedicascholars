@@ -249,7 +249,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	    while ($row = mysql_fetch_array($selectworkex, MYSQL_ASSOC)) {
 
 	        $row_array3['isworkex'] = $row['work_experience'];
-	        $row_array3['employement_type'] = $row['employementtype'];
+	        $row_array3['employementtype'] = $row['employement_type'];
 			$row_array3['organizationname'] = htmldecode($row['name_of_organization']);
 			$row_array3['organizationtype'] = $row['organization_type'];
 			$row_array3['organizationtypeother'] = htmldecode($row['organization_type_other']);

@@ -34,7 +34,7 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 }
 
 $_SESSION['start'] = time();
-$_SESSION['expire'] = $_SESSION['stasrt'] + ( 60*60 );
+$_SESSION['expire'] = $_SESSION['start'] + ( 60*60 );
 
 if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	session_destroy();
