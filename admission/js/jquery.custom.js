@@ -14,19 +14,10 @@ jQuery.noConflict()(function($) {
             position: 'top'
         });
 
-        $('#tooltip-help').each(function(index, element) {
-            console.log(index);
-            $(this).tooltipster({
-                iconDesktop: true,
-                iconTouch: true
-            });
-        });
-
-
-        /*$('#tooltip-help').tooltipster({
+        $('#tooltip-help').tooltipster({
             iconDesktop: true,
             iconTouch: true
-        });*/
+        });
 
         // $(document).ajaxStop($('input, select').tooltipster('hide'));
 

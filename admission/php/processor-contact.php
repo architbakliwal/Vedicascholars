@@ -63,9 +63,12 @@ $permanentcountry = strip_tags( trim( $_POST["permanentcountry"] ) );
 $permanentstate = strip_tags( trim( $_POST["permanentstate"] ) );
 $permanentstateother = strip_tags( trim( $_POST["permanentstateother"] ) );
 $permanentzip = strip_tags( trim( $_POST["permanentzip"] ) );
-$emergencyname = strip_tags( trim( $_POST["emergencyname"] ) );
-$emergencymobile = strip_tags( trim( $_POST["emergencymobile"] ) );
-$emergencyrelation = strip_tags( trim( $_POST["emergencyrelation"] ) );
+$parentname = strip_tags( trim( $_POST["parentname"] ) );
+$parentmobile = strip_tags( trim( $_POST["parentmobile"] ) );
+$parentrelation = strip_tags( trim( $_POST["parentrelation"] ) );
+$parentorganisation = strip_tags( trim( $_POST["parentorganisation"] ) );
+$parentdesignation = strip_tags( trim( $_POST["parentdesignation"] ) );
+$parentqualification = strip_tags( trim( $_POST["parentqualification"] ) );
 
 
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
@@ -89,13 +92,16 @@ $finalpermanentcountry = htmlspecialchars( $permanentcountry, ENT_QUOTES, 'UTF-8
 $finalpermanentstate = htmlspecialchars( $permanentstate, ENT_QUOTES, 'UTF-8' );
 $finalpermanentstateother = htmlspecialchars( $permanentstateother, ENT_QUOTES, 'UTF-8' );
 $finalpermanentzip = htmlspecialchars( $permanentzip, ENT_QUOTES, 'UTF-8' );
-$finalemergencyname = htmlspecialchars( $emergencyname, ENT_QUOTES, 'UTF-8' );
-$finalemergencymobile = htmlspecialchars( $emergencymobile, ENT_QUOTES, 'UTF-8' );
-$finalemergencyrelation = htmlspecialchars( $emergencyrelation, ENT_QUOTES, 'UTF-8' );
+$finalparentname = htmlspecialchars( $parentname, ENT_QUOTES, 'UTF-8' );
+$finalparentmobile = htmlspecialchars( $parentmobile, ENT_QUOTES, 'UTF-8' );
+$finalparentrelation = htmlspecialchars( $parentrelation, ENT_QUOTES, 'UTF-8' );
+$finalparentorganisation = htmlspecialchars( $parentorganisation, ENT_QUOTES, 'UTF-8' );
+$finalparentdesignation = htmlspecialchars( $parentdesignation, ENT_QUOTES, 'UTF-8' );
+$finalparentqualification = htmlspecialchars( $parentqualification, ENT_QUOTES, 'UTF-8' );
 
 
 if ( $mysql == true ) {
-	$sqlcontact = "INSERT INTO `vedica_admission`.`users_contact_details` (`application_id`, `email_id`, `mobile_number`, `phone_number`, `current_address_line1`, `current_address_line2`, `current_address_line3`, `current_address_city`, `current_address_state`, `current_address_state_other`, `current_address_country`, `current_address_pin`, `permanent_same_as_current_address`, `permanent_address_line1`, `permanent_address_line2`, `permanent_address_line3`, `permanent_address_city`, `permanent_address_state`, `permanent_address_state_other`, `permanent_address_country`, `permanent_address_pin`, `emergency_contact_name`, `emergency_contact_number`, `emergency_contact_relation`) VALUES (
+	$sqlcontact = "INSERT INTO `vedica_admission`.`users_contact_details` (`application_id`, `email_id`, `mobile_number`, `phone_number`, `current_address_line1`, `current_address_line2`, `current_address_line3`, `current_address_city`, `current_address_state`, `current_address_state_other`, `current_address_country`, `current_address_pin`, `permanent_same_as_current_address`, `permanent_address_line1`, `permanent_address_line2`, `permanent_address_line3`, `permanent_address_city`, `permanent_address_state`, `permanent_address_state_other`, `permanent_address_country`, `permanent_address_pin`, `parent_name`, `parent_mobile`, `parent_relation`, `parent_organisation`, `parent_designation`, `parent_qualification`) VALUES (
 			'".mysql_real_escape_string( $finalapplicationid )."',
 			'".mysql_real_escape_string( $finalemail )."',
 			'".mysql_real_escape_string( $finalmobilenumber )."',
@@ -117,9 +123,12 @@ if ( $mysql == true ) {
 			'".mysql_real_escape_string( $finalpermanentstateother )."',
 			'".mysql_real_escape_string( $finalpermanentcountry )."',
 			'".mysql_real_escape_string( $finalpermanentzip )."',
-			'".mysql_real_escape_string( $finalemergencyname )."',
-			'".mysql_real_escape_string( $finalemergencymobile )."',
-			'".mysql_real_escape_string( $finalemergencyrelation )."'
+			'".mysql_real_escape_string( $finalparentname )."',
+			'".mysql_real_escape_string( $finalparentmobile )."',
+			'".mysql_real_escape_string( $finalparentrelation )."',
+			'".mysql_real_escape_string( $finalparentorganisation )."',
+			'".mysql_real_escape_string( $finalparentdesignation )."',
+			'".mysql_real_escape_string( $finalparentqualification )."'
 			)
 		ON DUPLICATE KEY
 		UPDATE
@@ -143,9 +152,12 @@ if ( $mysql == true ) {
 		permanent_address_state_other = VALUES(permanent_address_state_other),
 		permanent_address_country = VALUES(permanent_address_country),
 		permanent_address_pin = VALUES(permanent_address_pin),
-		emergency_contact_name = VALUES(emergency_contact_name),
-		emergency_contact_number = VALUES(emergency_contact_number),
-		emergency_contact_relation = VALUES(emergency_contact_relation)
+		parent_name = VALUES(parent_name),
+		parent_mobile = VALUES(parent_mobile),
+		parent_relation = VALUES(parent_relation),
+		parent_organisation = VALUES(parent_organisation),
+		parent_designation = VALUES(parent_designation),
+		parent_qualification = VALUES(parent_qualification)
 		;";
 
 	$insertcontact = mysql_query( $sqlcontact );

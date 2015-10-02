@@ -73,10 +73,10 @@
 										    <div class="box">
 												<div class="box-section center">
 													<div class="column-twelve" style="margin:30px;">
-														<h3 style="text-align: center;">Online Registrations are closed for MMS/MSc 2015-2017 batch.</h3>
+														<h3 style="text-align: center;">Online Registrations are closed for 2016 batch.</h3>
 													</div>
 													<div class="column-twelve" >
-														<p>Please keep checking the website and follow our official <a href="https://www.facebook.com/JBIMS" style="display: inline;padding: 0;text-decoration: underline;">Facebook page</a> and <a href="http://www.pagalguy.com/discussions/official-2015-17-jamnalal-bajaj-institute-of-management-studies-jbims-mba-mms-admission-thread-30037887" style="display: inline;padding: 0;text-decoration: underline;">Pagalguy thread</a> for further updates.</p>
+														<p>Please keep checking the website for further updates.</p>
 													</div>
 											    </div>
 											</div>

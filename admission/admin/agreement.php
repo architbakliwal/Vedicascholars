@@ -91,14 +91,8 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 													</div>
 													<div class="column-twelve" style="margin:30px;">
 														<div class="column-two">
-															<button type="button" id="submit-final-dd" class="button button-large button-orange">Submit</button>
+															<button type="button" id="submit-final" class="button button-large button-orange">Submit</button>
 														</div>
-														<!-- <div class="column-two" style="display:none;">
-															<button type="button" id="preview-final" class="button button-large button-blue">Preview</button>
-														</div> -->
-													</div>
-													<div class="column-twelve" style="margin:30px;">
-														<p style="text-align: center;">If short-listed you will be informed via an email to your registered user id. For all MH-CET candidates: You will be contacted to update your registration details in January. By submitting this application you are agreeing to the terms and conditions of the organisation. You are also accepting that you are aware of the policies and requirements of the institution.</p>
 													</div>
 													<div class="column-twelve">
 														<div class="terms">

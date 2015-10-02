@@ -30,8 +30,6 @@
 
 	error_reporting(0);
 
-	$mailallowed = true;
-
 	// error_reporting(E_ALL & ~E_NOTICE);
 
 	// Enter your Name here!
@@ -43,12 +41,12 @@
 	// Turn true SMTP if you want don´t forget to turn false sendmail and mail
 
 	$sendmail = false;
-	$mail = true;
+	$mail = false;
 
-	$SMTP = false;
+	$SMTP = true;
 	
 	$protocol = '';                       					// Can be 'ssl' or 'tls' or ''
-	$host = 'jbi.jbims.edu';
+	$host = 'localhost';
 	$port = 25;                             				// Can be 465, 587, 25
 	$smtpusername = 'admissions@vedicascholars.com';        // Need to be equal to $youremail
 	$smtppassword = 'vedica15';

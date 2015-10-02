@@ -53,12 +53,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	$row_array4 = array();
 	$row_array5 = array();
 	$row_array6 = array();
-	$row_array7 = array();
-	$row_array8 = array();
-	$row_array9 = array();
-	$row_array10 = array();
-	$row_array11 = array();
-	$row_array12 = array();
+
 
 	function htmldecode($value) {
 		return htmlspecialchars_decode($value, ENT_QUOTES);
@@ -69,12 +64,15 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 		//Create an array
 	    $json_response = array();
 
+	    // always put this as first element to avoid numbering
+        array_push($json_response, $baseurl);
+
 
 		$sqlpersonal = "SELECT * FROM  `users_personal_details` WHERE application_id ='" . $finalapplicationid ."'";
 
 		$selectpersonal = mysql_query($sqlpersonal);
 
-	if ( ! $selectpersonal ) {
+		if ( ! $selectpersonal ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -84,14 +82,8 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 			$row_array['lastname'] = $row['l_name'];
 			$row_array['dob'] = $row['user_dob'];
 			$row_array['gender'] = $row['gender'];
-			$row_array['panssn'] = $row['pan_ssn'];
-			$row_array['passportnumber'] = $row['passport_number'];
-			$row_array['passportissued'] = $row['passport_issued_by'];
-			$row_array['passportexipry'] = $row['passport_expiry_date'];
-			$row_array['differentailyabled'] = $row['differently_abled'];
-			$row_array['category'] = $row['category'];
-			$row_array['categoryothers'] = $row['category_other'];
-			$row_array['universitygraduated'] = $row['university_of_graduation'];
+			$row_array['bloodgrp'] = $row['blood_group'];
+			$row_array['hearaboutvs'] = $row['hear_abt_vedica'];
 	        
 	    }
 
@@ -102,7 +94,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectcontact = mysql_query($contact);
 
-	if ( ! $selectcontact ) {
+		if ( ! $selectcontact ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -127,9 +119,12 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 			$row_array1['permanentstate'] = $row['permanent_address_state' ];
 			$row_array1['permanentstateother'] = $row['permanent_address_state_other' ];
 			$row_array1['permanentzip'] = $row['permanent_address_pin' ];
-			$row_array1['emergencyname'] = $row['emergency_contact_name' ];
-			$row_array1['emergencymobile'] = $row['emergency_contact_number' ];
-			$row_array1['emergencyrelation'] = $row['emergency_contact_relation' ];
+			$row_array1['parentname'] = $row['parent_name' ];
+			$row_array1['parentmobile'] = $row['parent_mobile' ];
+			$row_array1['parentrelation'] = $row['parent_relation' ];
+			$row_array1['parentorganisation'] = $row['parent_organisation' ];
+			$row_array1['parentdesignation'] = $row['parent_designation' ];
+			$row_array1['parentqualification'] = $row['parent_qualification' ];
 
 	        
 	    }
@@ -142,7 +137,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectacademic = mysql_query($academic);
 
-	if ( ! $selectacademic ) {
+		if ( ! $selectacademic ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -187,7 +182,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectacademicadd = mysql_query($academicadd);
 
-	if ( ! $selectacademicadd ) {
+		if ( ! $selectacademicadd ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -247,13 +242,14 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectworkex = mysql_query($workex);
 
-	if ( ! $selectworkex ) {
+		if ( ! $selectworkex ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
 	    while ($row = mysql_fetch_array($selectworkex, MYSQL_ASSOC)) {
 
 	        $row_array3['isworkex'] = $row['work_experience'];
+	        $row_array3['employement_type'] = $row['employementtype'];
 			$row_array3['organizationname'] = htmldecode($row['name_of_organization']);
 			$row_array3['organizationtype'] = $row['organization_type'];
 			$row_array3['organizationtypeother'] = htmldecode($row['organization_type_other']);
@@ -274,7 +270,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectworkexadd = mysql_query($workexadd);
 
-	if ( ! $selectworkexadd ) {
+		if ( ! $selectworkexadd ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -282,7 +278,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 	    while ($row = mysql_fetch_array($selectworkexadd, MYSQL_ASSOC)) {
 
-		    $iisworkex = "isworkex{$x}";
+	    	$iemployementtype = "employementtype{$x}";
 			$iorganizationname = "organizationname{$x}";
 			$iorganizationtype = "organizationtype{$x}";
 			$iorganizationtypeother = "organizationtypeother{$x}";
@@ -295,7 +291,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 			$irolesandresponsibility = "rolesandresponsibility{$x}";
 			$itotalworkex = "totalworkex{$x}";
 
-			$row_array3[$iisworkex] = $row['work_experience'];
+			$row_array3[$iemployementtype] = $row['employement_type'];
 			$row_array3[$iorganizationname] = htmldecode($row['name_of_organization']);
 			$row_array3[$iorganizationtype] = $row['organization_type'];
 			$row_array3[$iorganizationtypeother] = htmldecode($row['organization_type_other']);
@@ -318,7 +314,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 		$selectrefree = mysql_query($sqlrefree);
 
-	if ( ! $selectrefree ) {
+		if ( ! $selectrefree ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
@@ -337,179 +333,51 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	    //push the values in the array
 	    array_push($json_response,$row_array4);
 
-	    $testscore = "SELECT * FROM  `users_test_score_details` WHERE application_id ='" . $finalapplicationid ."'";
 
-		$selecttestscore = mysql_query($testscore);
 
-	if ( ! $selecttestscore ) {
+	    $sqldoc = "SELECT * FROM  `users_documents_uploads` WHERE application_id ='" . $finalapplicationid ."'";
+
+		$selectdoc = mysql_query($sqldoc);
+
+		if ( ! $selectdoc ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
-	    while ($row = mysql_fetch_array($selecttestscore, MYSQL_ASSOC)) {
-	        $row_array5['testappearing'] = $row['test_apprearing'];
-				        
+	    while ($row = mysql_fetch_array($selectdoc, MYSQL_ASSOC)) {
+	        $row_array5['passportphotofake1'] = htmldecode($row['passport_photo']);
+	        $row_array5['transcriptsfake1'] = htmldecode($row['academic_transcripts']);
+	        $row_array5['resumefake1'] = htmldecode($row['resume']);
+	        $row_array5['certificatesfake1'] = htmldecode($row['certificates']);
 	        
 	    }
 
 	    //push the values in the array
         array_push($json_response,$row_array5);
 
-	    $sqldoc = "SELECT * FROM  `users_documents_uploads` WHERE application_id ='" . $finalapplicationid ."'";
+	    
 
-		$selectdoc = mysql_query($sqldoc);
+	    
+        $status = "SELECT * FROM  `admission_section_status` WHERE application_id ='" . $finalapplicationid ."'";
 
-	if ( ! $selectdoc ) {
+		$selectstatus = mysql_query($status);
+
+		if ( ! $selectstatus ) {
 		  die('Could not enter data: ' . mysql_error());
 		}
 
-	    while ($row = mysql_fetch_array($selectdoc, MYSQL_ASSOC)) {
-	        $row_array6['passportphotofake1'] = htmldecode($row['passport_photo']);
-			$row_array6['hearaboutjbims'] = $row['how_did_you_hear_of_jbims'];
-			$row_array6['appliedbefore'] = $row['applied_to_jbims_before'];
-			$row_array6['appliedyear'] = $row['applied_to_jbims_before_year'];
-			$row_array6['supportinfo'] = htmldecode($row['other_support_information']);
+	    while ($row = mysql_fetch_array($selectstatus, MYSQL_ASSOC)) {
+	        $row_array6['personalstatus'] = $row['personal_details_status'];
+			$row_array6['contactstatus'] = $row['contact_details_status'];
+			$row_array6['academicestatus'] = $row['academic_details_status'];
+			$row_array6['workexstatus'] = $row['work_ex_details_status'];
+			$row_array6['refreestatus'] = $row['reference_details_status'];
+			$row_array6['additionalinfostatus'] = $row['additional_details_status'];
+			$row_array6['docstatus'] = $row['document_details_status'];
 	        
 	    }
 
 	    //push the values in the array
         array_push($json_response,$row_array6);
-
-	    $payment = "SELECT * FROM  `users_payment_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectpayment = mysql_query($payment);
-
-	if ( ! $selectpayment ) {
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectpayment, MYSQL_ASSOC)) {
-	        $row_array7['paymentmode'] = $row['payment_mode'];
-			$row_array7['ddpaymentmode'] = $row['dd_payment_mode'];
-			$row_array7['referencenumber'] = $row['dd_reference_number'];
-			$row_array7['paymentemailid'] = $row['dd_email_address'];
-			$row_array7['nameofbank'] = htmldecode($row['dd_bank_name']);
-			$row_array7['paymentdate'] = $row['dd_date'];
-			$row_array7['paymentamount'] = $row['payment_amount'];
-			$row_array7['paymentstatus'] = $row['payment_status'];
-	        
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array7);
-
-	    $cat = "SELECT * FROM  `users_cat_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectcat = mysql_query($cat);
-
-	if ( ! $selectcat ) {
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectcat, MYSQL_ASSOC)) {
-	        $row_array8['catapplicationid'] = $row['cat_application_id'];
-			$row_array8['catexamdate'] = $row['cat_exam_date'];
-				        
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array8);
-
-	    $gre = "SELECT * FROM  `users_gre_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectgre = mysql_query($gre);
-
-	if ( ! $selectgre ) {
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectgre, MYSQL_ASSOC)) {
-	        $row_array9['greregnumber'] = $row['gre_registration_number'];
-			$row_array9['gredate'] = $row['gre_exam_date'];
-			$row_array9['greverbalscore'] = $row['gre_verbal_score'];
-			$row_array9['grequantscore'] = $row['gre_quant_score'];
-			$row_array9['gretotalscore'] = $row['gre_total_score'];
-			$row_array9['greverbalpercentile'] = $row['gre_verbal_percentile'];
-			$row_array9['grequantpercentile'] = $row['gre_quant_percentile'];
-			$row_array9['gretotalpercentile'] = $row['gre_total_percentile'];
-			$row_array9['greawaawaited'] = $row['gre_awa_awaited'];
-			$row_array9['greawascore'] = $row['gre_awa_score'];
-			$row_array9['greawapercentile'] = $row['gre_awa_percentile'];
-				        
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array9);
-
-	    $gmat = "SELECT * FROM  `users_gmat_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectgmat = mysql_query($gmat);
-
-	if ( ! $selectgmat ) {
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectgmat, MYSQL_ASSOC)) {
-	        $row_array10['gmatregnumber'] = $row['gmat_registration_number'];
-			$row_array10['gmatdate'] = $row['gmat_exam_date'];
-			$row_array10['gmatverbalscore'] = $row['gmat_verbal_score'];
-			$row_array10['gmatquantscore'] = $row['gmat_quant_score'];
-			$row_array10['gmattotalscore'] = $row['gmat_total_score'];
-			$row_array10['gmatverbalpercentile'] = $row['gmat_verbal_percentile'];
-			$row_array10['gmatquantpercentile'] = $row['gmat_quant_percentile'];
-			$row_array10['gmattotalpercentile'] = $row['gmat_total_percentile'];
-			$row_array10['gmatawaawaited'] = $row['gmat_awa_awaited'];
-			$row_array10['gmatawascore'] = $row['gmat_awa_score'];
-			$row_array10['gmatawapercentile'] = $row['gmat_awa_percentile'];
-			$row_array10['gmatintegratedpercentile'] = $row['gmat_integrated_reasoning_percentile'];
-			$row_array10['gmatintegratedscore'] = $row['gmat_integrated_reasoning_score'];
-				        
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array10);
-
-
-        $status = "SELECT * FROM  `admission_section_status` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectstatus = mysql_query($status);
-
-	if ( ! $selectstatus ) {
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectstatus, MYSQL_ASSOC)) {
-	        $row_array11['personalstatus'] = $row['personal_details_status'];
-			$row_array11['contactstatus'] = $row['contact_details_status'];
-			$row_array11['academicestatus'] = $row['academic_details_status'];
-			$row_array11['workexstatus'] = $row['work_ex_details_status'];
-			$row_array11['refreestatus'] = $row['reference_details_status'];
-			$row_array11['scorestatus'] = $row['score_details_status'];
-			$row_array11['docstatus'] = $row['document_details_status'];
-	        
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array11);
-
-
-
-        $cet = "SELECT * FROM  `users_cet_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-		$selectcet = mysql_query($cet);
-
-		if(! $selectcet )
-		{
-		  die('Could not enter data: ' . mysql_error());
-		}
-
-	    while ($row = mysql_fetch_array($selectcet, MYSQL_ASSOC)) {
-	        $row_array12['cetrollnumber'] = $row['cet_roll_number'];
-			$row_array12['cetmarks'] = $row['cet_marks'];
-			$row_array12['cetpercentile'] = $row['cet_percentile'];
-	    }
-
-	    //push the values in the array
-        array_push($json_response,$row_array12);
 
 
 

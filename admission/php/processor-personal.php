@@ -48,14 +48,8 @@ $middlename = strip_tags( trim( $_POST["middlename"] ) );
 $lastname = strip_tags( trim( $_POST["lastname"] ) );
 $dob = strip_tags( trim( $_POST["dob"] ) );
 $gender = strip_tags( trim( $_POST["gender"] ) );
-$panssn = strip_tags( trim( $_POST["panssn"] ) );
-$passportnumber = strip_tags( trim( $_POST["passportnumber"] ) );
-$passportissued = strip_tags( trim( $_POST["passportissued"] ) );
-$passportexipry = strip_tags( trim( $_POST["passportexipry"] ) );
-$differentailyabled = strip_tags( trim( $_POST["differentailyabled"] ) );
-$category = strip_tags( trim( $_POST["category"] ) );
-$categoryothers = strip_tags( trim( $_POST["categoryothers"] ) );
-$universitygraduated = strip_tags( trim( $_POST["universitygraduated"] ) );
+$bloodgrp = strip_tags( trim( $_POST["bloodgrp"] ) );
+$hearaboutvs = strip_tags( trim( $_POST["hearaboutvs"] ) );
 
 
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
@@ -64,14 +58,8 @@ $finalmiddlename = htmlspecialchars( $middlename, ENT_QUOTES, 'UTF-8' );
 $finallastname = htmlspecialchars( $lastname, ENT_QUOTES, 'UTF-8' );
 $finaldob = htmlspecialchars( $dob, ENT_QUOTES, 'UTF-8' );
 $finalgender = htmlspecialchars( $gender, ENT_QUOTES, 'UTF-8' );
-$finalpanssn = htmlspecialchars( $panssn, ENT_QUOTES, 'UTF-8' );
-$finalpassportnumber = htmlspecialchars( $passportnumber, ENT_QUOTES, 'UTF-8' );
-$finalpassportissued = htmlspecialchars( $passportissued, ENT_QUOTES, 'UTF-8' );
-$finalpassportexipry = htmlspecialchars( $passportexipry, ENT_QUOTES, 'UTF-8' );
-$finaldifferentailyabled = htmlspecialchars( $differentailyabled, ENT_QUOTES, 'UTF-8' );
-$finalcategory = htmlspecialchars( $category, ENT_QUOTES, 'UTF-8' );
-$finalcategoryothers = htmlspecialchars( $categoryothers, ENT_QUOTES, 'UTF-8' );
-$finaluniversitygraduated = htmlspecialchars( $universitygraduated, ENT_QUOTES, 'UTF-8' );
+$finalbloodgrp = htmlspecialchars( $bloodgrp, ENT_QUOTES, 'UTF-8' );
+$finalhearaboutvs = htmlspecialchars( $hearaboutvs, ENT_QUOTES, 'UTF-8' );
 
 if ( $finaldob ) {
 	$c= date( 'Y' );
@@ -84,7 +72,7 @@ if ( $finaldob ) {
 
 
 if ( $mysql == true ) {
-	$sqlpersonal = "INSERT INTO `vedica_admission`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`,`user_dob`, `age`, `gender`, `pan_ssn`, `passport_number`, `passport_issued_by`, `passport_expiry_date`, `differently_abled`, `category`, `category_other`, `university_of_graduation`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finaldob )."','".mysql_real_escape_string( $finalage )."','".mysql_real_escape_string( $finalgender )."','".mysql_real_escape_string( $finalpanssn )."','".mysql_real_escape_string( $finalpassportnumber )."','".mysql_real_escape_string( $finalpassportissued )."','".mysql_real_escape_string( $finalpassportexipry )."','".mysql_real_escape_string( $finaldifferentailyabled )."','".mysql_real_escape_string( $finalcategory )."','".mysql_real_escape_string( $finalcategoryothers )."','".mysql_real_escape_string( $finaluniversitygraduated )."')
+	$sqlpersonal = "INSERT INTO `vedica_admission`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`,`user_dob`, `age`, `gender`, `blood_group`, `hear_abt_vedica`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finaldob )."','".mysql_real_escape_string( $finalage )."','".mysql_real_escape_string( $finalgender )."','".mysql_real_escape_string( $finalbloodgrp )."','".mysql_real_escape_string( $finalhearaboutvs )."')
 		ON DUPLICATE KEY
 		UPDATE
 		f_name = VALUES(f_name),
@@ -93,14 +81,8 @@ if ( $mysql == true ) {
 		user_dob = VALUES(user_dob),
 		age = VALUES(age),
 		gender = VALUES(gender),
-		pan_ssn = VALUES(pan_ssn),
-		passport_number = VALUES(passport_number),
-		passport_issued_by = VALUES(passport_issued_by),
-		passport_expiry_date = VALUES(passport_expiry_date),
-		differently_abled = VALUES(differently_abled),
-		category = VALUES(category),
-		category_other = VALUES(category_other),
-		university_of_graduation = VALUES(university_of_graduation)
+		blood_group = VALUES(blood_group),
+		hear_abt_vedica = VALUES(hear_abt_vedica)
 		;";
 
 	$insertpersonal = mysql_query( $sqlpersonal );

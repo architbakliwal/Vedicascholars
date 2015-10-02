@@ -32,7 +32,6 @@ if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) {
     </head>
 
     <body>
-
 		<div class="wrapper small-wrapper">
 		    <div class="form-bar">
 				<div class="top-bar bar-orange"></div>
@@ -46,12 +45,10 @@ if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) {
 						<h2><?php echo $lang['index_title'];?></h2>
 					</div>
 					<?php
-if ( $registration_closed == 'Y' ) {
-	echo '<div class="column-twelve" style="color: red; font-weight: bold;">
-								<p><marquee scrollamount="6">Online Registrations are closed.</marquee></p>
-							</div>';
-}
-?>
+						if ( $registration_closed == 'Y' ) {
+							echo '<div class="column-twelve" style="color: red; font-weight: bold;"><p><marquee scrollamount="6">Online Registrations are closed.</marquee></p></div>';
+						}
+					?>
 				</div>
 			</div>
 			<div class="section">
@@ -79,6 +76,5 @@ if ( $registration_closed == 'Y' ) {
 				</div>
             </div>
 		</div>
-
     </body>
 </html>

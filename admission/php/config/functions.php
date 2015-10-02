@@ -1,7 +1,10 @@
 <?php
 
     function timeout(){
-	    echo "timeout";
+    	$timeout_response = array();
+    	$timeout_response['status'] = 'timeout';
+		$timeout_response['msg'] = $baseurl;
+		echo json_encode($timeout_response);
 	    die();
     }
 

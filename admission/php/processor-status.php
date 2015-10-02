@@ -34,7 +34,7 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 }
 
 $_SESSION['start'] = time();
-$_SESSION['expire'] = $_SESSION['start'] + ( 60*60 );
+$_SESSION['expire'] = $_SESSION['stasrt'] + ( 60*60 );
 
 if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	session_destroy();
@@ -48,18 +48,18 @@ $contactstatus = strip_tags( trim( $_POST["contactstatus"] ) );
 $academicestatus = strip_tags( trim( $_POST["academicestatus"] ) );
 $workexstatus = strip_tags( trim( $_POST["workexstatus"] ) );
 $refreestatus = strip_tags( trim( $_POST["refreestatus"] ) );
-$scorestatus = strip_tags( trim( $_POST["scorestatus"] ) );
+$additionalinfostatus = strip_tags( trim( $_POST["additionalinfostatus"] ) );
 $docstatus = strip_tags( trim( $_POST["docstatus"] ) );
 
 if ( $mysql == true ) {
-	$sqlstatus = "INSERT INTO `vedica_admission`.`admission_section_status` (`application_id`, `personal_details_status`, `contact_details_status`, `academic_details_status`, `work_ex_details_status`, `reference_details_status`, `score_details_status`, `document_details_status`) VALUES (
+	$sqlstatus = "INSERT INTO `vedica_admission`.`admission_section_status` (`application_id`, `personal_details_status`, `contact_details_status`, `academic_details_status`, `work_ex_details_status`, `reference_details_status`, `additional_details_status`, `document_details_status`) VALUES (
 			'".$applicationid."',
 			'".$personalstatus."',
 			'".$contactstatus."',
 			'".$academicestatus."',
 			'".$workexstatus."',
 			'".$refreestatus."',
-			'".$scorestatus."',
+			'".$additionalinfostatus."',
 			'".$docstatus."'
 			)
 		ON DUPLICATE KEY
@@ -69,7 +69,7 @@ if ( $mysql == true ) {
 		academic_details_status = VALUES(academic_details_status),
 		work_ex_details_status = VALUES(work_ex_details_status),
 		reference_details_status = VALUES(reference_details_status),
-		score_details_status = VALUES(score_details_status),
+		additional_details_status = VALUES(additional_details_status),
 		document_details_status = VALUES(document_details_status)
 		;";
 

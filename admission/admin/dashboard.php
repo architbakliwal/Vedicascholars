@@ -33,7 +33,6 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 	}
 }
 
-
 ?>
 <!doctype html>
 <html>
@@ -47,21 +46,21 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 
 	    <?php
 
-$userInfo = mysql_query( "SELECT login_system_registrations_user_id,application_status FROM ".$admission_users." WHERE login_system_registrations_user_id = '".mysql_real_escape_string( $_SESSION['userLogin'] )."'" );
-$userQuery = mysql_num_rows( $userInfo );
+			$userInfo = mysql_query( "SELECT login_system_registrations_user_id,application_status FROM ".$admission_users." WHERE login_system_registrations_user_id = '".mysql_real_escape_string( $_SESSION['userLogin'] )."'" );
+			$userQuery = mysql_num_rows( $userInfo );
 
-$user = mysql_fetch_array( $userInfo );
+			$user = mysql_fetch_array( $userInfo );
 
-if ( $user['application_status'] == "Completed" ) {
-	redirect( $baseurl.'admin/done.php' );
-}else {
-	if ( $registration_closed == 'Y' ) {
-		redirect( $baseurl.'admin/thankyou.php' );
-		die();
-	}
-}
+			if ( $user['application_status'] == "Completed" ) {
+				redirect( $baseurl.'admin/done.php' );
+			} else {
+				if ( $registration_closed == 'Y' ) {
+					redirect( $baseurl.'admin/thankyou.php' );
+					die();
+				}
+			}
 
-?>
+		?>
 
 
 	    <?php if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) { ?>
@@ -150,11 +149,6 @@ if ( $user['application_status'] == "Completed" ) {
 					</div>
 					<!--/ tabs -->
 					<div class="overlay"></div>
-
-					<?php include 'sections/cat_details.php'; ?>
-					<?php include 'sections/cet_details.php'; ?>
-					<?php include 'sections/gre_details.php'; ?>
-					<?php include 'sections/gmat_details.php'; ?>
 				</div>
 			</div>
 			<div class="copyright">
@@ -169,8 +163,8 @@ if ( $user['application_status'] == "Completed" ) {
 		<?php } else { ?>
 
 		<?php
-	redirect( $baseurl.'login.php?lang='.$_GET['lang'].'' );
-?>
+			redirect( $baseurl.'login.php?lang='.$_GET['lang'].'' );
+		?>
 
 		<div class="wrapper">
 		    <div class="form-bar">
