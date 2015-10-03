@@ -116,7 +116,7 @@ if ( $SMTP == true ) {
 			$automail->CharSet = "UTF-8";
 			$automail->Encoding = "base64";
 			$automail->Timeout = 200;
-			$automail->SMTPDebug = 2; // 0 = off (for production use) // 1 = client messages // 2 = client and server messages
+			$automail->SMTPDebug = 0; // 0 = off (for production use) // 1 = client messages // 2 = client and server messages
 			$automail->ContentType = "text/html";
 			$automail->AddAddress( $finaluseremail );
 			$automail->Subject = $lang['account_creation_subject'];
