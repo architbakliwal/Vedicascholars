@@ -143,7 +143,7 @@ if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) {
 								</div>
 								<div class="column-twelve">
 									<div class="terms">
-										<p><?php echo $lang['form_register_terms_of_service'];?></p>
+										<p>By proceeding, you agree with <a href="#" target="_blank">Terms & Conditions</a></p>
 									</div>
 								</div>
 							</div>

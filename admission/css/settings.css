@@ -3,7 +3,7 @@
     -------------------------------------------------- */
 
 body {
-    background-color: #C5EFF7;
+    background-color: #EEEEEE;
     overflow: scroll;
     line-height: 1;
 }
@@ -412,7 +412,7 @@ body {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     outline: none;
-    font-family: "Roboto";
+    font-family: "Open Sans";
     font-size: 13px;
     color: #000000;
     box-shadow: none;

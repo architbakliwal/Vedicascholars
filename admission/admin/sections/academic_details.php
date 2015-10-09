@@ -91,7 +91,7 @@
 								</div>
 								<div class="box-header" style="text-align:left; border-bottom:0; background-color: white;">
 								    <div class="column-four">
-										<h3>Select one</h3>
+										<h3 style="color:#777;">Select one</h3>
 									</div>
 									<div class="column-four">
 										<div class="input-group-right irequire">

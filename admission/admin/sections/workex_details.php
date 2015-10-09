@@ -21,7 +21,7 @@
 						    <div class="box">
 								<div class="box-header" style="text-align:left; border-bottom:0; background-color: white; margin-bottom: 25px;">
 								    <div class="column-four">
-										<h3></font>Work Experience</h3>
+										<h3 style="color:#777;">Do you have any work-experience?</h3>
 									</div>
 									<div class="column-four">
 										<div class="input-group-right irequire">

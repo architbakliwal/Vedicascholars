@@ -81,6 +81,32 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 					</div>
 				</div>
 			</div>
+			<div class="section">
+				<div class="grid-container">
+					<div class="form">
+						<div class="section inner_section">
+							<form>
+								<fieldset>
+									<div class="grid-container">
+										<div class="column-twelve">
+										    <div class="box">
+												<div class="box-section center">
+													<div class="column-twelve" style="margin:30px;">
+														<h3 style="text-align: center;">Congratulations! Your application has been successfully submitted.</h3>
+													</div>
+													<div class="column-twelve" style="margin: 60px 30px; font-size: 20px;font-weight: bold;">
+														<a href="<?php echo $baseurl;?>secure/application/document/go/document.php" style="color: blue; text-decoration: underline; padding: 0; display: inline;">Download Application Form</a>
+													</div>
+											    </div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="copyright">
 				<div class="grid-container">
 					<div class="column-twelve">

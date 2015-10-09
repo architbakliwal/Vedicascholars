@@ -9,7 +9,7 @@
 	    $database_Connection = "vedica_admission";
 	    $username_Connection = "root";
 	    $password_Connection = "";
-	    $baseurl = 'http://127.0.0.1/Vedicascholars Admission/';
+	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
 	} else {
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admission";
@@ -65,8 +65,8 @@
 	// Enter Company here!
 	$company = 'Vedica Scholars';
 	
-	// Enter Current Year here!
-	$year = date("Y");
+	// Enter Next Year here!
+	$year = date("Y") + 1;
 	
 	// If you want captcha turn this to true!
 	$captcha = true;

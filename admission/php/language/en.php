@@ -8,17 +8,17 @@
 
 	// Site Configuration
     	
-    $lang['website_title']		                        = 'Vedica Scholars Programme for Women - Admissions 2015'; 
+    $lang['website_title']		                        = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN '.$year; 
     $lang['website_author']		                        = ''.$company.' - Web Committee'; 
-	$lang['website_description']		                = 'Vedica Scholars Programme for Women - Admissions 2015';
-	$lang['website_keywords']		                    = 'Vedica Scholars Programme for Women - Admissions 2015';
+	$lang['website_description']		                = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN '.$year;
+	$lang['website_keywords']		                    = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN '.$year;
 	
 	// Activation processor
 	
-    $lang['activation_successful']                      = '<div class="activate-success-message"><i class="icon-checkmark"></i>Congratulations '.$_POST['useremail'].' your account was activated with success you can login now</div>';
+    $lang['activation_successful']                      = '<div class="activate-success-message"><i class="icon-checkmark"></i>Congratulations '.$_POST['useremail'].' your account was activated with success, you can login now</div>';
     $lang['activation_unsuccessful']                    = '<div class="activate-error-message"><i class="icon-checkmark"></i>Error while activating your account. Please try again.<div>';
 	$lang['activation_already_active']		            = '<div class="activate-error-message"><i class="icon-close"></i>Your account is already activated.</div>'; 
-	$lang['activation_link_expire']		                = '<div class="activate-error-message"><i class="icon-close"></i>Your activation ink is expired, please activate the account again</div>'; 
+	$lang['activation_link_expire']		                = '<div class="activate-error-message"><i class="icon-close"></i>Your activation link is expired, please activate the account again</div>'; 
     $lang['activation_wrong_link_or_email']             = '<div class="activate-error-message"><i class="icon-close"></i>Either your confirmation token or your email is incorrect.</div>';
 
 	// Activation form
@@ -43,7 +43,7 @@
 	
 	// Dashboard Form
 	
-	$lang['dashboard_title']		                    = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN 2016';
+	$lang['dashboard_title']		                    = 'THE VEDICA SCHOLARS PROGRAMME – APPLICATION FORM FOR BATCH STARTING IN '.$year;
 	$lang['application_id']		                    	= 'Application ID: ';
 	$lang['dashboard_subtitle_password']		        = 'Update your Password';
 	$lang['dashboard_subtitle_email']		            = 'Update your Email';
@@ -125,7 +125,7 @@
     $lang['forgot_wrong_security_token']                = '<div class="error-message"><i class="icon-close"></i>Attention! Security Token is not Valid</div>'; 
     $lang['forgot_account_locked']			            = '<div class="error-message"><i class="icon-close"></i>Attention! Your account is Locked. Please try after 60 minutes or contact supprt</div>'; 
     $lang['forgot_account_subject']			            = 'Change your Password'; 	
-	$lang['forgot_successful']		                    = '<div class="success-message"><i class="icon-checkmark"></i>Congratulations! Your request for changing password was successfully! A confirmation email has been sent to '.$_POST['useremail'].' with link to change your password</div>'; 
+	$lang['forgot_successful']		                    = '<div class="success-message"><i class="icon-checkmark"></i>Your request for changing password was successful! A confirmation email has been sent to '.$_POST['useremail'].' with link to change your password</div>'; 
 	$lang['forgot_unsuccessful']	                    = '<div class="error-message"><i class="icon-close"></i>There is an error when sending email '.$mail->ErrorInfo;'</div>';	
 	$lang['forgot_missing_member']		                = '<div class="error-message"><i class="icon-close"></i>We don´t have any member with this email '.$_POST['useremail'].'</div>'; 
 	$lang['forgot_account_still_blocked']               = '<div class="error-message"><i class="icon-close"></i>Attention! Your Account is still Blocked</div>'; 
@@ -143,7 +143,7 @@
 	
     // Index page
 	 
-    $lang['index_title']		                        = 'Vedica Scholars Programme for Women</br></br>Online Application Form 2015'; 
+    $lang['index_title']		                        = 'Vedica Scholars Programme for Women</br></br>Online Application Form '.$year; 
 	$lang['index_register_your_account']		        = 'Register'; 
 	$lang['index_login_your_account']		            = 'Login'; 
 	$lang['index_forgot_your_password']		            = 'Forgot your Password';	
@@ -153,7 +153,7 @@
 	// Login processor
 	 
     $lang['login_wrong_security_token']                 = '<div class="error-message"><i class="icon-close"></i>Attention! Security Token is not Valid</div>'; 
-    $lang['login_account_success']			            = '<div class="success-message"><i class="icon-checkmark"></i>Congratulations! You have successfully login in your account</div>'; 
+    $lang['login_account_success']			            = '<div class="success-message"><i class="icon-checkmark"></i>Congratulations! You have successfully login in your account. Please wait while we redirect.</div>'; 
     $lang['login_no_session']			                = '<div class="error-message"><i class="icon-close"></i>Attention! Please enter Username and Password</div>'; 
 	$lang['login_account_still_locked']		            = '<div class="error-message"><i class="icon-close"></i>Attention! Your Account is still Blocked</div>'; 
 	$lang['login_account_not_activated']	            = '<div class="error-message"><i class="icon-close"></i>Attention! Your account is not activated yet</div>';	
@@ -208,10 +208,10 @@
    
     $lang['new_password_wrong_security_token']          = '<div class="error-message"><i class="icon-close"></i>Attention! Security Token is not Valid</div>'; 	
     $lang['new_password_successful']                    = '<div class="success-message"><i class="icon-checkmark"></i>Congratulations '.$_POST['useremail'].' your password was successfully changed</div>';
-	$lang['new_password_unsuccessful']		            = '<div class="error-message"><i class="icon-close"></i>Hello buddy i think there is an error when change your password</div>'; 
-	$lang['new_password_link_expire']		            = '<div class="error-message"><i class="icon-close"></i>Hello buddy i think your link was Expired</div>'; 
-    $lang['new_password_wrong_link_email_or_token']     = '<div class="error-message"><i class="icon-close"></i>Hello your email or token are wrong</div>';
-    $lang['new_password_wrong_link_or_email']           = '<div class="error-message"><i class="icon-close"></i>OOPS! Hello my friend you need pay attention in your link because your confirmation token or your email are incorrect</div>';
+	$lang['new_password_unsuccessful']		            = '<div class="error-message"><i class="icon-close"></i>Attention! Error occured while changng your password. Pleas try again.</div>'; 
+	$lang['new_password_link_expire']		            = '<div class="error-message"><i class="icon-close"></i>Your password change link is expired. Please try again.</div>'; 
+    $lang['new_password_wrong_link_email_or_token']     = '<div class="error-message"><i class="icon-close"></i>The email id you have entered is incorrect.</div>';
+    $lang['new_password_wrong_link_or_email']           = '<div class="error-message"><i class="icon-close"></i>Email id or security token is incorrect.</div>';
 
 	// Register processor
 	 
@@ -219,10 +219,10 @@
    	$lang['account_creation_subject']				    = 'Activate your account';
 	$lang['account_creation_successful']				= '<div class="success-message"><i class="icon-checkmark"></i>Congratulations! Your registration was successfully! A confirmation email has been sent to '.$_POST['useremail'].' with link to activate your Account</div>';
 	$lang['account_creation_unsuccessful']				= '<div class="error-message"><i class="icon-close"></i>There is an Error when sending activation email </br>Please wait for few minutes and click <a href="' .$baseurl.'resend.php?lang=">Resend Activation Link</a></div>';
-	$lang['account_creation_duplicate_email']			= '<div class="error-message"><i class="icon-close"></i>There are already a member with this email '.$_POST['useremail'].'</div>'; 
-	$lang['account_creation_duplicate_username']		= '<div class="error-message"><i class="icon-close"></i>There are already a member with this username '.$_POST['username'].'</div>'; 
-	$lang['account_creation_failed_connect_with_db']	= '<div class="error-message"><i class="icon-close"></i>There are an error when connect to database</div>';	
-	$lang['account_creation_failed_connect_with_smtp']	= '<div class="error-message"><i class="icon-close"></i>There are an error when connect to smtp server</div>';	
+	$lang['account_creation_duplicate_email']			= '<div class="error-message"><i class="icon-close"></i>There is already a member with this email '.$_POST['useremail'].'</div>'; 
+	$lang['account_creation_duplicate_username']		= '<div class="error-message"><i class="icon-close"></i>There is already a member with this username '.$_POST['username'].'</div>'; 
+	$lang['account_creation_failed_connect_with_db']	= '<div class="error-message"><i class="icon-close"></i>There is an error when connect to database</div>';	
+	$lang['account_creation_failed_connect_with_smtp']	= '<div class="error-message"><i class="icon-close"></i>There is an error when connect to smtp server</div>';	
 
 	// Register form
 	 
@@ -251,8 +251,8 @@
 	$lang['resend_activation_token_missing_member']		       = '<div class="error-message"><i class="icon-close"></i>We don´t have any member with this email '.$_POST['useremail'].'</div>'; 
 	$lang['resend_activation_token_account_still_blocked']     = '<div class="error-message"><i class="icon-close"></i>Attention! Your Account is still Blocked</div>'; 
 	$lang['resend_activation_token_account_already_active']    = '<div class="error-message"><i class="icon-close"></i>Attention! Your Account is already active</div>'; 	
-	$lang['resend_activation_token_failed_connect_with_db']	   = '<div class="error-message"><i class="icon-close"></i>There are an error when connect to database</div>';	
-	$lang['resend_activation_token_failed_connect_with_smtp']  = '<div class="error-message"><i class="icon-close"></i>There are an error when connect to smtp server</div>';	
+	$lang['resend_activation_token_failed_connect_with_db']	   = '<div class="error-message"><i class="icon-close"></i>There is an error when connect to database</div>';	
+	$lang['resend_activation_token_failed_connect_with_smtp']  = '<div class="error-message"><i class="icon-close"></i>There is an error when connect to smtp server</div>';	
 	
 	// Resend activation Token form
 	 

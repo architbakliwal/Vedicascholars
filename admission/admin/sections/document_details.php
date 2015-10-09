@@ -52,7 +52,7 @@
 										<?php } ?>
 									</div>
 									<div class="column-two">
-										<p title="Digital or scanls. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Resume</b></p>
+										<p title="Digital or scanls. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Resume/CV</b></p>
 									</div>
 									<div class="column-ten">
 										<?php if($upload == true){ ?>

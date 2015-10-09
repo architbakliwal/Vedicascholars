@@ -70,7 +70,7 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 				<div class="grid-container">
 					<div class="form">
 						<div class="section inner_section">
-							<form method="post" action="<?php echo $baseurl;?>php/processor-submit.php?lang=<?php echo $_GET['lang'];?>" id="section_submit_dd">
+							<form method="post" action="<?php echo $baseurl;?>php/processor-submit.php?lang=<?php echo $_GET['lang'];?>" id="section_submit">
 								<fieldset>
 									<div class="grid-container">
 										<div class="column-twelve">
@@ -96,7 +96,7 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 													</div>
 													<div class="column-twelve">
 														<div class="terms">
-															<p><a href="<?php echo $baseurl;?>terms.php" target="_blank" style="padding:0px;">Terms & Conditions</a></p>
+															<p><a href="#" target="_blank" style="padding:0px;">Terms & Conditions</a></p>
 														</div>
 													</div>
 											    </div>

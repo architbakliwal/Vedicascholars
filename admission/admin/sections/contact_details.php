@@ -401,7 +401,7 @@
 								</div>
 								<div class="box-header" style="text-align:left; border-bottom:0; background-color: white;">
 								    <div class="column-four">
-										<h3>Same as current address?</h3>
+										<h3 style="color:#777;">Same as current address?</h3>
 									</div>
 									<div class="column-four">
 										<div class="input-group-right irequire">
