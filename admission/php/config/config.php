@@ -10,7 +10,7 @@
 	    $username_Connection = "root";
 	    $password_Connection = "";
 	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
-	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\JBIMS-Admission\\admission\\";
+	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\admission";
 	} else {
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admission";

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2015 at 09:03 PM
+-- Generation Time: Oct 10, 2015 at 12:27 PM
 -- Server version: 5.6.15-log
 -- PHP Version: 5.5.8
 
@@ -48,8 +48,7 @@ CREATE TABLE IF NOT EXISTS `added_academic_details` (
   `extra_academic_gpa_obtained` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `extra_academic_gpa_max` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -72,8 +71,7 @@ CREATE TABLE IF NOT EXISTS `added_work_experience_details` (
   `annual_renumeration` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `roles_and_responsibilty` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -115,7 +113,6 @@ CREATE TABLE IF NOT EXISTS `admission_section_status` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
 -- --------------------------------------------------------
 
 --
@@ -137,8 +134,7 @@ CREATE TABLE IF NOT EXISTS `admission_users` (
   `registration_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `application_status` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -160,8 +156,7 @@ CREATE TABLE IF NOT EXISTS `login_system_email_activation` (
   `login_system_email_activation_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_email_activation_status` enum('0','1') COLLATE utf8_unicode_ci DEFAULT '0',
   PRIMARY KEY (`login_system_email_activation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -200,8 +195,7 @@ CREATE TABLE IF NOT EXISTS `login_system_login_attempts` (
   `login_system_login_attempts_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_login_attempts_username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`login_system_login_attempts_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -879,7 +873,6 @@ CREATE TABLE IF NOT EXISTS `users_academic_details` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
 -- --------------------------------------------------------
 
 --
@@ -930,7 +923,7 @@ CREATE TABLE IF NOT EXISTS `users_documents_uploads` (
   `passport_photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `academic_transcripts` text COLLATE utf8_unicode_ci,
   `resume` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `certificates` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `certificates` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -998,6 +991,21 @@ CREATE TABLE IF NOT EXISTS `users_work_experience_details` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_additional_info`
+--
+
+DROP TABLE IF EXISTS `user_additional_info`;
+CREATE TABLE IF NOT EXISTS `user_additional_info` (
+  `application_id` varchar(255) NOT NULL,
+  `role_model_info` text NOT NULL COMMENT 'Who is your role model? Explain the reasons behind your choice',
+  `failure_info` text NOT NULL COMMENT 'What according to you has been your biggest failure and how did you overcome it',
+  `acheivement_as_alumnus` text NOT NULL COMMENT 'Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals',
+  `support_info` text NOT NULL COMMENT 'Is there anything else you would like to mention that would add to your candidature for the programme',
+  PRIMARY KEY (`application_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
