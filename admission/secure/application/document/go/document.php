@@ -49,7 +49,7 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // add a page
 $pdf->AddPage();
 
-$pdf->SetFont('helvetica', 'BU', 10);
+$pdf->SetFont('helvetica', 'B', 10);
 
 $image_file = K_PATH_IMAGES.'logo.jpg';
 $pdf->Image($image_file, 0, 15, 0, 0, 'JPG', '', 'M', false, 150, 'C', false, false, 1, false, false, false);
@@ -58,7 +58,7 @@ $pdf->Ln(6);
 
 $pdf->writeHTML($lang['dashboard_title'], true, false, false, false, 'C');
 
-$pdf->Ln(6);
+$pdf->Ln(1);
 
 $pdf->SetFont('helvetica', '', 8);
 
@@ -659,162 +659,6 @@ $tbl = <<<EOD
     <tr nobr="true">
         <td class="boldstyle">In what capacity does he/she know you?:</td>
         <td colspan="3">$capacity_of_knowing</td>
-    </tr>
-</table>
-
-<table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
-    <tr nobr="true">
-        <th colspan="4">Test Score Details</th>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Qualifying exams appearing for</td>
-        <td colspan="3">$test_apprearing</td>
-    </tr>
-    <tr nobr="true">
-        <td colspan="4" class="specialrow">CAT Details</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">CAT Application ID:</td>
-        <td>$cat_application_id</td>
-        <td class="boldstyle">Exam date:</td>
-        <td>$cat_exam_date</td>
-    </tr>
-    <tr nobr="true">
-        <td colspan="4" class="specialrow">MH-CET Details</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">MH-CET Roll Number:</td>
-        <td colspan="3">$cet_roll_number</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Overall marks scored:</td>
-        <td>$cet_marks</td>
-        <td class="boldstyle">Overall Percentile:</td>
-        <td>$cet_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td colspan="4" class="specialrow">GRE Details</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">GRE registration number:</td>
-        <td>$gre_registration_number</td>
-        <td class="boldstyle">Exam date:</td>
-        <td>$gre_exam_date</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Verbal score:</td>
-        <td>$gre_verbal_score</td>
-        <td class="boldstyle">Quantitative score:</td>
-        <td>$gre_quant_score</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Total score:</td>
-        <td>$gre_total_score</td>
-        <td class="boldstyle">Verbal percentile:</td>
-        <td>$gre_verbal_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Quantitative percentile:</td>
-        <td>$gre_quant_percentile</td>
-        <td class="boldstyle">Total percentile:</td>
-        <td>$gre_total_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">AWA awaited:</td>
-        <td>$gre_awa_awaited</td>
-        <td class="boldstyle">AWA score:</td>
-        <td>$gre_awa_score</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">AWA percentile:</td>
-        <td colspan="3">$gre_awa_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td colspan="4" class="specialrow">GMAT Details</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">GMAT registration number:</td>
-        <td>$gmat_registration_number</td>
-        <td class="boldstyle">Exam date:</td>
-        <td>$gmat_exam_date</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Verbal score:</td>
-        <td>$gmat_verbal_score</td>
-        <td class="boldstyle">Quantitative score:</td>
-        <td>$gmat_quant_score</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Total score:</td>
-        <td>$gmat_total_score</td>
-        <td class="boldstyle" class="boldstyle">Verbal percentile:</td>
-        <td>$gmat_verbal_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Quantitative percentile:</td>
-        <td>$gmat_quant_percentile</td>
-        <td class="boldstyle">Total percentile:</td>
-        <td>$gmat_total_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">AWA awaited:</td>
-        <td>$gmat_awa_awaited</td>
-        <td class="boldstyle">AWA score:</td>
-        <td>$gmat_awa_score</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">AWA percentile:</td>
-        <td>$gmat_awa_percentile</td>
-        <td class="boldstyle">Integrated reasoning percentile:</td>
-        <td>$gmat_integrated_reasoning_percentile</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Integrated reasoning score:</td>
-        <td colspan="3">$gmat_integrated_reasoning_score</td>
-    </tr>
-</table>
-
-<table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
-    <tr nobr="true">
-        <th colspan="4">Additional Information</th>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">How did you hear of JBIMS:</td>
-        <td>$how_did_you_hear_of_jbims</td>
-        <td class="boldstyle">Have you applied to JBIMS before:</td>
-        <td>$applied_to_jbims_before</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">If yes, when:</td>
-        <td colspan="3">$applied_to_jbims_before_year</td>
-    </tr>
-</table>
-
-<table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
-    <tr nobr="true">
-        <th colspan="4">Payment Details</th>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Payment method:</td>
-        <td>$payment_mode</td>
-        <td class="boldstyle">Payment amount:</td>
-        <td>$payment_amount</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Payment mode:</td>
-        <td>$dd_payment_mode</td>
-        <td class="boldstyle">Reference/DD number:</td>
-        <td>$dd_reference_number</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Name of bank:</td>
-        <td>$dd_bank_name</td>
-        <td class="boldstyle">DD date:</td>
-        <td>$dd_date</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Payment status:</td>
-        <td colspan="3">$payment_status</td>
     </tr>
 </table>
 

@@ -23,21 +23,28 @@
 								    <h3>Document Uploads</h3>
 								</div>
 								<div class="box-section center">
+									<div class="column-twelve" style="text-align: left; margin-bottom: 30px;">
+										<h3 style="margin-bottom: 10px;">Instruction for uploads</h3>
+										<ul>
+											<li style="margin-bottom: 10px;"><b>Photo</b> Digital or scanned passport size photograph. Dimension: 2 by 2 inches. Resolution: Min 600 x 600 pixels, Max 1200 x 1200 pixels. File Formats Supported: GIF, JPEG, JPG & PNG. Maximum file size : 400 Kb</li>
+											<li style="margin-bottom: 10px;"><b>Resume/CV</b> File Formats Supported: DOC, DOCX & PDF. Maximum file size : 400 Kb</li>
+										</ul>
+									</div>
 									<div class="column-two">
-										<p title="Digital or scanned passport size photograph.<br>Dimension: 2 by 2 inches. Resolution: Min 600 x 600 pixels, Max 1200 x 1200 pixels. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Photo</b></p>
+										<p><b>Photo</b></p>
 									</div>
 									<div class="column-ten">
 										<?php if($upload == true){ ?>
 										<div class="file-group irequire">
 											<label for="passportphoto" class="group label-file">
 												<span class="button-upload blue">Choose</span>								
-												<input type="file" id="passportphoto" name="passportphoto" class="file" onchange="document.getElementById('passportphotofake1').value = this.value.replace(/C:\\fakepath\\/i, '');" title="Digital or scanned passport size photograph.<br>Dimension: 2 by 2 inches. Resolution: Min 600 x 600 pixels, Max 1200 x 1200 pixels. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb"/>
+												<input type="file" id="passportphoto" name="passportphoto" class="file" onchange="document.getElementById('passportphotofake1').value = this.value.replace(/C:\\fakepath\\/i, '');"/>
 												<input type="text" id="passportphotofake1" name="passportphotofake1" class="input" placeholder="No file selected"/>
 											</label>
 										</div>
 										<?php } ?>
 									</div>
-									<div class="column-two">
+									<!-- <div class="column-two">
 										<p title="Digital xels. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Academic Transcripts</b></p>
 									</div>
 									<div class="column-ten">
@@ -50,22 +57,22 @@
 											</label>
 										</div>
 										<?php } ?>
-									</div>
+									</div> -->
 									<div class="column-two">
-										<p title="Digital or scanls. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Resume/CV</b></p>
+										<p><b>Resume/CV</b></p>
 									</div>
 									<div class="column-ten">
 										<?php if($upload == true){ ?>
 										<div class="file-group irequire">
 											<label for="resume" class="group label-file">
 												<span class="button-upload blue">Choose</span>								
-												<input type="file" id="resume" name="resume" class="file" onchange="document.getElementById('resumefake1').value = this.value.replace(/C:\\fakepath\\/i, '');" title="Digital or scanned "/>
+												<input type="file" id="resume" name="resume" class="file" onchange="document.getElementById('resumefake1').value = this.value.replace(/C:\\fakepath\\/i, '');"/>
 												<input type="text" id="resumefake1" name="resumefake1" class="input" placeholder="No file selected"/>
 											</label>
 										</div>
 										<?php } ?>
 									</div>
-									<div class="column-two">
+									<!-- <div class="column-two">
 										<p title="Digital or scanned pls. File Formats Supported: GIF, JPEG, JPG & PNG<br>Maximum file size : 400 Kb" id="tooltip-help"><b>Additional Certificates</b></p>
 									</div>
 									<div class="column-ten">
@@ -78,7 +85,7 @@
 											</label>
 										</div>
 										<?php } ?>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

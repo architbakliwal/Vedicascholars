@@ -45,36 +45,27 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 
 
 $applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$hearaboutjbims = strip_tags( trim( $_POST['hearaboutjbims'] ) );
-$appliedbefore = strip_tags( trim( $_POST['appliedbefore'] ) );
-$appliedyear = strip_tags( trim( $_POST['appliedyear'] ) );
-$supportinfo = strip_tags( trim( $_POST['supportinfo'] ) );
-
-
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
-$finalhearaboutjbims = htmlspecialchars( $hearaboutjbims, ENT_QUOTES, 'UTF-8' );
-$finalappliedbefore = htmlspecialchars( $appliedbefore, ENT_QUOTES, 'UTF-8' );
-$finalappliedyear = htmlspecialchars( $appliedyear, ENT_QUOTES, 'UTF-8' );
-$finalsupportinfo = htmlspecialchars( $supportinfo, ENT_QUOTES, 'UTF-8' );
 
 if ( $mysql == true ) {
 
 	$doc_response = array();
+	$errors     = array();
 
 	$sqldoc = "SELECT * FROM  `users_documents_uploads` WHERE application_id ='" . $finalapplicationid ."'";
 
 	$selectdoc = mysql_query( $sqldoc );
 
 	if ( ! $selectdoc ) {
-		die( 'Could not enter data: ' . mysql_error() );
+		die( 'Could not select data: ' . mysql_error() );
 	}
 
 	while ( $row = mysql_fetch_array( $selectdoc, MYSQL_ASSOC ) ) {
-		$finalname0 = $row['passport_photo'];
+		$finalnamephoto0 = $row['passport_photo'];
+		$finalnameresume0 = $row['resume'];
 	}
 
 	if ( isset( $_FILES['passportphoto'] ) ) {
-		$errors     = array();
 		$maxsize    = 409600;
 		$acceptable = array(
 			'image/jpeg',
@@ -84,24 +75,24 @@ if ( $mysql == true ) {
 		);
 
 		if ( ( $_FILES['passportphoto']['size'] >= $maxsize ) || ( $_FILES["passportphoto"]["size"] == 0 ) ) {
-			$errors[] = 'File too large. File must be less than 400 Kb.';
+			$errors[] = 'Photo file too large. File must be less than 400 Kb.';
 		}
 
 		if ( !( in_array( $_FILES['passportphoto']['type'], $acceptable ) ) && ( !empty( $_FILES["passportphoto"]["type"] ) ) ) {
-			$errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted.';
+			$errors[] = 'Invalid file type. Only JPG, GIF and PNG types are accepted for Photo.';
 		}
 
 		if ( count( $errors ) === 0 ) {
 			$file_basename1 = substr( $_FILES["passportphoto"]["name"], 0, strripos( $_FILES["passportphoto"]["name"], '.' ) );
 			$file_extension1 = substr( $_FILES["passportphoto"]["name"], strripos( $_FILES["passportphoto"]["name"], '.' ) );
 
-			$finalname0 = $file_basename1.$file_extension1;
+			$finalnamephoto0 = $file_basename1.$file_extension1;
 
 			// Add a name to Random Files ID
-			$finalname1 = $finalapplicationid.$file_extension1;
+			$finalname1 = $finalapplicationid."_PHOTO".$file_extension1;
 
 			// Move upload files to Folder Directory
-			move_uploaded_file( $_FILES['passportphoto']['tmp_name'], '/var/www/vhosts/jbims.edu/public_html/admission/uploads/' .$finalname1 );
+			move_uploaded_file( $_FILES['passportphoto']['tmp_name'], $physicalpath.'uploads/' .$finalname1 );
 			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
 		} else {
 			$doc_response['status'] = 'F';
@@ -113,6 +104,63 @@ if ( $mysql == true ) {
 
 			die(); //Ensure no more processing is done
 		}
+	}
+
+	if ( isset( $_FILES['resume'] ) ) {
+		$maxsize    = 409600;
+		$acceptable = array(
+			'application/msword',
+			'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+			'application/pdf'
+		);
+
+		if ( ( $_FILES['resume']['size'] >= $maxsize ) || ( $_FILES["resume"]["size"] == 0 ) ) {
+			$errors[] = 'Resume/CV file too large. File must be less than 400 Kb.';
+		}
+
+		if ( !( in_array( $_FILES['resume']['type'], $acceptable ) ) && ( !empty( $_FILES["resume"]["type"] ) ) ) {
+			$errors[] = 'Invalid file type. Only DOC, DOCX and PDF types are accepted for Resume/CV.';
+		}
+
+		if ( count( $errors ) === 0 ) {
+			$file_basename1 = substr( $_FILES["resume"]["name"], 0, strripos( $_FILES["resume"]["name"], '.' ) );
+			$file_extension1 = substr( $_FILES["resume"]["name"], strripos( $_FILES["resume"]["name"], '.' ) );
+
+			$finalnameresume0 = $file_basename1.$file_extension1;
+
+			// Add a name to Random Files ID
+			$finalname1 = $finalapplicationid."_RESUME".$file_extension1;
+
+			// Move upload files to Folder Directory
+			move_uploaded_file( $_FILES['resume']['tmp_name'], $physicalpath.'uploads/' .$finalname1 );
+			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
+		} else {
+			$doc_response['status'] = 'F';
+			$doc_response['msg'] = $errors;
+			/*foreach ( $errors as $error ) {
+				echo $error;
+			}*/
+			echo json_encode($doc_response);
+
+			die(); //Ensure no more processing is done
+		}
+	}
+
+	$sqldocs = "INSERT INTO `users_documents_uploads` (`application_id`, `passport_photo`, `resume`) VALUES (
+			'".mysql_real_escape_string( $finalapplicationid )."',
+			'".mysql_real_escape_string( $finalnamephoto0 )."',
+			'".mysql_real_escape_string( $finalnameresume0 )."'
+			)
+		ON DUPLICATE KEY
+		UPDATE
+		passport_photo = VALUES(passport_photo),
+		resume = VALUES(resume)
+		;";
+
+	$insertdocs = mysql_query( $sqldocs );
+
+	if ( ! $insertdocs ) {
+		die( 'Could not enter data: ' . mysql_error() );
 	}
 
 	$doc_response['status'] = 'P';

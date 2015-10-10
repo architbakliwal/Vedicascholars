@@ -422,7 +422,7 @@ if ( ! $selectdoc ) {
 
     $passport_photo = '';
     // $list = glob('images/' . $finalapplicationid . '*');
-    $list = glob('../../../../uploads/' . $finalapplicationid . '*');
+    $list = glob($physicalpath.'uploads/' . $finalapplicationid . '_PHOTO*');
     
     if(count($list) > 0){
     	usort($list, create_function('$b,$a', 'return filemtime($a) - filemtime($b);'));

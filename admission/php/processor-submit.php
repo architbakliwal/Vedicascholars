@@ -67,27 +67,8 @@ if ( $mysql == true ) {
 		$applicantemailid = $row['email_id'];
 	}
 
-	$sqlpayment = "SELECT payment_mode FROM  `users_payment_details` WHERE application_id ='" . $applicationid ."'";
-
-	$selectpayment = mysql_query( $sqlpayment );
-
-	if ( ! $selectpayment ) {
-		die( 'Could not enter data: ' . mysql_error() );
-	}
-
-	while ( $row = mysql_fetch_array( $selectpayment, MYSQL_ASSOC ) ) {
-		$paymentmode = $row['payment_mode'];
-	}
-
 	include dirname( __FILE__ ).'/phpmailer/PHPMailerAutoload.php';
 	include dirname( __FILE__ ).'/messages/automessagesubmit.php';
-	include dirname( __FILE__ ).'/messages/automessagedd.php';
-
-	if ( $paymentmode == "ddbanktransfer" ) {
-		$imessage = $automessagedd;
-	} else {
-		$imessage = $automessagesubmit;
-	}
 
 	$automail = new PHPMailer();
 	$automail->IsSMTP();
@@ -107,7 +88,7 @@ if ( $mysql == true ) {
 	$automail->ContentType = "text/html";
 	$automail->AddAddress( $applicantemailid );
 	$automail->Subject = "Application successfully submitted";
-	$automail->Body = $imessage;
+	$automail->Body = $automessagesubmit;
 	$automail->AltBody = "To view this message, please use an HTML compatible email";
 
 	$response = array();
