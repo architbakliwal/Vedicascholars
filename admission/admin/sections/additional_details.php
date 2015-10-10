@@ -9,7 +9,7 @@
 			</div>
 		</div>
 		<div class="section inner_section">
-			<form method="post" action="#" id="section_additional_info">
+			<form method="post" action="<?php echo $baseurl;?>php/processor-additional_info.php?lang=<?php echo $_GET['lang'];?>" id="section_additional_info">
 				<fieldset>
 					<div class="grid-container">
 						<div class="column-twelve">
@@ -32,15 +32,15 @@
 									</div>
 									<div class="column-twelve">
 										<div class="textarea-group irequire">
-										    <label for="supportinfo" class="group label-textarea">
-				                                <textarea rows="5" id="supportinfo" name="supportinfo" class="textarea resisable" placeholder="What according to you has been your biggest failure and how did you overcome it? (Max 200 words)"></textarea>
+										    <label for="failureinfo" class="group label-textarea">
+				                                <textarea rows="5" id="failureinfo" name="failureinfo" class="textarea resisable" placeholder="What according to you has been your biggest failure and how did you overcome it? (Max 200 words)"></textarea>
 											</label>
 									    </div>
 									</div>
 									<div class="column-twelve">
 										<div class="textarea-group irequire">
-										    <label for="supportinfo" class="group label-textarea">
-				                                <textarea rows="5" id="supportinfo" name="supportinfo" class="textarea resisable" placeholder="Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals. (Max 200 words)"></textarea>
+										    <label for="acheivementasalumnus" class="group label-textarea">
+				                                <textarea rows="5" id="acheivementasalumnus" name="acheivementasalumnus" class="textarea resisable" placeholder="Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals. (Max 200 words)"></textarea>
 											</label>
 									    </div>
 									</div>

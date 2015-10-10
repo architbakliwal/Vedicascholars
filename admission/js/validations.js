@@ -16,7 +16,7 @@ jQuery.noConflict()(function($) {
         $("input[name=middlename]").ForceAlphabestOnly();
         $("input[name=refreename]").ForceAlphabestOnly();
 
-        $("#academicachivements, #rolesandresponsibility, #refreeknowing").on('keyup', function() {
+        $("#academicachivements, #rolesandresponsibility, #refreeknowing, #rolemodelinfo, #failureinfo, #acheivementasalumnus, #supportinfo").on('keyup', function() {
             var words = this.value.match(/\S+/g).length;
             if (words > 200) {
                 // Split the string on first 200 words and rejoin on spaces
@@ -25,17 +25,6 @@ jQuery.noConflict()(function($) {
                 $(this).val(trimmed + " ");
             }
         });
-
-        $("#supportinfo").on('keyup', function() {
-            var words = this.value.match(/\S+/g).length;
-            if (words > 150) {
-                // Split the string on first 200 words and rejoin on spaces
-                var trimmed = $(this).val().split(/\s+/, 150).join(" ");
-                // Add a space at the end to keep new typing making new words
-                $(this).val(trimmed + " ");
-            }
-        });
-
 
         $("#section_personal").validate({
             rules: {
@@ -185,6 +174,7 @@ jQuery.noConflict()(function($) {
                     required: true,
                     regexemail: emailregex
                 }
+
             },
 
             errorPlacement: function(error, element) {
@@ -207,13 +197,6 @@ jQuery.noConflict()(function($) {
 
 
         $("#section_additional_info").validate({
-
-            rules: {
-                refreeemail: {
-                    required: true,
-                    regexemail: emailregex
-                }
-            },
 
             errorPlacement: function(error, element) {
                 $(element).tooltipster('update', $(error).text());

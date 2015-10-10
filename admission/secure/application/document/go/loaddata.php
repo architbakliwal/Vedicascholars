@@ -60,17 +60,13 @@ if ( ! $userQuery ) {
 		$m_name = $row['m_name'];
 		$application_id = $row['application_id'];
 		$email_id = $row['email_id'];
-		$password = $row['password'];
-		$program_enrolled = $row['program_enrolled'];
-		$program_enrolled = trim($program_enrolled,",");
 		$application_status = $row['application_status'];
-		$reminder_email = $row['reminder_email'];
     }
 
-    if($application_status != 'Completed') {
+    /*if($application_status != 'Completed') {
     	redirect($baseurl.'admin/dashboard.php?lang='.$_GET['lang'].'');
     	die();
-    }
+    }*/
 
 
 	$sqlpersonal = "SELECT * FROM  `users_personal_details` WHERE application_id ='" . $finalapplicationid ."'";
@@ -93,19 +89,8 @@ if ( ! $selectpersonal ) {
 		}
 		$age = $row['age'];
 		$gender = $row['gender'];
-		$pan_ssn = $row['pan_ssn'];
-		$passport_number = $row['passport_number'];
-		$passport_issued_by = $row['passport_issued_by'];
-		$passport_expiry_date = $row['passport_expiry_date'];
-		if($passport_expiry_date == '0000-00-00') {
-			$passport_expiry_date = '';
-		} else {
-			$passport_expiry_date = date("d-M-Y", strtotime($passport_expiry_date));
-		}
-		$differently_abled = $row['differently_abled'];
-		$category = $row['category'];
-		$category_other = $row['category_other'];
-		$university_of_graduation = $row['university_of_graduation'];
+		$blood_grp = $row['blood_group'];
+		$hear_abt_vedica = $row['hear_abt_vedica'];
     }
 
 
@@ -137,10 +122,7 @@ if ( ! $selectcontact ) {
 		$permanent_address_state = $row['permanent_address_state'];
 		$permanent_address_state_other = $row['permanent_address_state_other'];
 		$permanent_address_country = $row['permanent_address_country'];
-		$permanent_address_pin = $row['permanent_address_pin'];
-		$emergency_contact_name = $row['emergency_contact_name'];
-		$emergency_contact_number = $row['emergency_contact_number'];
-		$emergency_contact_relation = $row['emergency_contact_relation'];    
+		$permanent_address_pin = $row['permanent_address_pin']; 
     }
 
 
@@ -426,21 +408,6 @@ if ( ! $selectrefree ) {
     }
 
 
-    $testscore = "SELECT * FROM  `users_test_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selecttestscore = mysql_query($testscore);
-
-if ( ! $selecttestscore ) {
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selecttestscore, MYSQL_ASSOC)) {
-        $test_apprearing = $row['test_apprearing'];
-        $test_apprearing = trim($test_apprearing,",");
-			        
-    }
-
-
     $sqldoc = "SELECT * FROM  `users_documents_uploads` WHERE application_id ='" . $finalapplicationid ."'";
 
 	$selectdoc = mysql_query($sqldoc);
@@ -450,11 +417,7 @@ if ( ! $selectdoc ) {
 	}
 
     while ($row = mysql_fetch_array($selectdoc, MYSQL_ASSOC)) {
-		$how_did_you_hear_of_jbims = $row['how_did_you_hear_of_jbims'];
-		$applied_to_jbims_before = $row['applied_to_jbims_before'];
-		$applied_to_jbims_before_year = $row['applied_to_jbims_before_year'];
-		$other_support_information = $row['other_support_information'];
-        
+		
     }
 
     $passport_photo = '';
@@ -466,132 +429,6 @@ if ( ! $selectdoc ) {
 		$passport_photo = $list[0];
     }
 	
-
-
-    $payment = "SELECT * FROM  `users_payment_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selectpayment = mysql_query($payment);
-
-if ( ! $selectpayment ) {
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selectpayment, MYSQL_ASSOC)) {
-        $payment_mode = $row['payment_mode'];
-		$dd_payment_mode = $row['dd_payment_mode'];
-		$dd_reference_number = $row['dd_reference_number'];
-		$dd_email_address = $row['dd_email_address'];
-		$dd_bank_name = $row['dd_bank_name'];
-		$dd_date = $row['dd_date'];
-		if($dd_date == '0000-00-00') {
-			$dd_date = '';
-		} else {
-			$dd_date = date("d-M-Y", strtotime($dd_date));
-		}
-		// $dd_date = date("d-M-Y", strtotime($dd_date));
-		$payment_amount = $row['payment_amount'];
-		$payment_status = $row['payment_status'];
-		$notified_user = $row['notified_user'];
-        
-    }
-
-
-    $cat = "SELECT * FROM  `users_cat_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selectcat = mysql_query($cat);
-
-if ( ! $selectcat ) {
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selectcat, MYSQL_ASSOC)) {
-        $cat_application_id = $row['cat_application_id'];
-		$cat_exam_date = $row['cat_exam_date'];
-		if($cat_exam_date == '0000-00-00') {
-			$cat_exam_date = '';
-		} else {
-			$cat_exam_date = date("d-M-Y", strtotime($cat_exam_date));
-		}
-		// $cat_exam_date = date("d-M-Y", strtotime($cat_exam_date));
-
-    }
-    
-
-    $cet = "SELECT * FROM  `users_cet_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selectcet = mysql_query($cet);
-
-	if(! $selectcet )
-	{
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selectcet, MYSQL_ASSOC)) {
-        $cet_roll_number = $row['cet_roll_number'];
-		$cet_marks = $row['cet_marks'];
-		$cet_percentile = $row['cet_percentile'];
-    }
-
-
-    $gre = "SELECT * FROM  `users_gre_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selectgre = mysql_query($gre);
-
-if ( ! $selectgre ) {
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selectgre, MYSQL_ASSOC)) {
-        $gre_registration_number = $row['gre_registration_number'];
-		$gre_exam_date = $row['gre_exam_date'];
-		if($gre_exam_date == '0000-00-00') {
-			$gre_exam_date = '';
-		} else {
-			$gre_exam_date = date("d-M-Y", strtotime($gre_exam_date));
-		}
-		// $gre_exam_date = date("d-M-Y", strtotime($gre_exam_date));
-		$gre_verbal_score = $row['gre_verbal_score'];
-		$gre_quant_score = $row['gre_quant_score'];
-		$gre_total_score = $row['gre_total_score'];
-		$gre_verbal_percentile = $row['gre_verbal_percentile'];
-		$gre_quant_percentile = $row['gre_quant_percentile'];
-		$gre_total_percentile = $row['gre_total_percentile'];
-		$gre_awa_awaited = $row['gre_awa_awaited'];
-		$gre_awa_score = $row['gre_awa_score'];
-		$gre_awa_percentile = $row['gre_awa_percentile'];
-    }
-
-
-    $gmat = "SELECT * FROM  `users_gmat_score_details` WHERE application_id ='" . $finalapplicationid ."'";
-
-	$selectgmat = mysql_query($gmat);
-
-if ( ! $selectgmat ) {
-	  die('Could not enter data: ' . mysql_error());
-	}
-
-    while ($row = mysql_fetch_array($selectgmat, MYSQL_ASSOC)) {
-        $gmat_registration_number = $row['gmat_registration_number'];
-		$gmat_exam_date = $row['gmat_exam_date'];
-		if($gmat_exam_date == '0000-00-00') {
-			$gmat_exam_date = '';
-		} else {
-			$gmat_exam_date = date("d-M-Y", strtotime($gmat_exam_date));
-		}
-		// $gmat_exam_date = date("d-M-Y", strtotime($gmat_exam_date));
-		$gmat_verbal_score = $row['gmat_verbal_score'];
-		$gmat_quant_score = $row['gmat_quant_score'];
-		$gmat_total_score = $row['gmat_total_score'];
-		$gmat_verbal_percentile = $row['gmat_verbal_percentile'];
-		$gmat_quant_percentile = $row['gmat_quant_percentile'];
-		$gmat_total_percentile = $row['gmat_total_percentile'];
-		$gmat_awa_awaited = $row['gmat_awa_awaited'];
-		$gmat_awa_score = $row['gmat_awa_score'];
-		$gmat_awa_percentile = $row['gmat_awa_percentile'];
-		$gmat_integrated_reasoning_percentile = $row['gmat_integrated_reasoning_percentile'];
-		$gmat_integrated_reasoning_score = $row['gmat_integrated_reasoning_score'];
-    }
-
 
     $status = "SELECT * FROM  `admission_section_status` WHERE application_id ='" . $finalapplicationid ."'";
 

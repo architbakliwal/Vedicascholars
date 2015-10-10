@@ -53,6 +53,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	$row_array4 = array();
 	$row_array5 = array();
 	$row_array6 = array();
+	$row_array7 = array();
 
 
 	function htmldecode($value) {
@@ -334,6 +335,25 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	    array_push($json_response,$row_array4);
 
 
+	    $sqladditionalinfo = "SELECT * FROM  `user_additional_info` WHERE application_id ='" . $finalapplicationid ."'";
+
+		$selectadditionalinfo = mysql_query($sqladditionalinfo);
+
+		if ( ! $selectadditionalinfo ) {
+		  die('Could not enter data: ' . mysql_error());
+		}
+
+	    while ($row = mysql_fetch_array($selectadditionalinfo, MYSQL_ASSOC)) {
+	        $row_array5['rolemodelinfo'] = htmldecode($row['role_model_info']);
+			$row_array5['failureinfo'] = htmldecode($row['failure_info']);
+			$row_array5['acheivementasalumnus'] = htmldecode($row['acheivement_as_alumnus']);
+			$row_array5['supportinfo'] = htmldecode($row['support_info']);
+	    }
+
+	    //push the values in the array
+	    array_push($json_response,$row_array5);
+
+
 
 	    $sqldoc = "SELECT * FROM  `users_documents_uploads` WHERE application_id ='" . $finalapplicationid ."'";
 
@@ -344,15 +364,15 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 		}
 
 	    while ($row = mysql_fetch_array($selectdoc, MYSQL_ASSOC)) {
-	        $row_array5['passportphotofake1'] = htmldecode($row['passport_photo']);
-	        $row_array5['transcriptsfake1'] = htmldecode($row['academic_transcripts']);
-	        $row_array5['resumefake1'] = htmldecode($row['resume']);
-	        $row_array5['certificatesfake1'] = htmldecode($row['certificates']);
+	        $row_array6['passportphotofake1'] = htmldecode($row['passport_photo']);
+	        $row_array6['transcriptsfake1'] = htmldecode($row['academic_transcripts']);
+	        $row_array6['resumefake1'] = htmldecode($row['resume']);
+	        $row_array6['certificatesfake1'] = htmldecode($row['certificates']);
 	        
 	    }
 
 	    //push the values in the array
-        array_push($json_response,$row_array5);
+        array_push($json_response,$row_array6);
 
 	    
 
@@ -366,18 +386,18 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 		}
 
 	    while ($row = mysql_fetch_array($selectstatus, MYSQL_ASSOC)) {
-	        $row_array6['personalstatus'] = $row['personal_details_status'];
-			$row_array6['contactstatus'] = $row['contact_details_status'];
-			$row_array6['academicestatus'] = $row['academic_details_status'];
-			$row_array6['workexstatus'] = $row['work_ex_details_status'];
-			$row_array6['refreestatus'] = $row['reference_details_status'];
-			$row_array6['additionalinfostatus'] = $row['additional_details_status'];
-			$row_array6['docstatus'] = $row['document_details_status'];
+	        $row_array7['personalstatus'] = $row['personal_details_status'];
+			$row_array7['contactstatus'] = $row['contact_details_status'];
+			$row_array7['academicestatus'] = $row['academic_details_status'];
+			$row_array7['workexstatus'] = $row['work_ex_details_status'];
+			$row_array7['refreestatus'] = $row['reference_details_status'];
+			$row_array7['additionalinfostatus'] = $row['additional_details_status'];
+			$row_array7['docstatus'] = $row['document_details_status'];
 	        
 	    }
 
 	    //push the values in the array
-        array_push($json_response,$row_array6);
+        array_push($json_response,$row_array7);
 
 
 

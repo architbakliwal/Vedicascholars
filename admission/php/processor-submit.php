@@ -110,11 +110,14 @@ if ( $mysql == true ) {
 	$automail->Body = $imessage;
 	$automail->AltBody = "To view this message, please use an HTML compatible email";
 
+	$response = array();
 	if ( $automail->Send() ) {
-		echo 'success';
+    	$response['status'] = 'Y';
 	} else {
-		echo 'error';
+		$response['status'] = 'N';
 	}
+
+	echo json_encode($response);
 
 } else {
 

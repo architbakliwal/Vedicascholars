@@ -286,7 +286,6 @@ if ( $mysql == true ) {
 		if ( ! $insertacademicextra ) {
 			die( 'Could not enter data: ' . mysql_error() );
 		}
-		echo 'success';
 
 	}
 

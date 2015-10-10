@@ -11,10 +11,10 @@ require_once('tcpdf_include.php');
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
-$pdf->SetCreator('JBIMS');
-$pdf->SetAuthor('JBIMS');
-$pdf->SetTitle('Jamnalal Bajaj Institute of Management Studies Online Application Form 2015-2017');
-$pdf->SetSubject('Jamnalal Bajaj Institute of Management Studies Online Application Form 2015-2017');
+$pdf->SetCreator('Vedical');
+$pdf->SetAuthor('Vedical');
+$pdf->SetTitle($lang['dashboard_title']);
+$pdf->SetSubject($lang['dashboard_title']);
 
 // set default header data
 // $pdf->SetHeaderData('', '0', 'Jamnalal Bajaj Institute of Management Studies Online Application Form 2015-2017');
@@ -49,16 +49,16 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // add a page
 $pdf->AddPage();
 
-$pdf->SetFont('times', 'BU', 14);
+$pdf->SetFont('helvetica', 'BU', 10);
 
 $image_file = K_PATH_IMAGES.'logo.jpg';
 $pdf->Image($image_file, 0, 15, 0, 0, 'JPG', '', 'M', false, 150, 'C', false, false, 1, false, false, false);
 
 $pdf->Ln(6);
 
-$pdf->writeHTML('Jamnalal Bajaj Institute of Management Studies Online Application Form 2015-2017', true, false, false, false, 'C');
+$pdf->writeHTML($lang['dashboard_title'], true, false, false, false, 'C');
 
-$pdf->Ln(10);
+$pdf->Ln(6);
 
 $pdf->SetFont('helvetica', '', 8);
 
@@ -99,8 +99,7 @@ $tbl = <<<EOD
 </style>
 <table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
     <tr nobr="true">
-        <td colspan="2" align="left" style="text-align:left; font-size:18px; font-weight:bold; padding:7px;">Application ID: $application_id</td>
-        <td colspan="2" align="right" style="text-align:right; font-size:18px; font-weight:bold; padding:7px;">$program_enrolled</td>
+        <td colspan="4" align="left" style="text-align:left; font-size:18px; font-weight:bold; padding:7px;">Application ID: $application_id</td>
     </tr>
 </table>
 
@@ -119,28 +118,12 @@ $tbl = <<<EOD
         <td>$gender</td>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle">PAN/SSN:</td>
-        <td>$pan_ssn</td>
-        <td class="boldstyle">Passport Number:</td>
-        <td>$passport_number</td>
+        <td class="boldstyle" colspan="2">Blood Group:</td>
+        <td colspan="2">$blood_grp</td>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle">Passport Issued by:</td>
-        <td>$passport_issued_by</td>
-        <td class="boldstyle">Expiry Date of Passport:</td>
-        <td>$passport_expiry_date</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Differently abled:</td>
-        <td>$differently_abled</td>
-        <td class="boldstyle">Category:</td>
-        <td>$category</td>
-    </tr>
-    <tr nobr="true">
-        <td class="boldstyle">Category others:</td>
-        <td>$category_other</td>
-        <td class="boldstyle">University graduated from:</td>
-        <td>$university_of_graduation</td>
+        <td class="boldstyle" colspan="2">How did you hear of Vedica Scholars?</td>
+        <td colspan="2">$hear_abt_vedica</td>
     </tr>
 </table>
 

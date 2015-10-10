@@ -245,6 +245,10 @@ jQuery.noConflict()(function($) {
             jQuery('#section_reference').ajaxSubmit();
         });
 
+        $("#save-button-additional").click(function() {
+            jQuery('#section_additional_info').ajaxSubmit();
+        });
+
         $("#save-button-doc").click(function() {
             jQuery('#section_docs').ajaxSubmit();
         });
@@ -524,8 +528,9 @@ jQuery.noConflict()(function($) {
                     }
                 },
                 success: function(responseText) {
-                    checktimeout(responseText);
-                    if (responseText == 'success') {
+                    var response = JSON.parse(responseText);
+                    checktimeout(response);
+                    if (response.status == 'Y') {
                         window.location = baseurl + "admin/done.php";
                     } else {}
                 }
@@ -577,47 +582,50 @@ jQuery.noConflict()(function($) {
                             $('#section_reference').loadJSON(applicantdata[5]);
                         }
                         if (isValid(applicantdata[6])) {
-                            $('#section_docs').loadJSON(applicantdata[6]);
+                            $('#section_additional_info').loadJSON(applicantdata[6]);
+                        }
+                        if (isValid(applicantdata[7])) {
+                            $('#section_docs').loadJSON(applicantdata[7]);
                         }
 
-                        if (isValid(applicantdata[7])) {
-                            if (applicantdata[7].personalstatus == 'true') {
+                        if (isValid(applicantdata[8])) {
+                            if (applicantdata[8].personalstatus == 'true') {
                                 personalstatus = true;
                                 $("label[for='sky-tab1']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab1']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].contactstatus == 'true') {
+                            if (applicantdata[8].contactstatus == 'true') {
                                 contactstatus = true;
                                 $("label[for='sky-tab2']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab2']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].academicestatus == 'true') {
+                            if (applicantdata[8].academicestatus == 'true') {
                                 academicestatus = true;
                                 $("label[for='sky-tab3']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab3']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].workexstatus == 'true') {
+                            if (applicantdata[8].workexstatus == 'true') {
                                 workexstatus = true;
                                 $("label[for='sky-tab4']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab4']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].refreestatus == 'true') {
+                            if (applicantdata[8].refreestatus == 'true') {
                                 refreestatus = true;
                                 $("label[for='sky-tab5']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab5']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].additionalinfostatus == 'true') {
+                            if (applicantdata[8].additionalinfostatus == 'true') {
                                 additionalinfostatus = true;
                                 $("label[for='sky-tab6']").css('background-color', '#26C281');
                             } else {
                                 $("label[for='sky-tab6']").css('background-color', '#F22613');
                             }
-                            if (applicantdata[7].docstatus == 'true') {
+                            if (applicantdata[8].docstatus == 'true') {
                                 docstatus = true;
                                 $("label[for='sky-tab7']").css('background-color', '#26C281');
                             } else {
@@ -665,10 +673,10 @@ jQuery.noConflict()(function($) {
             });
         }
 
-        function checktimeout(text) {
-            if (isValid(text)) {
+        function checktimeout(response) {
+            if (isValid(response)) {
                 try {
-                    var response = JSON.parse(text);
+                    // var response = JSON.parse(text);
                     if (response.status === 'timeout') {
                         alert("Your session timed out. Please login again.");
                         window.open(baseurl + 'login.php', '_self');
