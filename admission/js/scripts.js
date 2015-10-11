@@ -250,7 +250,28 @@ jQuery.noConflict()(function($) {
         });
 
         $("#save-button-doc").click(function() {
-            jQuery('#section_docs').ajaxSubmit();
+            jQuery('#section_docs').ajaxSubmit({
+                success: function(responseText) {
+                    var response = JSON.parse(responseText);
+                    $.unblockUI();
+
+                    if (response.status === 'F') {
+                        swal({
+                            title: "Error!",
+                            text: response.msg,
+                            type: "error",
+                            animation: false
+                        });
+                    } else if (response.status === 'P') {
+                        swal({
+                            title: "Success!",
+                            text: "Document(s) uploaded!!",
+                            type: "success",
+                            animation: false
+                        });
+                    }
+                }
+            });
         });
 
 
@@ -452,6 +473,13 @@ jQuery.noConflict()(function($) {
 
                         $("label[for='sky-tab7']").css('background-color', '#F22613');
                         docstatus = false;
+                    } else if (response.status === 'P') {
+                        swal({
+                            title: "Success!",
+                            text: "Documents uploaded!!",
+                            type: "success",
+                            animation: false
+                        });
                     }
 
                     if ($("#section_personal").valid()) {
@@ -531,6 +559,8 @@ jQuery.noConflict()(function($) {
                     var response = JSON.parse(responseText);
                     checktimeout(response);
                     if (response.status == 'Y') {
+                        var baseurl = $('#baseurl').val();
+                        // console.log(baseurl + "admin/done.php");
                         window.location = baseurl + "admin/done.php";
                     } else {}
                 }

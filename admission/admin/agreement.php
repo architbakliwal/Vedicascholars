@@ -76,8 +76,8 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 										<div class="column-twelve">
 										    <div class="box">
 												<div class="box-section center">
-													<div class="column-twelve" style="margin:30px;">
-														<h3 style="text-align: center;"><?php echo $responsemsg;?></h3>
+													<div class="column-twelve" style="display:none;">
+														<input type="text" id="baseurl" value="<?php echo $baseurl;?>"/>
 													</div>
 													<div class="column-twelve" style="margin:30px;">
 														<div class="input-group-right irequire">

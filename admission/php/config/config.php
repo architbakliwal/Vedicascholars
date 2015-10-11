@@ -10,13 +10,13 @@
 	    $username_Connection = "root";
 	    $password_Connection = "";
 	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
-	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\admission";
+	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\admission\\";
 	} else {
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admission";
 	    $username_Connection = "vedica_admission";
 	    $password_Connection = "vedica_admission";
-	    $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/admission/";
+	    $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/";
 
 	    // Enter your URL here without http:// only domain!
 		$url = 'intranet.vedicascholars.com';

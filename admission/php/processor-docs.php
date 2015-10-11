@@ -92,7 +92,10 @@ if ( $mysql == true ) {
 			$finalname1 = $finalapplicationid."_PHOTO".$file_extension1;
 
 			// Move upload files to Folder Directory
-			move_uploaded_file( $_FILES['passportphoto']['tmp_name'], $physicalpath.'uploads/' .$finalname1 );
+			if (!is_dir($physicalpath.'admission-uploads/')) {
+			    mkdir($physicalpath.'admission-uploads/', 0777, true);
+			}
+			move_uploaded_file( $_FILES['passportphoto']['tmp_name'], $physicalpath.'admission-uploads/' .$finalname1 );
 			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
 		} else {
 			$doc_response['status'] = 'F';
@@ -131,8 +134,10 @@ if ( $mysql == true ) {
 			// Add a name to Random Files ID
 			$finalname1 = $finalapplicationid."_RESUME".$file_extension1;
 
-			// Move upload files to Folder Directory
-			move_uploaded_file( $_FILES['resume']['tmp_name'], $physicalpath.'uploads/' .$finalname1 );
+			if (!is_dir($physicalpath.'admission-uploads/')) {
+			    mkdir($physicalpath.'admission-uploads/', 0777, true);
+			}
+			move_uploaded_file( $_FILES['resume']['tmp_name'], $physicalpath.'admission-uploads/' .$finalname1 );
 			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
 		} else {
 			$doc_response['status'] = 'F';
