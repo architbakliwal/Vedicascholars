@@ -141,11 +141,11 @@ if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) {
 								<div class="column-twelve">
 									<button type="submit" id="register-button" class="button button-large button-orange"><?php echo $lang['form_register_button_register'];?></button>
 								</div>
-								<div class="column-twelve">
+								<!-- <div class="column-twelve">
 									<div class="terms">
 										<p>By proceeding, you agree with <a href="#" target="_blank">Terms & Conditions</a></p>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</fieldset>
 					</form>

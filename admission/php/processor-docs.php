@@ -96,7 +96,6 @@ if ( $mysql == true ) {
 			    mkdir($physicalpath.'admission-uploads/', 0777, true);
 			}
 			move_uploaded_file( $_FILES['passportphoto']['tmp_name'], $physicalpath.'admission-uploads/' .$finalname1 );
-			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
 		} else {
 			$doc_response['status'] = 'F';
 			$doc_response['msg'] = $errors;
@@ -138,7 +137,6 @@ if ( $mysql == true ) {
 			    mkdir($physicalpath.'admission-uploads/', 0777, true);
 			}
 			move_uploaded_file( $_FILES['resume']['tmp_name'], $physicalpath.'admission-uploads/' .$finalname1 );
-			// move_uploaded_file($_FILES['uploaded_file']['tmpname'], '/store/to/location.file');
 		} else {
 			$doc_response['status'] = 'F';
 			$doc_response['msg'] = $errors;

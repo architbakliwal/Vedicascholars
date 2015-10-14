@@ -94,11 +94,11 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 															<button type="button" id="submit-final" class="button button-large button-orange">Submit</button>
 														</div>
 													</div>
-													<div class="column-twelve">
+													<!-- <div class="column-twelve">
 														<div class="terms">
 															<p><a href="#" target="_blank" style="padding:0px;">Terms & Conditions</a></p>
 														</div>
-													</div>
+													</div> -->
 											    </div>
 											</div>
 										</div>
