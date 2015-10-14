@@ -75,7 +75,7 @@ $tbl = <<<EOD
 
     }
     table th {
-        background-color: #22313F;
+        background-color: #E86926;
         text-align: left;
         font-size: 15px;
         font-weight: bold;
@@ -118,8 +118,8 @@ $tbl = <<<EOD
         <td>$gender</td>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle" colspan="2">Blood Group:</td>
-        <td colspan="2">$blood_grp</td>
+        <td class="boldstyle">Blood Group:</td>
+        <td colspan="3">$blood_grp</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle" colspan="2">How did you hear of Vedica Scholars?</td>
@@ -192,17 +192,25 @@ $tbl = <<<EOD
         <td colspan="3">$permanent_address_pin</td>
     </tr>
     <tr nobr="true">
-        <td colspan="4" class="specialrow">Emergency Contact</td>
+        <td colspan="4" class="specialrow">Parent’s/Guardian’s Details</td>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle">Name of contact:</td>
+        <td class="boldstyle">Full Name:</td>
         <td>$emergency_contact_name</td>
-        <td class="boldstyle">Mobile number of contact:</td>
+        <td class="boldstyle">Mobile number:</td>
         <td>$emergency_contact_number</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Your relation to contact:</td>
-        <td colspan="3">$emergency_contact_relation</td>
+        <td>$emergency_contact_relation</td>
+        <td class="boldstyle">Organisation:</td>
+        <td></td>
+    </tr>
+    <tr nobr="true">
+        <td class="boldstyle">Designation:</td>
+        <td></td>
+        <td class="boldstyle">Academic Qualification:</td>
+        <td></td>
     </tr>
 </table>
 
@@ -344,7 +352,7 @@ $tbl = <<<EOD
 
     }
     table th {
-        background-color: #22313F;
+        background-color: #E86926;
         text-align: left;
         font-size: 15px;
         font-weight: bold;
@@ -440,7 +448,7 @@ $tbl = <<<EOD
 
     }
     table th {
-        background-color: #22313F;
+        background-color: #E86926;
         text-align: left;
         font-size: 15px;
         font-weight: bold;
@@ -467,23 +475,23 @@ $tbl = <<<EOD
         <th colspan="4">Work Experience</th>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle">Work experience?</td>
-        <td colspan="3">$work_experience</td>
+        <td class="boldstyle" colspan="2">Do you have any work-experience?</td>
+        <td colspan="2">$work_experience</td>
     </tr>
     <tr nobr="true">
         <td colspan="4" class="specialrow">Latest Work Experience</td>
     </tr>
     <tr nobr="true">
+        <td class="boldstyle">Employement type:</td>
+        <td></td>
         <td class="boldstyle">Name of the organisation:</td>
         <td>$name_of_organization</td>
-        <td class="boldstyle">Organisation type:</td>
-        <td>$organization_type</td>
     </tr>
     <tr nobr="true">
+        <td class="boldstyle">Organisation type:</td>
+        <td>$organization_type</td>
         <td class="boldstyle">Organisation type others:</td>
         <td>$organization_type_other</td>
-        <td class="boldstyle">Industry type:</td>
-        <td>$industry_type</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Started work in:</td>
@@ -538,7 +546,7 @@ $tbl = <<<EOD
 
     }
     table th {
-        background-color: #22313F;
+        background-color: #E86926;
         text-align: left;
         font-size: 15px;
         font-weight: bold;
@@ -612,7 +620,7 @@ $tbl = <<<EOD
 
     }
     table th {
-        background-color: #22313F;
+        background-color: #E86926;
         text-align: left;
         font-size: 15px;
         font-weight: bold;
