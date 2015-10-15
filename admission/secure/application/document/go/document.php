@@ -673,6 +673,28 @@ $tbl = <<<EOD
 
 <table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
     <tr nobr="true">
+        <th colspan="4">Additional Information</th>
+    </tr>
+    <tr nobr="true">
+        <td class="boldstyle">Who is your role model? Explain the reasons behind your choice:</td>
+        <td colspan="3">$role_model_info</td>
+    </tr>
+    <tr nobr="true">
+        <td class="boldstyle">What according to you has been your biggest failure and how did you overcome it?:</td>
+        <td colspan="3">$failure_info</td>
+    </tr>
+    <tr nobr="true">
+        <td class="boldstyle">Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals:</td>
+        <td colspan="3">$acheivement_as_alumnus</td>
+    </tr>
+    <tr nobr="true">
+        <td class="boldstyle">Is there anything else you would like to mention that would add to your candidature for the programme?:</td>
+        <td colspan="3">$support_info</td>
+    </tr>
+</table>
+
+<table border="1" cellpadding="5" cellspacing="0" align="center" width="100%" class="tablestyle">
+    <tr nobr="true">
         <th colspan="4">Image Uploaded by Candidate</th>
     </tr>
     <tr nobr="true">

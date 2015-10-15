@@ -10,7 +10,7 @@
 	
 	$language = array('en' => 'en','pt' => 'pt');
 
-if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
+	if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 		include '../../../../php/language/'.$language[$_GET['lang']].'.php';
 	} else {
 		include '../../../../php/language/en.php';
@@ -50,7 +50,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 	$userQuery = mysql_query($userInfo);
 
-if ( ! $userQuery ) {
+	if ( ! $userQuery ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -73,7 +73,7 @@ if ( ! $userQuery ) {
 
 	$selectpersonal = mysql_query($sqlpersonal);
 
-if ( ! $selectpersonal ) {
+	if ( ! $selectpersonal ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -98,7 +98,7 @@ if ( ! $selectpersonal ) {
 
 	$selectcontact = mysql_query($contact);
 
-if ( ! $selectcontact ) {
+	if ( ! $selectcontact ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -136,7 +136,7 @@ if ( ! $selectcontact ) {
 
 	$selectacademic = mysql_query($academic);
 
-if ( ! $selectacademic ) {
+	if ( ! $selectacademic ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -196,7 +196,7 @@ if ( ! $selectacademic ) {
 
 	$selectacademicadd = mysql_query($academicadd);
 
-if ( ! $selectacademicadd ) {
+	if ( ! $selectacademicadd ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -273,7 +273,7 @@ if ( ! $selectacademicadd ) {
 
 	$selectworkex = mysql_query($workex);
 
-if ( ! $selectworkex ) {
+	if ( ! $selectworkex ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -330,7 +330,7 @@ if ( ! $selectworkex ) {
 
 	$selectworkexadd = mysql_query($workexadd);
 
-if ( ! $selectworkexadd ) {
+	if ( ! $selectworkexadd ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -401,7 +401,7 @@ if ( ! $selectworkexadd ) {
 
 	$selectrefree = mysql_query($sqlrefree);
 
-if ( ! $selectrefree ) {
+	if ( ! $selectrefree ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -413,7 +413,22 @@ if ( ! $selectrefree ) {
 		$phone_number_refree = $row['phone_number'];
 		$email_id_refree = $row['email_id'];
 		$capacity_of_knowing = $row['capacity_of_knowing'];
-        
+    }
+
+
+    $sqladditionalinfo = "SELECT * FROM  `user_additional_info` WHERE application_id ='" . $finalapplicationid ."'";
+
+	$selectadditionalinfo = mysql_query($sqladditionalinfo);
+
+	if ( ! $selectadditionalinfo ) {
+	  die('Could not enter data: ' . mysql_error());
+	}
+
+    while ($row = mysql_fetch_array($selectadditionalinfo, MYSQL_ASSOC)) {
+        $role_model_info = $row['role_model_info'];
+		$failure_info = $row['failure_info'];
+		$acheivement_as_alumnus = $row['acheivement_as_alumnus'];
+		$support_info = $row['support_info'];
     }
 
 
@@ -421,7 +436,7 @@ if ( ! $selectrefree ) {
 
 	$selectdoc = mysql_query($sqldoc);
 
-if ( ! $selectdoc ) {
+	if ( ! $selectdoc ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
@@ -443,7 +458,7 @@ if ( ! $selectdoc ) {
 
 	$selectstatus = mysql_query($status);
 
-if ( ! $selectstatus ) {
+	if ( ! $selectstatus ) {
 	  die('Could not enter data: ' . mysql_error());
 	}
 
