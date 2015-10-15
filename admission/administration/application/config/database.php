@@ -35,12 +35,18 @@
 */
 
 // The following values will probably need to be changed.
-$db['default']['username'] = "root";
-$db['default']['password'] = "";
-$db['default']['database'] = "vedica_admission";
+if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+	$db['default']['username'] = "root";
+	$db['default']['password'] = "";
+	$db['default']['hostname'] = "127.0.0.1";
+} else {
+	$db['default']['username'] = "vedica_admission";
+	$db['default']['password'] = "vedica_admission";
+	$db['default']['hostname'] = "localhost";
+}
 
 // The following values can probably stay the same.
-$db['default']['hostname'] = "127.0.0.1";
+$db['default']['database'] = "vedica_admission";
 $db['default']['dbdriver'] = "mysqli";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;

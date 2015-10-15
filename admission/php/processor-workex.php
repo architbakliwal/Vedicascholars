@@ -144,6 +144,7 @@ if ( $mysql == true ) {
 
 
 		${'employementtype' . $x} = strip_tags( trim( $_POST[$iemployementtype] ) );
+		${'organizationname' . $x} = strip_tags( trim( $_POST[$iorganizationname] ) );
 		${'organizationtype' . $x} = strip_tags( trim( $_POST[$iorganizationtype] ) );
 		${'organizationtypeother' . $x} = strip_tags( trim( $_POST[$iorganizationtypeother] ) );
 		${'industrytype' . $x} = strip_tags( trim( $_POST[$iindustrytype] ) );

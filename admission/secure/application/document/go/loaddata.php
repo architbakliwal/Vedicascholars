@@ -122,7 +122,13 @@ if ( ! $selectcontact ) {
 		$permanent_address_state = $row['permanent_address_state'];
 		$permanent_address_state_other = $row['permanent_address_state_other'];
 		$permanent_address_country = $row['permanent_address_country'];
-		$permanent_address_pin = $row['permanent_address_pin']; 
+		$permanent_address_pin = $row['permanent_address_pin'];
+		$parent_name = $row['parent_name' ];
+		$parent_mobile = $row['parent_mobile' ];
+		$parent_relation = $row['parent_relation' ];
+		$parent_organisation = $row['parent_organisation' ];
+		$parent_designation = $row['parent_designation' ];
+		$parent_qualification = $row['parent_qualification' ];
     }
 
 
@@ -274,7 +280,8 @@ if ( ! $selectworkex ) {
     while ($row = mysql_fetch_array($selectworkex, MYSQL_ASSOC)) {
 
         $work_experience = $row['work_experience'];
-		$name_of_organization = $row['name_of_organization'];
+        $employement_type = $row['employement_type'];
+        $name_of_organization = $row['name_of_organization'];
 
 		$organization_type = $row['organization_type'];
 		$lookup_organisation_type = "SELECT * FROM  `lookup_organisation_type`";
@@ -330,6 +337,7 @@ if ( ! $selectworkexadd ) {
 	$x = 1;
 
     while ($row = mysql_fetch_array($selectworkexadd, MYSQL_ASSOC)) {
+    	$iemployementtype = "employementtype{$x}";
 		$iorganizationname = "organizationname{$x}";
 		$iorganizationtype = "organizationtype{$x}";
 		$iorganizationtypeother = "organizationtypeother{$x}";
@@ -341,6 +349,7 @@ if ( ! $selectworkexadd ) {
 		$iannualrenumeration = "annualrenumeration{$x}";
 		$irolesandresponsibility = "rolesandresponsibility{$x}";
 
+		$extra_workex[$iemployementtype] = $row['employement_type'];
 		$extra_workex[$iorganizationname] = $row['name_of_organization'];
 
 		$lookup_organisation_type = "SELECT * FROM  `lookup_organisation_type`";

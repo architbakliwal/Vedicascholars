@@ -224,7 +224,8 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'MySecretKey';
+$config['encryption_key'] = '*/
+';
 
 /*
 |--------------------------------------------------------------------------
@@ -362,13 +363,13 @@ $config['proxy_ips'] = '';
 /*
 	support email
 */
-$config['support_email'] = 'support@somedomain.com';
+$config['support_email'] = 'admissions@vedicascholars.com';
 
 
 /*
 	support name
 */
-$config['support_name'] = 'Databased Application';
+$config['support_name'] = 'Admin';
 
 
 /* End of file config.php */

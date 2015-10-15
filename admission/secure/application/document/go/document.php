@@ -196,21 +196,21 @@ $tbl = <<<EOD
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Full Name:</td>
-        <td>$emergency_contact_name</td>
+        <td>$parent_name</td>
         <td class="boldstyle">Mobile number:</td>
-        <td>$emergency_contact_number</td>
+        <td>$parent_mobile</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Your relation to contact:</td>
-        <td>$emergency_contact_relation</td>
+        <td>$parent_relation</td>
         <td class="boldstyle">Organisation:</td>
-        <td></td>
+        <td>$parent_organisation</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Designation:</td>
-        <td></td>
+        <td>$parent_designation</td>
         <td class="boldstyle">Academic Qualification:</td>
-        <td></td>
+        <td>$parent_qualification</td>
     </tr>
 </table>
 
@@ -483,7 +483,7 @@ $tbl = <<<EOD
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Employement type:</td>
-        <td></td>
+        <td>$employement_type</td>
         <td class="boldstyle">Name of the organisation:</td>
         <td>$name_of_organization</td>
     </tr>
@@ -525,6 +525,7 @@ $pdf->writeHTML($tbl, true, false, false, false, '');
 
 for($i=0; $i<$extra_workex_count; $i++) {
 $x = $i + 1;
+$iemployementtype = "employementtype{$x}";
 $iorganizationname = "organizationname{$x}";
 $iorganizationtype = "organizationtype{$x}";
 $iorganizationtypeother = "organizationtypeother{$x}";
@@ -573,16 +574,16 @@ $tbl = <<<EOD
         <td colspan="4" class="specialrow">Additional Work Experience</td>
     </tr>
     <tr nobr="true">
+        <td class="boldstyle">Employement type:</td>
+        <td>$extra_workex[$iemployementtype]</td>
         <td class="boldstyle">Name of the organisation:</td>
         <td>$extra_workex[$iorganizationname]</td>
-        <td class="boldstyle">Organisation type:</td>
-        <td>$extra_workex[$iorganizationtype]</td>
     </tr>
     <tr nobr="true">
+        <td class="boldstyle">Organisation type:</td>
+        <td>$extra_workex[$iorganizationtype]</td>
         <td class="boldstyle">Organisation type others:</td>
         <td>$extra_workex[$iorganizationtypeother]</td>
-        <td class="boldstyle">Industry type:</td>
-        <td>$extra_workex[$iindustrytype]</td>
     </tr>
     <tr nobr="true">
         <td class="boldstyle">Started work in:</td>
