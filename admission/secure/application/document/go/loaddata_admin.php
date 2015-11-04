@@ -11,7 +11,7 @@
 		include '../../../../php/language/en.php';
 	}
 
-	$applicationid = strip_tags(trim('VS2016000002'));
+	$applicationid = strip_tags(trim('VS2016000001'));
 	
 	$finalapplicationid = htmlspecialchars($applicationid, ENT_QUOTES, 'UTF-8');
 	

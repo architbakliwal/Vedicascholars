@@ -16,17 +16,21 @@
 	    $database_Connection = "vedica_admission";
 	    $username_Connection = "vedica_admission";
 	    $password_Connection = "vedica_admission";
-	    $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/";
+	    // $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/";
+	    $physicalpath = "/var/www/html/vedicascholars.com/htdocs/";
 
 	    // Enter your URL here without http:// only domain!
 		$url = 'intranet.vedicascholars.com';
+		$url = 'vedicascholars.com';
 		
 		if ($_SERVER['SERVER_NAME'] == $url) {
 		    // Enter your BASEURL here without WWW!
 			$baseurl = 'http://intranet.vedicascholars.com/admission/';
+			$baseurl = 'http://vedicascholars.com/admission-form/';
 		} else {
 		    // Enter your BASEURL here with WWW!
-			$baseurl = 'http://www.intranet.vedicascholars.com/admission/';
+			// $baseurl = 'http://www.intranet.vedicascholars.com/admission/';
+			$baseurl = 'http://www.vedicascholars.com/admission-form/';
 		}
 	}
 
