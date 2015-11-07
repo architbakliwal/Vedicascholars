@@ -23,11 +23,7 @@
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'users'):?>class="active"<?php endif;?>><a href="<?php echo site_url('users');?>"><span class="fui-user"></span> Users</a></li><?php endif;?>
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'roles'):?>class="active"<?php endif;?>><a href="<?php echo site_url('roles');?>"><span class="fui-myspace"></span> Roles & permissions</a></li><?php endif;?>
 		</ul>
-		<ul class="nav navbar-nav">
-			<li>
-				<a href="<?php echo base_url();?>" target="_blank">Download PDF</a>
-			</li>
-		</ul>
+		
       	<ul class="nav navbar-nav navbar-right">
       		<li class="dropdown">
       	    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <?php echo $this->ion_auth->user()->row()->first_name;?> <b class="caret"></b></a>

@@ -6,6 +6,13 @@
 <body>
 
 	<?php $this->load->view("shared/nav");?>
+    <?php 
+        if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+            $baseurl = 'http://127.0.0.1/Vedicascholars/';
+        } else {
+            $baseurl = 'http://vedicascholars.com/admission-form/';
+        }
+    ?>
 	
     <div class="container main">
         
@@ -307,6 +314,25 @@
     			    		</div><!-- /.col-md-6 -->
     			    			
     			    	</div><!-- /.row -->
+                    </br>
+                        <div class="row">
+                                
+                            <div class="col-md-6">
+                            </div><!-- /.col-md-6 -->
+                            <div class="col-md-6">
+                                <div class="form-group select-margin-bottom-0" id="pdfDownload">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Application ID" id="pdfDownload-text">
+                                        <div class="input-group-btn">
+                                            <input type="text" value="<?php echo $baseurl . 'secure/application/document/go/document_admin.php' ?>" id="pdfDownload-link-val" hidden/>
+                                            <a href="#" target="_blank" id="pdfDownload-link">Download PDF</a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-md-6 -->
+
+                        </div><!-- /.row -->
+
     			    	
     			    	<hr>
     			    	<?php endif;?>
@@ -507,6 +533,8 @@
     <script src="<?php echo base_url();?>assets/redactor/redactor.js"></script>
     <script src="<?php echo base_url();?>assets/chosen/chosen.jquery.min.js"></script>
     <script src="<?php echo base_url();?>js/ajaxfileupload.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.query-object.js"></script>
+
     <?php if( isset($tableFields) ):?>
     <script>
     

@@ -25,7 +25,7 @@
 		
 		if ($_SERVER['SERVER_NAME'] == $url) {
 		    // Enter your BASEURL here without WWW!
-			$baseurl = 'http://intranet.vedicascholars.com/admission/';
+			// $baseurl = 'http://intranet.vedicascholars.com/admission/';
 			$baseurl = 'http://vedicascholars.com/admission-form/';
 		} else {
 		    // Enter your BASEURL here with WWW!

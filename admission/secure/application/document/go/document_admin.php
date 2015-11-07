@@ -1,5 +1,7 @@
 <?php
 
+$app_id = $_GET['appId'];
+
 require_once('loaddata_admin.php');
 
 // die();
