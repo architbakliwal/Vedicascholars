@@ -1,3 +1,11 @@
+
+<?php 
+	if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
+	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
+	} else {
+	    $baseurl = 'http://vedicascholars.com/admission-form/';
+	}
+?>
 <nav class="navbar navbar-default navbar-embossed navbar-fixed-top" role="navigation" id="topNav">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
@@ -22,6 +30,8 @@
 		
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'users'):?>class="active"<?php endif;?>><a href="<?php echo site_url('users');?>"><span class="fui-user"></span> Users</a></li><?php endif;?>
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'roles'):?>class="active"<?php endif;?>><a href="<?php echo site_url('roles');?>"><span class="fui-myspace"></span> Roles & permissions</a></li><?php endif;?>
+
+			<li><a href="<?php echo $baseurl . 'php/export-all.php' ?>" target="_blank"><span class="fui-export"></span> Export All</a></li>
 		</ul>
 		
       	<ul class="nav navbar-nav navbar-right">
