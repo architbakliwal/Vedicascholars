@@ -302,6 +302,15 @@ jQuery.noConflict()(function($) {
                     required: true,
                     regexemail: emailregex
                 },
+                mobile: {
+                    required: true,
+                    number: true,
+                    minlength: 10
+                },
+                city: {
+                    required: true,
+                    regexemail: alphabetsregex
+                },
                 password: {
                     required: true,
                     minlength: 8
