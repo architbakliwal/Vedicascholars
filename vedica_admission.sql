@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 10, 2015 at 12:27 PM
--- Server version: 5.6.15-log
--- PHP Version: 5.5.8
+-- Host: localhost
+-- Generation Time: Nov 27, 2015 at 04:15 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `vedica_admission`
 --
+CREATE DATABASE IF NOT EXISTS `vedica_admission` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `vedica_admission`;
 
 -- --------------------------------------------------------
 
@@ -26,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `added_academic_details`
 --
 
-DROP TABLE IF EXISTS `added_academic_details`;
 CREATE TABLE IF NOT EXISTS `added_academic_details` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `application_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -48,7 +49,8 @@ CREATE TABLE IF NOT EXISTS `added_academic_details` (
   `extra_academic_gpa_obtained` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `extra_academic_gpa_max` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
 
 -- --------------------------------------------------------
 
@@ -56,7 +58,6 @@ CREATE TABLE IF NOT EXISTS `added_academic_details` (
 -- Table structure for table `added_work_experience_details`
 --
 
-DROP TABLE IF EXISTS `added_work_experience_details`;
 CREATE TABLE IF NOT EXISTS `added_work_experience_details` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `application_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -71,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `added_work_experience_details` (
   `annual_renumeration` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `roles_and_responsibilty` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `added_work_experience_details` (
 -- Table structure for table `admission_config`
 --
 
-DROP TABLE IF EXISTS `admission_config`;
 CREATE TABLE IF NOT EXISTS `admission_config` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `registration_closed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
@@ -100,7 +100,6 @@ INSERT INTO `admission_config` (`uid`, `registration_closed`, `test`) VALUES
 -- Table structure for table `admission_section_status`
 --
 
-DROP TABLE IF EXISTS `admission_section_status`;
 CREATE TABLE IF NOT EXISTS `admission_section_status` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `personal_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -119,7 +118,6 @@ CREATE TABLE IF NOT EXISTS `admission_section_status` (
 -- Table structure for table `admission_users`
 --
 
-DROP TABLE IF EXISTS `admission_users`;
 CREATE TABLE IF NOT EXISTS `admission_users` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login_system_registrations_date` datetime DEFAULT '0000-00-00 00:00:00',
@@ -129,12 +127,15 @@ CREATE TABLE IF NOT EXISTS `admission_users` (
   `m_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `application_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile_number` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` char(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `salt` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
   `registration_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `application_status` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=276 ;
+
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,6 @@ CREATE TABLE IF NOT EXISTS `admission_users` (
 -- Table structure for table `login_system_email_activation`
 --
 
-DROP TABLE IF EXISTS `login_system_email_activation`;
 CREATE TABLE IF NOT EXISTS `login_system_email_activation` (
   `login_system_email_activation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login_system_email_activation_user_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `login_system_email_activation` (
   `login_system_email_activation_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_email_activation_status` enum('0','1') COLLATE utf8_unicode_ci DEFAULT '0',
   PRIMARY KEY (`login_system_email_activation_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=276 ;
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,6 @@ CREATE TABLE IF NOT EXISTS `login_system_email_activation` (
 -- Table structure for table `login_system_forgot_password`
 --
 
-DROP TABLE IF EXISTS `login_system_forgot_password`;
 CREATE TABLE IF NOT EXISTS `login_system_forgot_password` (
   `login_system_forgot_password_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login_system_forgot_password_user_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -177,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `login_system_forgot_password` (
   `login_system_forgot_password_attempts` int(10) NOT NULL,
   `login_system_forgot_password_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`login_system_forgot_password_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -185,7 +184,6 @@ CREATE TABLE IF NOT EXISTS `login_system_forgot_password` (
 -- Table structure for table `login_system_login_attempts`
 --
 
-DROP TABLE IF EXISTS `login_system_login_attempts`;
 CREATE TABLE IF NOT EXISTS `login_system_login_attempts` (
   `login_system_login_attempts_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login_system_login_attempts_user_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -195,7 +193,8 @@ CREATE TABLE IF NOT EXISTS `login_system_login_attempts` (
   `login_system_login_attempts_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_login_attempts_username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`login_system_login_attempts_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+
 
 -- --------------------------------------------------------
 
@@ -203,7 +202,6 @@ CREATE TABLE IF NOT EXISTS `login_system_login_attempts` (
 -- Table structure for table `login_system_register_social_networks`
 --
 
-DROP TABLE IF EXISTS `login_system_register_social_networks`;
 CREATE TABLE IF NOT EXISTS `login_system_register_social_networks` (
   `login_system_register_social_networks_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login_system_register_social_networks_provider` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -223,7 +221,6 @@ CREATE TABLE IF NOT EXISTS `login_system_register_social_networks` (
 -- Table structure for table `lookup_graduation_discipline`
 --
 
-DROP TABLE IF EXISTS `lookup_graduation_discipline`;
 CREATE TABLE IF NOT EXISTS `lookup_graduation_discipline` (
   `number` int(11) NOT NULL AUTO_INCREMENT,
   `code` int(11) NOT NULL,
@@ -271,7 +268,6 @@ INSERT INTO `lookup_graduation_discipline` (`number`, `code`, `description`) VAL
 -- Table structure for table `lookup_graduation_university`
 --
 
-DROP TABLE IF EXISTS `lookup_graduation_university`;
 CREATE TABLE IF NOT EXISTS `lookup_graduation_university` (
   `number` int(11) NOT NULL AUTO_INCREMENT,
   `code` int(11) NOT NULL,
@@ -712,7 +708,6 @@ INSERT INTO `lookup_graduation_university` (`number`, `code`, `description`) VAL
 -- Table structure for table `lookup_industry_type`
 --
 
-DROP TABLE IF EXISTS `lookup_industry_type`;
 CREATE TABLE IF NOT EXISTS `lookup_industry_type` (
   `number` int(11) NOT NULL AUTO_INCREMENT,
   `code` int(11) NOT NULL,
@@ -812,7 +807,6 @@ INSERT INTO `lookup_industry_type` (`number`, `code`, `description`) VALUES
 -- Table structure for table `lookup_organisation_type`
 --
 
-DROP TABLE IF EXISTS `lookup_organisation_type`;
 CREATE TABLE IF NOT EXISTS `lookup_organisation_type` (
   `number` int(11) NOT NULL AUTO_INCREMENT,
   `code` int(11) NOT NULL,
@@ -839,7 +833,6 @@ INSERT INTO `lookup_organisation_type` (`number`, `code`, `description`) VALUES
 -- Table structure for table `users_academic_details`
 --
 
-DROP TABLE IF EXISTS `users_academic_details`;
 CREATE TABLE IF NOT EXISTS `users_academic_details` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `tenth_name_of_institute` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -873,13 +866,13 @@ CREATE TABLE IF NOT EXISTS `users_academic_details` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users_contact_details`
 --
 
-DROP TABLE IF EXISTS `users_contact_details`;
 CREATE TABLE IF NOT EXISTS `users_contact_details` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `email_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -917,7 +910,6 @@ CREATE TABLE IF NOT EXISTS `users_contact_details` (
 -- Table structure for table `users_documents_uploads`
 --
 
-DROP TABLE IF EXISTS `users_documents_uploads`;
 CREATE TABLE IF NOT EXISTS `users_documents_uploads` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `passport_photo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -927,13 +919,13 @@ CREATE TABLE IF NOT EXISTS `users_documents_uploads` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users_personal_details`
 --
 
-DROP TABLE IF EXISTS `users_personal_details`;
 CREATE TABLE IF NOT EXISTS `users_personal_details` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `f_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -953,7 +945,6 @@ CREATE TABLE IF NOT EXISTS `users_personal_details` (
 -- Table structure for table `users_reference_details`
 --
 
-DROP TABLE IF EXISTS `users_reference_details`;
 CREATE TABLE IF NOT EXISTS `users_reference_details` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `title_of_refree` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -966,13 +957,13 @@ CREATE TABLE IF NOT EXISTS `users_reference_details` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users_work_experience_details`
 --
 
-DROP TABLE IF EXISTS `users_work_experience_details`;
 CREATE TABLE IF NOT EXISTS `users_work_experience_details` (
   `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `work_experience` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -991,13 +982,13 @@ CREATE TABLE IF NOT EXISTS `users_work_experience_details` (
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `user_additional_info`
 --
 
-DROP TABLE IF EXISTS `user_additional_info`;
 CREATE TABLE IF NOT EXISTS `user_additional_info` (
   `application_id` varchar(255) NOT NULL,
   `role_model_info` text NOT NULL COMMENT 'Who is your role model? Explain the reasons behind your choice',
@@ -1006,6 +997,7 @@ CREATE TABLE IF NOT EXISTS `user_additional_info` (
   `support_info` text NOT NULL COMMENT 'Is there anything else you would like to mention that would add to your candidature for the programme',
   PRIMARY KEY (`application_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

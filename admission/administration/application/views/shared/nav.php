@@ -31,7 +31,8 @@
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'users'):?>class="active"<?php endif;?>><a href="<?php echo site_url('users');?>"><span class="fui-user"></span> Users</a></li><?php endif;?>
 			<?php if($this->usermodel->adminUsers()):?><li <?php if($page == 'roles'):?>class="active"<?php endif;?>><a href="<?php echo site_url('roles');?>"><span class="fui-myspace"></span> Roles & permissions</a></li><?php endif;?>
 
-			<li><a href="<?php echo $baseurl . 'php/export-all.php' ?>" target="_blank"><span class="fui-export"></span> Export All</a></li>
+			<li><a href="<?php echo $baseurl . 'php/export-registered.php' ?>" target="_blank"><span class="fui-export"></span> Export Registered Applicants</a></li>
+			<li><a href="<?php echo $baseurl . 'php/export-applied.php' ?>" target="_blank"><span class="fui-export"></span> Export Applied Applicants</a></li>
 		</ul>
 		
       	<ul class="nav navbar-nav navbar-right">

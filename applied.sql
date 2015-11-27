@@ -1,10 +1,10 @@
 SELECT 
-	a.`application_id`, 
-	a.`f_name`, 
-	a.`l_name`, 
-	a.`m_name`, 
-	a.`email_id`, 
-	a.`application_status`, 
+	ad.`application_id`, 
+	ad.`f_name`, 
+	ad.`l_name`, 
+	ad.`m_name`, 
+	ad.`email_id`, 
+	ad.`application_status`, 
 	p.`f_name`, 
 	p.`l_name`, 
 	p.`m_name`, 
@@ -124,7 +124,8 @@ SELECT
 	info.`acheivement_as_alumnus`, 
 	info.`support_info` 
 FROM 
-	`admission_users` a 
+	`admission_section_status` a 
+	LEFT JOIN `admission_users` ad ON a.application_id = ad.application_id 
 	LEFT JOIN `users_personal_details` p ON a.application_id = p.application_id 
 	LEFT JOIN `users_contact_details` c ON a.application_id = c.application_id 
 	LEFT JOIN `users_academic_details` ac ON a.application_id = ac.application_id 
