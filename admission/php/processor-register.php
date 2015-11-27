@@ -24,6 +24,8 @@ $firstname = strip_tags( trim( $_POST["firstname"] ) );
 $middlename = strip_tags( trim( $_POST["middlename"] ) );
 $lastname = strip_tags( trim( $_POST["lastname"] ) );
 $useremail = strip_tags( trim( $_POST["useremail"] ) );
+$mobile = strip_tags( trim( $_POST["mobile"] ) );
+$city = strip_tags( trim( $_POST["city"] ) );
 $password = strip_tags( trim( $_POST["password"] ) );
 $retypepassword = strip_tags( trim( $_POST["retypepassword"] ) );
 $verification = strip_tags( trim( $_POST["captcha"] ) );
@@ -34,6 +36,8 @@ $finalmiddlename = htmlspecialchars( $middlename, ENT_QUOTES, 'UTF-8' );
 $finallastname = htmlspecialchars( $lastname, ENT_QUOTES, 'UTF-8' );
 $finalusername = htmlspecialchars( '', ENT_QUOTES, 'UTF-8' );
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
+$finalmobile = htmlspecialchars( $mobile, ENT_QUOTES, 'UTF-8' );
+$finalcity = htmlspecialchars( $city, ENT_QUOTES, 'UTF-8' );
 $finalpass = htmlspecialchars( $password, ENT_QUOTES, 'UTF-8' );
 $finalretypepass = htmlspecialchars( $retypepassword, ENT_QUOTES, 'UTF-8' );
 $finalverification = htmlspecialchars( $verification, ENT_QUOTES, 'UTF-8' );
@@ -56,7 +60,7 @@ if ( $SMTP == true ) {
 			$finalsalt = hash( 'sha512', uniqid( mt_rand( 1, mt_getrandmax() ), true ) );
 			$finalpassword = $hasher->HashPassword( $finalpass . $finalsalt . $passwordsalt );
 
-			$sqlregister = "INSERT INTO ".$admission_users." (login_system_registrations_date,login_system_registrations_user_id,f_name,m_name,l_name,application_id,email_id,password,salt,registration_ip, application_status) VALUES (CURRENT_TIMESTAMP,'".$finaluserid."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $finaluseremail )."','".mysql_real_escape_string( $finalpassword )."','".mysql_real_escape_string( $finalsalt )."','".mysql_real_escape_string( $finaluserip )."','".mysql_real_escape_string( 'Draft' )."')";
+			$sqlregister = "INSERT INTO ".$admission_users." (login_system_registrations_date,login_system_registrations_user_id,f_name,m_name,l_name,application_id,email_id,mobile_number,city,password,salt,registration_ip, application_status) VALUES (CURRENT_TIMESTAMP,'".$finaluserid."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $finaluseremail )."','".mysql_real_escape_string( $finalmobile )."','".mysql_real_escape_string( $finalcity )."','".mysql_real_escape_string( $finalpassword )."','".mysql_real_escape_string( $finalsalt )."','".mysql_real_escape_string( $finaluserip )."','".mysql_real_escape_string( 'Draft' )."')";
 			$insertregister = mysql_query( $sqlregister );
 
 			$searchid = mysql_query( "SELECT uid,login_system_registrations_user_id FROM ".$admission_users." WHERE application_id = '".mysql_real_escape_string( $finalusername )."' AND email_id = '".mysql_real_escape_string( $finaluseremail )."'" );

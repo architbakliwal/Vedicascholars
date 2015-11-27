@@ -108,6 +108,22 @@ if ( $_SESSION['userLogin'] && $_SESSION['userName'] ) {
 								</div>
 								<div class="column-six">
                                     <div class="input-group-right irequire">
+									    <label for="mobile" class="group label-input">
+										    <i class="icon-mobile"></i>
+			                                <input type="text" id="mobile" name="mobile" maxlength="30" class="input-right" placeholder="Mobile Number">
+										</label>
+								    </div>
+                                </div>
+								<div class="column-six">
+                                    <div class="input-group-right irequire">
+									    <label for="city" class="group label-input">
+										    <i class="icon-user-3"></i>
+			                                <input type="text" id="city" name="city" maxlength="30" class="input-right" placeholder="City">
+										</label>
+								    </div>
+                                </div>
+								<div class="column-six">
+                                    <div class="input-group-right irequire">
 									    <label for="password" class="group label-input">
 										    <i class="icon-key"></i>
 			                                <input type="password" id="password" name="password" maxlength="30" class="input-right" placeholder="<?php echo $lang['form_register_placeholder_password'];?>">
