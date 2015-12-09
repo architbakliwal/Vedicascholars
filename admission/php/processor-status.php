@@ -51,8 +51,10 @@ $refreestatus = strip_tags( trim( $_POST["refreestatus"] ) );
 $additionalinfostatus = strip_tags( trim( $_POST["additionalinfostatus"] ) );
 $docstatus = strip_tags( trim( $_POST["docstatus"] ) );
 
+$datetime = date( "Y-m-d H:i:s" );
+
 if ( $mysql == true ) {
-	$sqlstatus = "INSERT INTO `vedica_admission`.`admission_section_status` (`application_id`, `personal_details_status`, `contact_details_status`, `academic_details_status`, `work_ex_details_status`, `reference_details_status`, `additional_details_status`, `document_details_status`) VALUES (
+	$sqlstatus = "INSERT INTO `vedica_admission`.`admission_section_status` (`application_id`, `personal_details_status`, `contact_details_status`, `academic_details_status`, `work_ex_details_status`, `reference_details_status`, `additional_details_status`, `document_details_status`, `last_update_date`) VALUES (
 			'".$applicationid."',
 			'".$personalstatus."',
 			'".$contactstatus."',
@@ -60,7 +62,8 @@ if ( $mysql == true ) {
 			'".$workexstatus."',
 			'".$refreestatus."',
 			'".$additionalinfostatus."',
-			'".$docstatus."'
+			'".$docstatus."',
+			'".$datetime."'
 			)
 		ON DUPLICATE KEY
 		UPDATE
@@ -70,7 +73,8 @@ if ( $mysql == true ) {
 		work_ex_details_status = VALUES(work_ex_details_status),
 		reference_details_status = VALUES(reference_details_status),
 		additional_details_status = VALUES(additional_details_status),
-		document_details_status = VALUES(document_details_status)
+		document_details_status = VALUES(document_details_status),
+		last_update_date = VALUES(last_update_date)
 		;";
 
 	$insertstatus = mysql_query( $sqlstatus );

@@ -6,7 +6,8 @@ SELECT
 	ad.`email_id`, 
 	ad.`mobile_number`, 
 	ad.`city`, 
-	ad.`application_status` 
+	ad.`application_status`, 
+	a.`login_system_email_activation_date` AS "registered_date" 
 FROM 
 	`login_system_email_activation` a 
 	LEFT JOIN `admission_users` ad ON a.login_system_email_activation_username = ad.application_id 

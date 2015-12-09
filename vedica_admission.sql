@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `admission_section_status` (
   `reference_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `additional_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `document_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_update_date` datetime DEFAULT '0000-00-00 00:00:00'
   PRIMARY KEY (`application_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
