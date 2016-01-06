@@ -72,7 +72,7 @@
 	$company = 'Vedica Scholars';
 	
 	// Enter Next Year here!
-	$year = date("Y") + 1;
+	$year = date("Y");
 	
 	// If you want captcha turn this to true!
 	$captcha = true;
