@@ -12,6 +12,7 @@
 	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
 	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\admission\\";
 	} else {
+		//Settings for production
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admission";
 	    $username_Connection = "vedica_admission";
@@ -20,7 +21,7 @@
 	    $physicalpath = "/var/www/html/vedicascholars.com/htdocs/";
 
 	    // Enter your URL here without http:// only domain!
-		$url = 'intranet.vedicascholars.com';
+		// $url = 'intranet.vedicascholars.com';
 		$url = 'vedicascholars.com';
 		
 		if ($_SERVER['SERVER_NAME'] == $url) {

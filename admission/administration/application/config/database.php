@@ -40,6 +40,7 @@ if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
 	$db['default']['password'] = "";
 	$db['default']['hostname'] = "127.0.0.1";
 } else {
+	// settings for production
 	$db['default']['username'] = "vedica_admission";
 	$db['default']['password'] = "vedica_admission";
 	$db['default']['hostname'] = "localhost";
