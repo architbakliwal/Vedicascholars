@@ -40,7 +40,7 @@
 									<div class="column-twelve">
 										<div class="textarea-group irequire">
 										    <label for="acheivementasalumnus" class="group label-textarea">
-				                                <textarea rows="5" id="acheivementasalumnus" name="acheivementasalumnus" class="textarea resisable" placeholder="Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals. (Max 200 words)"></textarea>
+				                                <textarea rows="5" id="acheivementasalumnus" name="acheivementasalumnus" class="textarea resisable" placeholder="Describe your life in 2025, explain how Vedica will help you get there. (Max 200 words)"></textarea>
 											</label>
 									    </div>
 									</div>

@@ -33,6 +33,7 @@
 
 			<li><a href="<?php echo $baseurl . 'php/export-registered.php' ?>" target="_blank"><span class="fui-export"></span> Export Registered Applicants</a></li>
 			<li><a href="<?php echo $baseurl . 'php/export-applied.php' ?>" target="_blank"><span class="fui-export"></span> Export Applied Applicants</a></li>
+			<li><a href="<?php echo $baseurl . '/download_uploads.php' ?>" target="_blank"><span class="fui-export"></span> Download All Documents</a></li>
 		</ul>
 		
       	<ul class="nav navbar-nav navbar-right">
