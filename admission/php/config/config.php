@@ -10,7 +10,7 @@
 	    $username_Connection = "root";
 	    $password_Connection = "";
 	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
-	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\admission\\";
+	    $physicalpath = "C:\\Users\\Archit\\Documents\\GitHub\\Vedicascholars\\";
 	} else {
 		//Settings for production
 		$hostname_Connection = "localhost";

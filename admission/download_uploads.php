@@ -94,8 +94,8 @@ header( "Content-Length: " . filesize( $zip_path ) );
 readfile( $zip_path );
 */
 
-$source_dir = $physicalpath . 'admission-uploads/';
-$zip_file = $physicalpath . 'UPLOADS_' . date("d-m-Y H-i", strtotime(now)) . '.zip';
+$source_dir = '../admission-uploads/';
+$zip_file = 'uploads ' . date("d-m-Y H-i", strtotime(now)) . '.zip';
 
 function folderToZip($folder, &$zipFile) {
     if ($zipFile == null) {
@@ -106,6 +106,7 @@ function folderToZip($folder, &$zipFile) {
     $folder .= end(str_split($folder)) == "/" ? "" : "/";
     // we start by going through all files in $folder
     $handle = opendir($folder);
+    // print_r($handle);
     while ($f = readdir($handle)) {
         if ($f != "." && $f != "..") {
             if (is_file($folder . $f)) {
@@ -127,8 +128,10 @@ header( "Cache-Control: must-revalidate, post-check=0, pre-check=0" );
 header( "Cache-Control: public" );
 header( "Content-Description: File Transfer" );
 header( "Content-type: application/zip" );
-header( "Content-Disposition: attachment; filename=\"" . $zip_file . "\"" );
+header( "Content-Disposition: attachment; filename=\"" . basename($zip_file) . "\"" );
 header( "Content-Transfer-Encoding: binary" );
 header( "Content-Length: " . filesize( $zip_file ) );
+readfile($zip_file);
+exit();
 
 ?>
