@@ -2,7 +2,7 @@
 
 include dirname( __FILE__ ).'/php/config/config.php';
 
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 
 class zip
 {
@@ -73,7 +73,7 @@ class zip
     }
 }
 
-$zip_name = 'zip_' . time() . '.zip';
+/*$zip_name = 'zip_' . time() . '.zip';
 $zip_directory = '/';
 $zip = new zip( $zip_name, $zip_directory );
 $zip->add_directory('admission-uploads', $physicalpath);
@@ -92,5 +92,43 @@ header( "Content-Transfer-Encoding: binary" );
 header( "Content-Length: " . filesize( $zip_path ) );
 
 readfile( $zip_path );
+*/
+
+$source_dir = $physicalpath . 'admission-uploads/';
+$zip_file = $physicalpath . 'UPLOADS_' . date("d-m-Y H-i", strtotime(now)) . '.zip';
+
+function folderToZip($folder, &$zipFile) {
+    if ($zipFile == null) {
+        // no resource given, exit
+        return false;
+    }
+    // we check if $folder has a slash at its end, if not, we append one
+    $folder .= end(str_split($folder)) == "/" ? "" : "/";
+    // we start by going through all files in $folder
+    $handle = opendir($folder);
+    while ($f = readdir($handle)) {
+        if ($f != "." && $f != "..") {
+            if (is_file($folder . $f)) {
+                // if we find a file, store it
+                $zipFile->addFile($folder . $f);
+            }
+        }
+    }
+}
+
+$z = new ZipArchive();
+$z->open($zip_file, ZIPARCHIVE::CREATE);
+folderToZip($source_dir, $z);
+$z->close();
+
+header( "Pragma: public" );
+header( "Expires: 0" );
+header( "Cache-Control: must-revalidate, post-check=0, pre-check=0" );
+header( "Cache-Control: public" );
+header( "Content-Description: File Transfer" );
+header( "Content-type: application/zip" );
+header( "Content-Disposition: attachment; filename=\"" . $zip_file . "\"" );
+header( "Content-Transfer-Encoding: binary" );
+header( "Content-Length: " . filesize( $zip_file ) );
 
 ?>
