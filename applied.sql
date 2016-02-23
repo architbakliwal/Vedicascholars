@@ -1,5 +1,5 @@
 SELECT 
-	a.`last_update_date`, 
+	log.`login_system_login_attempts_first_date` AS 'applied_date',
 	ad.`application_id`, 
 	ad.`f_name`, 
 	ad.`l_name`, 
@@ -120,9 +120,11 @@ SELECT
 	info.`role_model_info`, 
 	info.`failure_info`, 
 	info.`acheivement_as_alumnus`, 
-	info.`support_info` 
+	info.`support_info`,
+	a.`last_update_date`, 
 FROM 
 	`admission_section_status` a 
+	LEFT JOIN `login_system_login_attempts` log ON a.application_id = log.login_system_login_attempts_username 
 	LEFT JOIN `admission_users` ad ON a.application_id = ad.application_id 
 	LEFT JOIN `users_personal_details` p ON a.application_id = p.application_id 
 	LEFT JOIN `users_contact_details` c ON a.application_id = c.application_id 

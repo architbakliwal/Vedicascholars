@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `login_system_login_attempts` (
   `login_system_login_attempts_user_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `login_system_login_attempts_ip` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `login_system_login_attempts_attempts` int(10) NOT NULL,
+  `login_system_login_attempts_first_date` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_login_attempts_date` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_login_attempts_blocked_time` datetime DEFAULT '0000-00-00 00:00:00',
   `login_system_login_attempts_username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,

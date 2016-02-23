@@ -62,7 +62,7 @@ if ( !CSRF::check( 'login-form' ) ) {
 
 					if ( $queryUser == 0 ) {
 
-						$insertsuccess = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_user_id,login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_date,login_system_login_attempts_username) VALUES ('".mysql_real_escape_string( $userSql['login_system_registrations_user_id'] )."','".mysql_real_escape_string( $finaluserip )."',0,'".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finalusername )."')";
+						$insertsuccess = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_user_id,login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_first_date,login_system_login_attempts_date,login_system_login_attempts_username) VALUES ('".mysql_real_escape_string( $userSql['login_system_registrations_user_id'] )."','".mysql_real_escape_string( $finaluserip )."',0,'".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finalusername )."')";
 						$insertquery = mysql_query( $insertsuccess );
 
 					} else {
