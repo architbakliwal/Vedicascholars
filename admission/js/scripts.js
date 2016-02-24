@@ -59,7 +59,7 @@ jQuery.noConflict()(function($) {
             changeMonth: true,
             changeYear: true,
             dateFormat: 'yy-mm-dd',
-            yearRange: '1900:' + currentYear
+            yearRange: '1900:' + (currentYear - 15)
         });
 
         $("#currentcountry").change(function() {
