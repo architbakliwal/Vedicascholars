@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `admission_config` (
   `registration_closed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N',
   `test` varchar(255) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admission_config`
@@ -101,7 +101,7 @@ INSERT INTO `admission_config` (`uid`, `registration_closed`, `test`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `admission_section_status` (
-  `application_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `application_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `personal_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `contact_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `academic_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -109,9 +109,9 @@ CREATE TABLE IF NOT EXISTS `admission_section_status` (
   `reference_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `additional_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `document_details_status` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `last_update_date` datetime DEFAULT '0000-00-00 00:00:00'
+  `last_update_date` datetime DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`application_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
 
 -- --------------------------------------------------------
 
