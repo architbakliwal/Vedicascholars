@@ -522,8 +522,8 @@ jQuery.noConflict()(function($) {
                         refreestatus = false;
                     }
 
-                    if (personalstatus && contactstatus && academicestatus && workexstatus && refreestatus && docstatus) {
-                        // if (docstatus) {
+                    //Removing refreestatus check on final submit.
+                    if (personalstatus && contactstatus && academicestatus && workexstatus && docstatus) {
                         isApplicationValid = true;
                         if (response.status === 'P') {
                             window.location = response.msg + "admin/agreement.php";

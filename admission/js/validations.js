@@ -117,6 +117,11 @@ jQuery.noConflict()(function($) {
                     number: true
                 }
             },
+            messages: {
+                tenthaggregate: "Only numeric value allowed between 0 and 100",
+                twelfthaggregate: "Only numeric value allowed between 0 and 100",
+                graduationpercentage: "Only numeric value allowed between 0 and 100"
+            },
 
             errorPlacement: function(error, element) {
                 $(element).tooltipster('update', $(error).text());
