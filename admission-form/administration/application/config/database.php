@@ -41,13 +41,13 @@ if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
 	$db['default']['hostname'] = "127.0.0.1";
 } else {
 	// settings for production
-	$db['default']['username'] = "vedica_admission";
-	$db['default']['password'] = "vedica_admission";
+	$db['default']['username'] = "vedica_admission_2017";
+	$db['default']['password'] = "vedica_admission_2017";
 	$db['default']['hostname'] = "localhost";
 }
 
 // The following values can probably stay the same.
-$db['default']['database'] = "vedica_admission";
+$db['default']['database'] = "vedica_admission_2017";
 $db['default']['dbdriver'] = "mysqli";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;

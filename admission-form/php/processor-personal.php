@@ -72,7 +72,7 @@ if ( $finaldob ) {
 
 
 if ( $mysql == true ) {
-	$sqlpersonal = "INSERT INTO `vedica_admission`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`,`user_dob`, `age`, `gender`, `blood_group`, `hear_abt_vedica`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finaldob )."','".mysql_real_escape_string( $finalage )."','".mysql_real_escape_string( $finalgender )."','".mysql_real_escape_string( $finalbloodgrp )."','".mysql_real_escape_string( $finalhearaboutvs )."')
+	$sqlpersonal = "INSERT INTO `vedica_admission_2017`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`,`user_dob`, `age`, `gender`, `blood_group`, `hear_abt_vedica`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finaldob )."','".mysql_real_escape_string( $finalage )."','".mysql_real_escape_string( $finalgender )."','".mysql_real_escape_string( $finalbloodgrp )."','".mysql_real_escape_string( $finalhearaboutvs )."')
 		ON DUPLICATE KEY
 		UPDATE
 		f_name = VALUES(f_name),

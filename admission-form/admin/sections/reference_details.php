@@ -17,7 +17,7 @@
 							</div>
 						</div>
 						<div class="column-four">
-							<div class="select-group irequire">
+							<div class="select-group">
 								<label for="refreetitle" class="group custom-select">
 									<select id="refreetitle" name="refreetitle" class="select">
 									    <option value="">Select title of the referee</option>
@@ -31,42 +31,42 @@
 					        </div>
 						</div>
 						<div class="column-four">
-							<div class="input-group-right irequire">
+							<div class="input-group-right">
 								<label for="refreename" class="group label-input">
 	                                <input type="text" id="refreename" name="refreename" class="input-right" placeholder="Name of the referee">
 								</label>
 						    </div>
 						</div>
 						<div class="column-four">
-							<div class="input-group-right irequire">
+							<div class="input-group-right">
 								<label for="refreeorganization" class="group label-input">
 	                                <input type="text" id="refreeorganization" name="refreeorganization" class="input-right" placeholder="Organisation">
 								</label>
 						    </div>
 						</div>
 						<div class="column-four">
-							<div class="input-group-right irequire">
+							<div class="input-group-right">
 								<label for="refreedesignation" class="group label-input">
 	                                <input type="text" id="refreedesignation" name="refreedesignation" class="input-right" placeholder="Designation">
 								</label>
 						    </div>
 						</div>
 						<div class="column-four">
-							<div class="input-group-right irequire">
+							<div class="input-group-right">
 								<label for="refreecontact" class="group label-input">
 	                                <input type="text" id="refreecontact" name="refreecontact" class="input-right" placeholder="Contact number">
 								</label>
 						    </div>
 						</div>
 						<div class="column-four">
-							<div class="input-group-right irequire">
+							<div class="input-group-right">
 								<label for="refreeemail" class="group label-input">
 	                                <input type="text" id="refreeemail" name="refreeemail" class="input-right" placeholder="Email address">
 								</label>
 						    </div>
 						</div>
 						<div class="column-eight">
-							<div class="textarea-group irequire">
+							<div class="textarea-group">
 							    <label for="refreeknowing" class="group label-textarea">
 							    	<h4 style="text-align: left; margin: 20px 0px;">In what capacity does he/she know you?</h4>
 	                                <textarea rows="5" id="refreeknowing" name="refreeknowing" class="textarea no-resisable" placeholder="Please state your relation with the referee (Max 200 words)"></textarea>

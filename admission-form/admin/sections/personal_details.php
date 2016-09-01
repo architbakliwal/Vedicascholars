@@ -88,10 +88,10 @@
 										<option value="Friend">Friend</option>
 										<option value="Parent">Parent</option>
 										<option value="College">College</option>
-										<option value="Through an alum">Through an alum</option>
+										<option value="Vedica Alum">Vedica Alum</option>
 										<option value="Campus Presentations">Campus Presentations</option>
 										<option value="Campus Ambassadors">Campus Ambassadors</option>
-										<option value="YIF Alum">YIF Alum</option>
+										<option value="YIF Alum or Ashoka University">YIF Alum / Ashoka University</option>
 									</select>
 								</label>
 					        </div>

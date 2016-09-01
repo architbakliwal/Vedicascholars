@@ -77,7 +77,7 @@ $finaltotalworkex = htmlspecialchars( $totalworkex, ENT_QUOTES, 'UTF-8' );
 
 
 if ( $mysql == true ) {
-	$sqlworkex = "INSERT INTO `vedica_admission`.`users_work_experience_details` (`application_id`, `work_experience`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`, `extra_workex_count`, `total_work_experience`) VALUES (
+	$sqlworkex = "INSERT INTO `vedica_admission_2017`.`users_work_experience_details` (`application_id`, `work_experience`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`, `extra_workex_count`, `total_work_experience`) VALUES (
 				'".mysql_real_escape_string( $finalapplicationid )."',
 				'".mysql_real_escape_string( $finalisworkex )."',
 				'".mysql_real_escape_string( $finalemployementtype )."',
@@ -172,7 +172,7 @@ if ( $mysql == true ) {
 		${'finaltotalworkex' . $x} = htmlspecialchars( ${'totalworkex' . $x}, ENT_QUOTES, 'UTF-8' );
 
 
-		$sqlworkexextra = "INSERT INTO `vedica_admission`.`added_work_experience_details` (`application_id`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`) VALUES (
+		$sqlworkexextra = "INSERT INTO `vedica_admission_2017`.`added_work_experience_details` (`application_id`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`) VALUES (
 				'".mysql_real_escape_string( $finalapplicationid )."',
 				'".mysql_real_escape_string( ${'finalemployementtype' . $x} )."',
 				'".mysql_real_escape_string( ${'finalorganizationname' . $x} )."',
