@@ -175,10 +175,6 @@ jQuery.noConflict()(function($) {
         $("#section_reference").validate({
 
             rules: {
-                refreeemail: {
-                    required: true,
-                    regexemail: emailregex
-                }
 
             },
 

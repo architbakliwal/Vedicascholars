@@ -474,12 +474,12 @@ jQuery.noConflict()(function($) {
                         $("label[for='sky-tab7']").css('background-color', '#F22613');
                         docstatus = false;
                     } else if (response.status === 'P') {
-                        swal({
+                        /*swal({
                             title: "Success!",
                             text: "Documents uploaded!!",
                             type: "success",
                             animation: false
-                        });
+                        });*/
                     }
 
                     if ($("#section_personal").valid()) {

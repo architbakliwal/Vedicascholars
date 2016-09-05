@@ -91,13 +91,15 @@ if ( $SMTP == true ) {
 			$insertpersonal = mysql_query( $sqlpersonal );
 
 
-			$sqlcontact = "INSERT INTO `vedica_admission_2017`.`users_contact_details` (`application_id`, `email_id`) VALUES (
+			$sqlcontact = "INSERT INTO `vedica_admission_2017`.`users_contact_details` (`application_id`, `email_id`, `mobile_number`) VALUES (
 					'".mysql_real_escape_string( $finalusername )."',
-					'".mysql_real_escape_string( $finaluseremail )."'
+					'".mysql_real_escape_string( $finaluseremail )."',
+					'".mysql_real_escape_string( $finalmobile )."'
 					)
 				ON DUPLICATE KEY
 				UPDATE
-				email_id = VALUES(email_id)
+				email_id = VALUES(email_id),
+				mobile_number = VALUES(mobile_number)
 				;";
 
 			$insertcontact = mysql_query( $sqlcontact );
