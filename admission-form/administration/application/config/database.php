@@ -47,7 +47,7 @@ if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
 }
 
 // The following values can probably stay the same.
-$db['default']['database'] = "vedica_admission_2017";
+$db['default']['database'] = "vedica_admn_2017";
 $db['default']['dbdriver'] = "mysqli";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;

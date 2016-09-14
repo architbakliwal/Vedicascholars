@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `vedica_admission_2017`
+-- Database: `vedica_admn_2017`
 --
 
 -- --------------------------------------------------------

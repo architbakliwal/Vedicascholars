@@ -56,7 +56,7 @@ $finalsupportinfo = htmlspecialchars( $supportinfo, ENT_QUOTES, 'UTF-8' );
 
 
 if ( $mysql == true ) {
-	$sqladditionalinfo = "INSERT INTO `vedica_admission_2017`.`user_additional_info` (`application_id`, `role_model_info`, `failure_info`, `acheivement_as_alumnus`,`support_info`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalrolemodelinfo )."','".mysql_real_escape_string( $finalfailureinfo )."','".mysql_real_escape_string( $finalacheivementasalumnus )."','".mysql_real_escape_string( $finalsupportinfo )."')
+	$sqladditionalinfo = "INSERT INTO `vedica_admn_2017`.`user_additional_info` (`application_id`, `role_model_info`, `failure_info`, `acheivement_as_alumnus`,`support_info`) VALUES ('".mysql_real_escape_string( $finalapplicationid )."','".mysql_real_escape_string( $finalrolemodelinfo )."','".mysql_real_escape_string( $finalfailureinfo )."','".mysql_real_escape_string( $finalacheivementasalumnus )."','".mysql_real_escape_string( $finalsupportinfo )."')
 		ON DUPLICATE KEY
 		UPDATE
 		role_model_info = VALUES(role_model_info),

@@ -6,7 +6,7 @@
 
 	if($_SERVER['SERVER_ADDR'] == '127.0.0.1') {
 		$hostname_Connection = "127.0.0.1";
-	    $database_Connection = "vedica_admission_2017";
+	    $database_Connection = "vedica_admn_2017";
 	    $username_Connection = "root";
 	    $password_Connection = "";
 	    $baseurl = 'http://127.0.0.1/Vedicascholars/';
@@ -14,7 +14,7 @@
 	} else {
 		//Settings for production
 		$hostname_Connection = "localhost";
-	    $database_Connection = "vedica_admission_2017";
+	    $database_Connection = "vedica_admn_2017";
 	    $username_Connection = "vedica_admission_2017";
 	    $password_Connection = "vedica_admission_2017";
 	    // $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/";
