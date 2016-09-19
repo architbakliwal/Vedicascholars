@@ -118,9 +118,9 @@ jQuery.noConflict()(function($) {
                 }
             },
             messages: {
-                tenthaggregate: "Only numeric value allowed between 0 and 100",
-                twelfthaggregate: "Only numeric value allowed between 0 and 100",
-                graduationpercentage: "Only numeric value allowed between 0 and 100"
+                tenthaggregate: "Please enter your aggregate percentage without the symbol",
+                twelfthaggregate: "Please enter your aggregate percentage without the symbol",
+                graduationpercentage: "Please enter your aggregate percentage without the symbol"
             },
 
             errorPlacement: function(error, element) {
