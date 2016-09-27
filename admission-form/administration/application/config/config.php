@@ -364,7 +364,7 @@ $config['proxy_ips'] = '';
 /*
 	support email
 */
-$config['support_email'] = 'admissions@vedicascholars.com';
+$config['support_email'] = 'donot-reply@vedicascholars.com';
 
 
 /*

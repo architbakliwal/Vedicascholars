@@ -15,10 +15,10 @@
 		//Settings for production
 		$hostname_Connection = "localhost";
 	    $database_Connection = "vedica_admn_2017";
-	    $username_Connection = "vedica_admission_2017";
-	    $password_Connection = "vedica_admission_2017";
+	    $username_Connection = "vedica_admission";
+	    $password_Connection = "vedica_admission";
 	    // $physicalpath = "/home/bitnami/apps/intranet.vedicascholars.com/htdocs/";
-	    $physicalpath = "/var/www/html/vedicascholars.com/htdocs/";
+	    $physicalpath = "/home/vedica/public_html/";
 
 	    // Enter your URL here without http:// only domain!
 		// $url = 'intranet.vedicascholars.com';
@@ -43,7 +43,7 @@
     $yourname = 'Vedica Scholars Admission';
 
     // Enter your Email here!
-    $youremail = 'admissions@vedicascholars.com';
+    $youremail = 'donot-reply@vedicascholars.com';
 
 	// Turn true SMTP if you want don´t forget to turn false sendmail and mail
 
@@ -53,9 +53,9 @@
 	$SMTP = true;
 	
 	$protocol = 'ssl';                       					// Can be 'ssl' or 'tls' or ''
-	$host = 'smtp.gmail.com';
+	$host = 'sg2plcpnl0208.prod.sin2.secureserver.net';
 	$port = 465;                             				// Can be 465, 587, 25
-	$smtpusername = 'admissions@vedicascholars.com';        // Need to be equal to $youremail
+	$smtpusername = 'donot-reply@vedicascholars.com';        // Need to be equal to $youremail
 	$smtppassword = 'vedica15';
 
 	// If you want file upload turn this to true!
