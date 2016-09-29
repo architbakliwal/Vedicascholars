@@ -42,7 +42,7 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	die();
 }
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
 
 
 if ( $mysql == true ) {

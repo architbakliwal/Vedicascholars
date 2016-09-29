@@ -43,35 +43,35 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 }
 
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$tenthinstitutename = strip_tags( trim( $_POST['tenthinstitutename'] ) );
-$tenthboard = strip_tags( trim( $_POST['tenthboard'] ) );
-$tenthboardothers = strip_tags( trim( $_POST['tenthboardothers'] ) );
-$tenthaggregate = strip_tags( trim( $_POST['tenthaggregate'] ) );
-$tenthcompletion = strip_tags( trim( $_POST['tenthcompletion'] ) );
-$twelfthordiploma = strip_tags( trim( $_POST['twelfthordiploma'] ) );
-$twelfthinstitutename = strip_tags( trim( $_POST['twelfthinstitutename'] ) );
-$twelfthboard = strip_tags( trim( $_POST['twelfthboard'] ) );
-$twelfthboardothers = strip_tags( trim( $_POST['twelfthboardothers'] ) );
-$twelfthaggregate = strip_tags( trim( $_POST['twelfthaggregate'] ) );
-$twelfthcompletion = strip_tags( trim( $_POST['twelfthcompletion'] ) );
-$gradutationcollegename = strip_tags( trim( $_POST['gradutationcollegename'] ) );
-$gradutationunversity = strip_tags( trim( $_POST['gradutationunversity'] ) );
-$graduationuniversityothers = strip_tags( trim( $_POST['graduationuniversityothers'] ) );
-$graduatindegreename = strip_tags( trim( $_POST['graduatindegreename'] ) );
-$graduationdiscipline = strip_tags( trim( $_POST['graduationdiscipline'] ) );
-$graduationdisciplineother = strip_tags( trim( $_POST['graduationdisciplineother'] ) );
-$graduationspecialization = strip_tags( trim( $_POST['graduationspecialization'] ) );
-$graduationdegreemode = strip_tags( trim( $_POST['graduationdegreemode'] ) );
-$graduationcompleted = strip_tags( trim( $_POST['graduationcompleted'] ) );
-$gradationcompletionyear = strip_tags( trim( $_POST['gradationcompletionyear'] ) );
-$graduationgpaorpercentage = strip_tags( trim( $_POST['graduationgpaorpercentage'] ) );
-$graduationclass = strip_tags( trim( $_POST['graduationclass'] ) );
-$graduationpercentage = strip_tags( trim( $_POST['graduationpercentage'] ) );
-$graduationgpaobtained = strip_tags( trim( $_POST['graduationgpaobtained'] ) );
-$graduationgpamax = strip_tags( trim( $_POST['graduationgpamax'] ) );
-$extraacademiccount = strip_tags( trim( $_POST['extraacademiccount'] ) );
-$academicachivements = strip_tags( trim( $_POST['academicachivements'] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
+$tenthinstitutename = strip_tags( trim_awesome( $_POST['tenthinstitutename'] ) );
+$tenthboard = strip_tags( trim_awesome( $_POST['tenthboard'] ) );
+$tenthboardothers = strip_tags( trim_awesome( $_POST['tenthboardothers'] ) );
+$tenthaggregate = strip_tags( trim_awesome( $_POST['tenthaggregate'] ) );
+$tenthcompletion = strip_tags( trim_awesome( $_POST['tenthcompletion'] ) );
+$twelfthordiploma = strip_tags( trim_awesome( $_POST['twelfthordiploma'] ) );
+$twelfthinstitutename = strip_tags( trim_awesome( $_POST['twelfthinstitutename'] ) );
+$twelfthboard = strip_tags( trim_awesome( $_POST['twelfthboard'] ) );
+$twelfthboardothers = strip_tags( trim_awesome( $_POST['twelfthboardothers'] ) );
+$twelfthaggregate = strip_tags( trim_awesome( $_POST['twelfthaggregate'] ) );
+$twelfthcompletion = strip_tags( trim_awesome( $_POST['twelfthcompletion'] ) );
+$gradutationcollegename = strip_tags( trim_awesome( $_POST['gradutationcollegename'] ) );
+$gradutationunversity = strip_tags( trim_awesome( $_POST['gradutationunversity'] ) );
+$graduationuniversityothers = strip_tags( trim_awesome( $_POST['graduationuniversityothers'] ) );
+$graduatindegreename = strip_tags( trim_awesome( $_POST['graduatindegreename'] ) );
+$graduationdiscipline = strip_tags( trim_awesome( $_POST['graduationdiscipline'] ) );
+$graduationdisciplineother = strip_tags( trim_awesome( $_POST['graduationdisciplineother'] ) );
+$graduationspecialization = strip_tags( trim_awesome( $_POST['graduationspecialization'] ) );
+$graduationdegreemode = strip_tags( trim_awesome( $_POST['graduationdegreemode'] ) );
+$graduationcompleted = strip_tags( trim_awesome( $_POST['graduationcompleted'] ) );
+$gradationcompletionyear = strip_tags( trim_awesome( $_POST['gradationcompletionyear'] ) );
+$graduationgpaorpercentage = strip_tags( trim_awesome( $_POST['graduationgpaorpercentage'] ) );
+$graduationclass = strip_tags( trim_awesome( $_POST['graduationclass'] ) );
+$graduationpercentage = strip_tags( trim_awesome( $_POST['graduationpercentage'] ) );
+$graduationgpaobtained = strip_tags( trim_awesome( $_POST['graduationgpaobtained'] ) );
+$graduationgpamax = strip_tags( trim_awesome( $_POST['graduationgpamax'] ) );
+$extraacademiccount = strip_tags( trim_awesome( $_POST['extraacademiccount'] ) );
+$academicachivements = strip_tags( trim_awesome( $_POST['academicachivements'] ) );
 
 
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
@@ -107,35 +107,35 @@ $finalacademicachivements = htmlspecialchars( $academicachivements, ENT_QUOTES, 
 
 if ( $mysql == true ) {
 	$sqlacademic = "INSERT INTO `vedica_admn_2017`.`users_academic_details` (`application_id`, `tenth_name_of_institute`, `tenth_board`, `tenth_board_other`, `tenth_aggregate`, `tenth_year_completion`, `is_twelfth_or_diploma`, `twelfth_name_of_institution`, `twelfth_board`, `twelfth_board_other`, `twelfth_aggregate`, `twelfth_year_completion`, `graduation_name_of_college`, `graduation_university`, `graduation_university_other`, `graduation_degree_mode`, `graduation_degree_name`, `graduation_discipline`, `graduation_discipline_other`, `graduation_specialisation`, `graduation_degree_completed`, `graduation_year_completion`, `graduation_grading_system`, `graduation_class`, `graduation_aggregate`, `graduation_gpa_obtained`, `graduation_gpa_max`, `extra_academic_added_count`, `achievements_awards`) VALUES (
-				'".mysql_real_escape_string( $finalapplicationid )."',
-				'".mysql_real_escape_string( $finaltenthinstitutename )."',
-				'".mysql_real_escape_string( $finaltenthboard )."',
-				'".mysql_real_escape_string( $finaltenthboardothers )."',
-				'".mysql_real_escape_string( $finaltenthaggregate )."',
-				'".mysql_real_escape_string( $finaltenthcompletion )."',
-				'".mysql_real_escape_string( $finaltwelfthordiploma )."',
-				'".mysql_real_escape_string( $finaltwelfthinstitutename )."',
-				'".mysql_real_escape_string( $finaltwelfthboard )."',
-				'".mysql_real_escape_string( $finaltwelfthboardothers )."',
-				'".mysql_real_escape_string( $finaltwelfthaggregate )."',
-				'".mysql_real_escape_string( $finaltwelfthcompletion )."',
-				'".mysql_real_escape_string( $finalgradutationcollegename )."',
-				'".mysql_real_escape_string( $finalgradutationunversity )."',
-				'".mysql_real_escape_string( $finalgraduationuniversityothers )."',
-				'".mysql_real_escape_string( $finalgraduationdegreemode )."',
-				'".mysql_real_escape_string( $finalgraduatindegreename )."',
-				'".mysql_real_escape_string( $finalgraduationdiscipline )."',
-				'".mysql_real_escape_string( $finalgraduationdisciplineother )."',
-				'".mysql_real_escape_string( $finalgraduationspecialization )."',
-				'".mysql_real_escape_string( $finalgraduationcompleted )."',
-				'".mysql_real_escape_string( $finalgradationcompletionyear )."',
-				'".mysql_real_escape_string( $finalgraduationgpaorpercentage )."',
-				'".mysql_real_escape_string( $finalgraduationclass )."',
-				'".mysql_real_escape_string( $finalgraduationpercentage )."',
-				'".mysql_real_escape_string( $finalgraduationgpaobtained )."',
-				'".mysql_real_escape_string( $finalgraduationgpamax )."',
-				'".mysql_real_escape_string( $finalextraacademiccount )."',
-				'".mysql_real_escape_string( $academicachivements )."'
+				".mysql_real_escape_string_awesome( $finalapplicationid ).",
+				".mysql_real_escape_string_awesome( $finaltenthinstitutename ).",
+				".mysql_real_escape_string_awesome( $finaltenthboard ).",
+				".mysql_real_escape_string_awesome( $finaltenthboardothers ).",
+				".mysql_real_escape_string_awesome( $finaltenthaggregate ).",
+				".mysql_real_escape_string_awesome( $finaltenthcompletion ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthordiploma ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthinstitutename ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthboard ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthboardothers ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthaggregate ).",
+				".mysql_real_escape_string_awesome( $finaltwelfthcompletion ).",
+				".mysql_real_escape_string_awesome( $finalgradutationcollegename ).",
+				".mysql_real_escape_string_awesome( $finalgradutationunversity ).",
+				".mysql_real_escape_string_awesome( $finalgraduationuniversityothers ).",
+				".mysql_real_escape_string_awesome( $finalgraduationdegreemode ).",
+				".mysql_real_escape_string_awesome( $finalgraduatindegreename ).",
+				".mysql_real_escape_string_awesome( $finalgraduationdiscipline ).",
+				".mysql_real_escape_string_awesome( $finalgraduationdisciplineother ).",
+				".mysql_real_escape_string_awesome( $finalgraduationspecialization ).",
+				".mysql_real_escape_string_awesome( $finalgraduationcompleted ).",
+				".mysql_real_escape_string_awesome( $finalgradationcompletionyear ).",
+				".mysql_real_escape_string_awesome( $finalgraduationgpaorpercentage ).",
+				".mysql_real_escape_string_awesome( $finalgraduationclass ).",
+				".mysql_real_escape_string_awesome( $finalgraduationpercentage ).",
+				".mysql_real_escape_string_awesome( $finalgraduationgpaobtained ).",
+				".mysql_real_escape_string_awesome( $finalgraduationgpamax ).",
+				".mysql_real_escape_string_awesome( $finalextraacademiccount ).",
+				".mysql_real_escape_string_awesome( $academicachivements )."
 			)
 			ON DUPLICATE KEY
 			UPDATE
@@ -192,93 +192,93 @@ if ( $mysql == true ) {
 		}
 
 		$iacademicextradegreelevel = "academicextradegreelevel{$y}";
-		${'academicextradegreelevel' . $y} = strip_tags( trim( $_POST[$iacademicextradegreelevel] ) );
+		${'academicextradegreelevel' . $y} = strip_tags( trim_awesome( $_POST[$iacademicextradegreelevel] ) );
 		${'finalacademicextradegreelevel' . $y} = htmlspecialchars( ${'academicextradegreelevel' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$iacademicextradegreeother = "academicextradegreeother{$y}";
-		${'academicextradegreeother' . $y} = strip_tags( trim( $_POST[$iacademicextradegreeother] ) );
+		${'academicextradegreeother' . $y} = strip_tags( trim_awesome( $_POST[$iacademicextradegreeother] ) );
 		${'finalacademicextradegreeother' . $y} = htmlspecialchars( ${'academicextradegreeother' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igradutationcollegenameextra = "gradutationcollegenameextra{$y}";
-		${'gradutationcollegenameextra' . $y} = strip_tags( trim( $_POST[$igradutationcollegenameextra] ) );
+		${'gradutationcollegenameextra' . $y} = strip_tags( trim_awesome( $_POST[$igradutationcollegenameextra] ) );
 		${'finalgradutationcollegenameextra' . $y} = htmlspecialchars( ${'gradutationcollegenameextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igradutationunversityextra = "gradutationunversityextra{$y}";
-		${'gradutationunversityextra' . $y} = strip_tags( trim( $_POST[$igradutationunversityextra] ) );
+		${'gradutationunversityextra' . $y} = strip_tags( trim_awesome( $_POST[$igradutationunversityextra] ) );
 		${'finalgradutationunversityextra' . $y} = htmlspecialchars( ${'gradutationunversityextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationuniversityothersextra = "graduationuniversityothersextra{$y}";
-		${'graduationuniversityothersextra' . $y} = strip_tags( trim( $_POST[$igraduationuniversityothersextra] ) );
+		${'graduationuniversityothersextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationuniversityothersextra] ) );
 		${'finalgraduationuniversityothersextra' . $y} = htmlspecialchars( ${'graduationuniversityothersextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduatindegreenameextra = "graduatindegreenameextra{$y}";
-		${'graduatindegreenameextra' . $y} = strip_tags( trim( $_POST[$igraduatindegreenameextra] ) );
+		${'graduatindegreenameextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduatindegreenameextra] ) );
 		${'finalgraduatindegreenameextra' . $y} = htmlspecialchars( ${'graduatindegreenameextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationdisciplineextra = "graduationdisciplineextra{$y}";
-		${'graduationdisciplineextra' . $y} = strip_tags( trim( $_POST[$igraduationdisciplineextra] ) );
+		${'graduationdisciplineextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationdisciplineextra] ) );
 		${'finalgraduationdisciplineextra' . $y} = htmlspecialchars( ${'graduationdisciplineextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationdisciplineotherextra = "graduationdisciplineotherextra{$y}";
-		${'graduationdisciplineotherextra' . $y} = strip_tags( trim( $_POST[$igraduationdisciplineotherextra] ) );
+		${'graduationdisciplineotherextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationdisciplineotherextra] ) );
 		${'finalgraduationdisciplineotherextra' . $y} = htmlspecialchars( ${'graduationdisciplineotherextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationspecializationextra = "graduationspecializationextra{$y}";
-		${'graduationspecializationextra' . $y} = strip_tags( trim( $_POST[$igraduatindegreenameextra] ) );
+		${'graduationspecializationextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduatindegreenameextra] ) );
 		${'finalgraduationspecializationextra' . $y} = htmlspecialchars( ${'graduationspecializationextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationdegreemodeextra = "graduationdegreemodeextra{$y}";
-		${'graduationdegreemodeextra' . $y} = strip_tags( trim( $_POST[$igraduationdegreemodeextra] ) );
+		${'graduationdegreemodeextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationdegreemodeextra] ) );
 		${'finalgraduationdegreemodeextra' . $y} = htmlspecialchars( ${'graduationdegreemodeextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationcompletedextra = "graduationcompletedextra{$y}";
-		${'graduationcompletedextra' . $y} = strip_tags( trim( $_POST[$igraduationcompletedextra] ) );
+		${'graduationcompletedextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationcompletedextra] ) );
 		${'finalgraduationcompletedextra' . $y} = htmlspecialchars( ${'graduationcompletedextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igradationcompletionyearextra = "gradationcompletionyearextra{$y}";
-		${'gradationcompletionyearextra' . $y} = strip_tags( trim( $_POST[$igradationcompletionyearextra] ) );
+		${'gradationcompletionyearextra' . $y} = strip_tags( trim_awesome( $_POST[$igradationcompletionyearextra] ) );
 		${'finalgradationcompletionyearextra' . $y} = htmlspecialchars( ${'gradationcompletionyearextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationgpaorpercentageextra = "graduationgpaorpercentageextra{$y}";
-		${'graduationgpaorpercentageextra' . $y} = strip_tags( trim( $_POST[$igraduationgpaorpercentageextra] ) );
+		${'graduationgpaorpercentageextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationgpaorpercentageextra] ) );
 		${'finalgraduationgpaorpercentageextra' . $y} = htmlspecialchars( ${'graduationgpaorpercentageextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationclassextra = "graduationclassextra{$y}";
-		${'graduationclassextra' . $y} = strip_tags( trim( $_POST[$igraduationclassextra] ) );
+		${'graduationclassextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationclassextra] ) );
 		${'finalgraduationclassextra' . $y} = htmlspecialchars( ${'graduationclassextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationpercentageextra = "graduationpercentageextra{$y}";
-		${'graduationpercentageextra' . $y} = strip_tags( trim( $_POST[$igraduationpercentageextra] ) );
+		${'graduationpercentageextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationpercentageextra] ) );
 		${'finalgraduationpercentageextra' . $y} = htmlspecialchars( ${'graduationpercentageextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationgpaobtainedextra = "graduationgpaobtainedextra{$y}";
-		${'graduationgpaobtainedextra' . $y} = strip_tags( trim( $_POST[$igraduationgpaobtainedextra] ) );
+		${'graduationgpaobtainedextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationgpaobtainedextra] ) );
 		${'finalgraduationgpaobtainedextra' . $y} = htmlspecialchars( ${'graduationgpaobtainedextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 		$igraduationgpamaxextra = "graduationgpamaxextra{$y}";
-		${'graduationgpamaxextra' . $y} = strip_tags( trim( $_POST[$igraduationgpamaxextra] ) );
+		${'graduationgpamaxextra' . $y} = strip_tags( trim_awesome( $_POST[$igraduationgpamaxextra] ) );
 		${'finalgraduationgpamaxextra' . $y} = htmlspecialchars( ${'graduationgpamaxextra' . $y}, ENT_QUOTES, 'UTF-8' );
 
 
 		$sqlacademicextra = "INSERT INTO `vedica_admn_2017`.`added_academic_details` (`application_id`, `extra_academic_degree_level`, `extra_academic_degree_level_other`, `extra_academic_name_of_college`, `extra_academic_university`, `extra_academic_university_other`, `extra_academic_degree_mode`, `extra_academic_degree_name`, `extra_academic_discipline`, `extra_academic_discipline_other`, `extra_academic_specialisation`, `extra_academic_degree_completed`, `extra_academic_year_completion`, `extra_academic_grading_system`, `extra_academic_class`, `extra_academic_aggregate`, `extra_academic_gpa_obtained`, `extra_academic_gpa_max`) VALUES (
-				'".mysql_real_escape_string( $finalapplicationid )."',
-				'".mysql_real_escape_string( ${'finalacademicextradegreelevel' . $y} )."',
-				'".mysql_real_escape_string( ${'finalacademicextradegreeother' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgradutationcollegenameextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgradutationunversityextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationuniversityothersextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduatindegreenameextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationdisciplineextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationdisciplineotherextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationspecializationextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationdegreemodeextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationcompletedextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgradationcompletionyearextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationgpaorpercentageextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationclassextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationpercentageextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationgpaobtainedextra' . $y} )."',
-				'".mysql_real_escape_string( ${'finalgraduationgpamaxextra' . $y} )."'
+				".mysql_real_escape_string_awesome( $finalapplicationid ).",
+				".mysql_real_escape_string_awesome( ${'finalacademicextradegreelevel' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalacademicextradegreeother' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgradutationcollegenameextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgradutationunversityextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationuniversityothersextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduatindegreenameextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationdisciplineextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationdisciplineotherextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationspecializationextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationdegreemodeextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationcompletedextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgradationcompletionyearextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationgpaorpercentageextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationclassextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationpercentageextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationgpaobtainedextra' . $y} ).",
+				".mysql_real_escape_string_awesome( ${'finalgraduationgpamaxextra' . $y} )."
 				);";
 
 

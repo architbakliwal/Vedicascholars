@@ -67,25 +67,25 @@ if ( $_GET['provider'] ) {
 								<?php
 if ( isset( $_GET['email'] ) && isset( $_GET['token'] ) ) {
 
-	$useremail = strip_tags( trim( $_GET["email"] ) );
-	$emailtoken = strip_tags( trim( $_GET["token"] ) );
+	$useremail = strip_tags( trim_awesome( $_GET["email"] ) );
+	$emailtoken = strip_tags( trim_awesome( $_GET["token"] ) );
 
 	$finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 	$finalemailtoken = htmlspecialchars( $emailtoken, ENT_QUOTES, 'UTF-8' );
 
 	$emailtime = date( "Y-m-d H:i:s" );
 
-	$selectexpire = mysql_query( "SELECT * FROM ".$mysqltable_name_4." WHERE login_system_email_activation_token = '".mysql_real_escape_string( $finalemailtoken )."' AND login_system_email_activation_expire > '".mysql_real_escape_string( $emailtime )."'" );
+	$selectexpire = mysql_query( "SELECT * FROM ".$mysqltable_name_4." WHERE login_system_email_activation_token = ".mysql_real_escape_string_awesome( $finalemailtoken )." AND login_system_email_activation_expire > ".mysql_real_escape_string_awesome( $emailtime )."" );
 	$resultexpire  = mysql_num_rows( $selectexpire );
 
 	if ( $resultexpire == 1 ) {
 
-		$search = mysql_query( "SELECT login_system_email_activation_useremail, login_system_email_activation_token, login_system_email_activation_status FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."' AND login_system_email_activation_token = '".mysql_real_escape_string( $finalemailtoken )."' AND login_system_email_activation_status = '0'" );
+		$search = mysql_query( "SELECT login_system_email_activation_useremail, login_system_email_activation_token, login_system_email_activation_status FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )." AND login_system_email_activation_token = ".mysql_real_escape_string_awesome( $finalemailtoken )." AND login_system_email_activation_status = '0'" );
 		$result = mysql_num_rows( $search );
 
 		if ( $result == 1 ) {
 
-			$update = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_status ='1' WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."' AND login_system_email_activation_token = '".mysql_real_escape_string( $finalemailtoken )."' AND login_system_email_activation_status = '0'";
+			$update = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_status ='1' WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )." AND login_system_email_activation_token = ".mysql_real_escape_string_awesome( $finalemailtoken )." AND login_system_email_activation_status = '0'";
 			$updatequery = mysql_query( $update );
 
 			if ( $updatequery ) {

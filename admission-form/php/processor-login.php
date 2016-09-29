@@ -19,9 +19,9 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include dirname( __FILE__ ).'/language/en.php';
 }
 
-$user_name = strip_tags( trim( $_POST["username"] ) );
-$password = strip_tags( trim( $_POST["password"] ) );
-$verification = strip_tags( trim( $_POST["captcha"] ) );
+$user_name = strip_tags( trim_awesome( $_POST["username"] ) );
+$password = strip_tags( trim_awesome( $_POST["password"] ) );
+$verification = strip_tags( trim_awesome( $_POST["captcha"] ) );
 
 $finalusername = htmlspecialchars( $user_name, ENT_QUOTES, 'UTF-8' );
 $finalpassword = htmlspecialchars( $password, ENT_QUOTES, 'UTF-8' );
@@ -33,15 +33,15 @@ if ( !CSRF::check( 'login-form' ) ) {
 
 	$datetime = date( "Y-m-d H:i:s" );
 
-	$userInfo = mysql_query( "SELECT login_system_registrations_user_id, application_id, password, salt FROM ".$admission_users." WHERE application_id = '".mysql_real_escape_string( $finalusername )."'" );
+	$userInfo = mysql_query( "SELECT login_system_registrations_user_id, application_id, password, salt FROM ".$admission_users." WHERE application_id = ".mysql_real_escape_string_awesome( $finalusername )."" );
 	$userQuery = mysql_num_rows( $userInfo );
 	$userSql = mysql_fetch_array( $userInfo );
 
-	$userstatus = mysql_query( "SELECT login_system_email_activation_status FROM ".$mysqltable_name_4." WHERE login_system_email_activation_username = '".mysql_real_escape_string( $finalusername )."'" );
+	$userstatus = mysql_query( "SELECT login_system_email_activation_status FROM ".$mysqltable_name_4." WHERE login_system_email_activation_username = ".mysql_real_escape_string_awesome( $finalusername )."" );
 	$userselect = mysql_num_rows( $userstatus );
 	$userresult = mysql_fetch_array( $userstatus );
 
-	$infoUser = mysql_query( "SELECT login_system_login_attempts_attempts, login_system_login_attempts_blocked_time FROM ".$mysqltable_name_2." WHERE login_system_login_attempts_username = '".mysql_real_escape_string( $finalusername )."'" );
+	$infoUser = mysql_query( "SELECT login_system_login_attempts_attempts, login_system_login_attempts_blocked_time FROM ".$mysqltable_name_2." WHERE login_system_login_attempts_username = ".mysql_real_escape_string_awesome( $finalusername )."" );
 	$queryUser = mysql_num_rows( $infoUser );
 	$sqlUser = mysql_fetch_array( $infoUser );
 
@@ -62,12 +62,12 @@ if ( !CSRF::check( 'login-form' ) ) {
 
 					if ( $queryUser == 0 ) {
 
-						$insertsuccess = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_user_id,login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_first_date,login_system_login_attempts_date,login_system_login_attempts_username) VALUES ('".mysql_real_escape_string( $userSql['login_system_registrations_user_id'] )."','".mysql_real_escape_string( $finaluserip )."',0,'".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finalusername )."')";
+						$insertsuccess = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_user_id,login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_first_date,login_system_login_attempts_date,login_system_login_attempts_username) VALUES (".mysql_real_escape_string_awesome( $userSql['login_system_registrations_user_id'] ).",".mysql_real_escape_string_awesome( $finaluserip ).",0,".mysql_real_escape_string_awesome( $datetime ).",".mysql_real_escape_string_awesome( $datetime ).",".mysql_real_escape_string_awesome( $finalusername ).")";
 						$insertquery = mysql_query( $insertsuccess );
 
 					} else {
 
-						$updatesuccess= "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_attempts = 0, login_system_login_attempts_blocked_time = '0000-00-00 00:00:00', login_system_login_attempts_ip = '".mysql_real_escape_string( $finaluserip )."', login_system_login_attempts_date = '".mysql_real_escape_string( $datetime )."' WHERE login_system_login_attempts_username = '".mysql_real_escape_string( $finalusername )."'";
+						$updatesuccess= "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_attempts = 0, login_system_login_attempts_blocked_time = '0000-00-00 00:00:00', login_system_login_attempts_ip = ".mysql_real_escape_string_awesome( $finaluserip ).", login_system_login_attempts_date = ".mysql_real_escape_string_awesome( $datetime )." WHERE login_system_login_attempts_username = ".mysql_real_escape_string_awesome( $finalusername )."";
 						$updatequery = mysql_query( $updatesuccess );
 
 					}
@@ -92,7 +92,7 @@ if ( !CSRF::check( 'login-form' ) ) {
 
 						$unlocktime = date( "Y-m-d H:i:s", strtotime( '+1 hour' ) );
 
-						$blocked = "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_blocked_time = '".mysql_real_escape_string( $unlocktime )."' WHERE login_system_login_attempts_username = '".mysql_real_escape_string( $finalusername )."'";
+						$blocked = "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_blocked_time = ".mysql_real_escape_string_awesome( $unlocktime )." WHERE login_system_login_attempts_username = ".mysql_real_escape_string_awesome( $finalusername )."";
 						$blockedquery = mysql_query( $blocked );
 
 						echo $lang['login_account_blocked'];
@@ -101,12 +101,12 @@ if ( !CSRF::check( 'login-form' ) ) {
 
 						if ( $queryUser == 0 ) {
 
-							$insertfail = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_date,login_system_login_attempts_username) VALUES ('".mysql_real_escape_string( $finaluserip )."',1,'".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finalusername )."')";
+							$insertfail = "INSERT INTO ".$mysqltable_name_2." (login_system_login_attempts_ip,login_system_login_attempts_attempts,login_system_login_attempts_date,login_system_login_attempts_username) VALUES (".mysql_real_escape_string_awesome( $finaluserip ).",1,".mysql_real_escape_string_awesome( $datetime ).",".mysql_real_escape_string_awesome( $finalusername ).")";
 							$insertquery = mysql_query( $insertfail );
 
 						} else {
 
-							$updatefail = "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_attempts = login_system_login_attempts_attempts+1, login_system_login_attempts_ip = '".mysql_real_escape_string( $finaluserip )."', login_system_login_attempts_date = '".mysql_real_escape_string( $datetime )."' WHERE login_system_login_attempts_username = '".mysql_real_escape_string( $finalusername )."'";
+							$updatefail = "UPDATE ".$mysqltable_name_2." SET login_system_login_attempts_attempts = login_system_login_attempts_attempts+1, login_system_login_attempts_ip = ".mysql_real_escape_string_awesome( $finaluserip ).", login_system_login_attempts_date = ".mysql_real_escape_string_awesome( $datetime )." WHERE login_system_login_attempts_username = ".mysql_real_escape_string_awesome( $finalusername )."";
 							$updatequery = mysql_query( $updatefail );
 
 						}

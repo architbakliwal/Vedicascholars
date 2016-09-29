@@ -46,7 +46,7 @@ if ( !$_SESSION['userLogin'] && !$_SESSION['userName'] && !isset( $_SESSION['use
 
 	    <?php
 
-			$userInfo = mysql_query( "SELECT login_system_registrations_user_id,application_status FROM ".$admission_users." WHERE login_system_registrations_user_id = '".mysql_real_escape_string( $_SESSION['userLogin'] )."'" );
+			$userInfo = mysql_query( "SELECT login_system_registrations_user_id,application_status FROM ".$admission_users." WHERE login_system_registrations_user_id = ".mysql_real_escape_string_awesome( $_SESSION['userLogin'] )."" );
 			$userQuery = mysql_num_rows( $userInfo );
 
 			$user = mysql_fetch_array( $userInfo );

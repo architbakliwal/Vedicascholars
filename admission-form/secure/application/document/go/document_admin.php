@@ -686,7 +686,7 @@ $tbl = <<<EOD
         <td colspan="3">$failure_info</td>
     </tr>
     <tr nobr="true">
-        <td class="boldstyle">Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals:</td>
+        <td class="boldstyle">Describe your life in 2025, explain how Vedica will help you get there:</td>
         <td colspan="3">$acheivement_as_alumnus</td>
     </tr>
     <tr nobr="true">

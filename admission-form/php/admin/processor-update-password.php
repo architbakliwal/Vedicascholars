@@ -19,8 +19,8 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include '../language/en.php';
 }
 
-$update_password = strip_tags( trim( $_POST["update_password"] ) );
-$update_retypepassword = strip_tags( trim( $_POST["update_retypepassword"] ) );
+$update_password = strip_tags( trim_awesome( $_POST["update_password"] ) );
+$update_retypepassword = strip_tags( trim_awesome( $_POST["update_retypepassword"] ) );
 
 $update_finalpass = htmlspecialchars( $update_password, ENT_QUOTES, 'UTF-8' );
 $update_finalretypepass = htmlspecialchars( $update_retypepassword, ENT_QUOTES, 'UTF-8' );
@@ -35,7 +35,7 @@ if ( !CSRF::check( 'update-password-form' ) ) {
 	$finalsalt = hash( 'sha512', uniqid( mt_rand( 1, mt_getrandmax() ), true ) );
 	$newpassword = $hasher->HashPassword( $update_finalpass . $finalsalt . $passwordsalt );
 
-	$update = "UPDATE ".$admission_users." SET password = '".mysql_real_escape_string( $newpassword )."', salt = '".mysql_real_escape_string( $finalsalt )."' WHERE login_system_registrations_user_id = '".mysql_real_escape_string( $_SESSION['userLogin'] )."'";
+	$update = "UPDATE ".$admission_users." SET password = ".mysql_real_escape_string_awesome( $newpassword ).", salt = ".mysql_real_escape_string_awesome( $finalsalt )." WHERE login_system_registrations_user_id = ".mysql_real_escape_string_awesome( $_SESSION['userLogin'] )."";
 	$updatequery = mysql_query( $update );
 
 	if ( $updatequery ) {

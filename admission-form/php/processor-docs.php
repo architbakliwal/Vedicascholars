@@ -44,7 +44,7 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 
 
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
 
 if ( $mysql == true ) {
@@ -150,9 +150,9 @@ if ( $mysql == true ) {
 	}
 
 	$sqldocs = "INSERT INTO `users_documents_uploads` (`application_id`, `passport_photo`, `resume`) VALUES (
-			'".mysql_real_escape_string( $finalapplicationid )."',
-			'".mysql_real_escape_string( $finalnamephoto0 )."',
-			'".mysql_real_escape_string( $finalnameresume0 )."'
+			".mysql_real_escape_string_awesome( $finalapplicationid ).",
+			".mysql_real_escape_string_awesome( $finalnamephoto0 ).",
+			".mysql_real_escape_string_awesome( $finalnameresume0 )."
 			)
 		ON DUPLICATE KEY
 		UPDATE

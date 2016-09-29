@@ -1004,10 +1004,10 @@ CREATE TABLE IF NOT EXISTS `users_work_experience_details` (
 DROP TABLE IF EXISTS `user_additional_info`;
 CREATE TABLE IF NOT EXISTS `user_additional_info` (
   `application_id` varchar(255) NOT NULL,
-  `role_model_info` text NOT NULL COMMENT 'Who is your role model? Explain the reasons behind your choice',
-  `failure_info` text NOT NULL COMMENT 'What according to you has been your biggest failure and how did you overcome it',
-  `acheivement_as_alumnus` text NOT NULL COMMENT 'Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals',
-  `support_info` text NOT NULL COMMENT 'Is there anything else you would like to mention that would add to your candidature for the programme',
+  `role_model_info` text COMMENT 'Who is your role model? Explain the reasons behind your choice',
+  `failure_info` text COMMENT 'What according to you has been your biggest failure and how did you overcome it',
+  `acheivement_as_alumnus` text COMMENT 'Create a write-up of yourself as an alumnus of The Vedica Scholars Programme alumnus and explain how the programme helped you achieve your career goals',
+  `support_info` text COMMENT 'Is there anything else you would like to mention that would add to your candidature for the programme',
   PRIMARY KEY (`application_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

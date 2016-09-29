@@ -21,26 +21,26 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 
 if ( isset( $_GET['email'] ) && isset( $_GET['token'] ) ) {
 
-	$useremail = strip_tags( trim( $_GET["email"] ) );
-	$passtoken = strip_tags( trim( $_GET["token"] ) );
+	$useremail = strip_tags( trim_awesome( $_GET["email"] ) );
+	$passtoken = strip_tags( trim_awesome( $_GET["token"] ) );
 
 	$finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 	$finalpasstoken = htmlspecialchars( $passtoken, ENT_QUOTES, 'UTF-8' );
 
 	$passtime = date( "Y-m-d H:i:s" );
 
-	$selectexpire = mysql_query( "SELECT * FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_token = '".mysql_real_escape_string( $finalpasstoken )."' AND login_system_forgot_password_expire > '".mysql_real_escape_string( $passtime )."'" );
+	$selectexpire = mysql_query( "SELECT * FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_token = ".mysql_real_escape_string_awesome( $finalpasstoken )." AND login_system_forgot_password_expire > ".mysql_real_escape_string_awesome( $passtime )."" );
 	$resultexpire  = mysql_num_rows( $selectexpire );
 
 	if ( $resultexpire == 1 ) {
 
-		$search = mysql_query( "SELECT login_system_forgot_password_useremail, login_system_forgot_password_token FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_useremail = '".mysql_real_escape_string( $finaluseremail )."' AND login_system_forgot_password_token = '".mysql_real_escape_string( $finalpasstoken )."'" );
+		$search = mysql_query( "SELECT login_system_forgot_password_useremail, login_system_forgot_password_token FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )." AND login_system_forgot_password_token = ".mysql_real_escape_string_awesome( $finalpasstoken )."" );
 		$result = mysql_num_rows( $search );
 
 		if ( $result == 1 ) {
 
-			$newpassword = strip_tags( trim( $_POST["password"] ) );
-			$newretypepassword = strip_tags( trim( $_POST["retypepassword"] ) );
+			$newpassword = strip_tags( trim_awesome( $_POST["password"] ) );
+			$newretypepassword = strip_tags( trim_awesome( $_POST["retypepassword"] ) );
 
 			$newfinalpass = htmlspecialchars( $newpassword, ENT_QUOTES, 'UTF-8' );
 			$newfinalretypepass = htmlspecialchars( $newretypepassword, ENT_QUOTES, 'UTF-8' );
@@ -55,7 +55,7 @@ if ( isset( $_GET['email'] ) && isset( $_GET['token'] ) ) {
 				$finalsalt = hash( 'sha512', uniqid( mt_rand( 1, mt_getrandmax() ), true ) );
 				$newpassword = $hasher->HashPassword( $newfinalpass . $finalsalt . $passwordsalt );
 
-				$update = "UPDATE ".$admission_users." SET password = '".mysql_real_escape_string( $newpassword )."', salt = '".mysql_real_escape_string( $finalsalt )."' WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'";
+				$update = "UPDATE ".$admission_users." SET password = ".mysql_real_escape_string_awesome( $newpassword ).", salt = ".mysql_real_escape_string_awesome( $finalsalt )." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 				$updatequery = mysql_query( $update );
 
 				if ( $updatequery ) {

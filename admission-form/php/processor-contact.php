@@ -42,33 +42,33 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	die();
 }
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$email = strip_tags( trim( $_POST["email"] ) );
-$mobilenumber = strip_tags( trim( $_POST["mobilenumber"] ) );
-$phonenumber = strip_tags( trim( $_POST["phonenumber"] ) );
-$currentaddress1 = strip_tags( trim( $_POST["currentaddress1"] ) );
-$currentaddress2 = strip_tags( trim( $_POST["currentaddress2"] ) );
-$currentaddress3 = strip_tags( trim( $_POST["currentaddress3"] ) );
-$currentcity = strip_tags( trim( $_POST["currentcity"] ) );
-$currentcountry = strip_tags( trim( $_POST["currentcountry"] ) );
-$currentstate = strip_tags( trim( $_POST["currentstate"] ) );
-$currentstateother = strip_tags( trim( $_POST["currentstateother"] ) );
-$currentzip = strip_tags( trim( $_POST["currentzip"] ) );
-$permanentsameascurrent = strip_tags( trim( $_POST["permanentsameascurrent"] ) );
-$permanentaddress1 = strip_tags( trim( $_POST["permanentaddress1"] ) );
-$permanentaddress2 = strip_tags( trim( $_POST["permanentaddress2"] ) );
-$permanentaddress3 = strip_tags( trim( $_POST["permanentaddress3"] ) );
-$permanentcity = strip_tags( trim( $_POST["permanentcity"] ) );
-$permanentcountry = strip_tags( trim( $_POST["permanentcountry"] ) );
-$permanentstate = strip_tags( trim( $_POST["permanentstate"] ) );
-$permanentstateother = strip_tags( trim( $_POST["permanentstateother"] ) );
-$permanentzip = strip_tags( trim( $_POST["permanentzip"] ) );
-$parentname = strip_tags( trim( $_POST["parentname"] ) );
-$parentmobile = strip_tags( trim( $_POST["parentmobile"] ) );
-$parentrelation = strip_tags( trim( $_POST["parentrelation"] ) );
-$parentorganisation = strip_tags( trim( $_POST["parentorganisation"] ) );
-$parentdesignation = strip_tags( trim( $_POST["parentdesignation"] ) );
-$parentqualification = strip_tags( trim( $_POST["parentqualification"] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
+$email = strip_tags( trim_awesome( $_POST["email"] ) );
+$mobilenumber = strip_tags( trim_awesome( $_POST["mobilenumber"] ) );
+$phonenumber = strip_tags( trim_awesome( $_POST["phonenumber"] ) );
+$currentaddress1 = strip_tags( trim_awesome( $_POST["currentaddress1"] ) );
+$currentaddress2 = strip_tags( trim_awesome( $_POST["currentaddress2"] ) );
+$currentaddress3 = strip_tags( trim_awesome( $_POST["currentaddress3"] ) );
+$currentcity = strip_tags( trim_awesome( $_POST["currentcity"] ) );
+$currentcountry = strip_tags( trim_awesome( $_POST["currentcountry"] ) );
+$currentstate = strip_tags( trim_awesome( $_POST["currentstate"] ) );
+$currentstateother = strip_tags( trim_awesome( $_POST["currentstateother"] ) );
+$currentzip = strip_tags( trim_awesome( $_POST["currentzip"] ) );
+$permanentsameascurrent = strip_tags( trim_awesome( $_POST["permanentsameascurrent"] ) );
+$permanentaddress1 = strip_tags( trim_awesome( $_POST["permanentaddress1"] ) );
+$permanentaddress2 = strip_tags( trim_awesome( $_POST["permanentaddress2"] ) );
+$permanentaddress3 = strip_tags( trim_awesome( $_POST["permanentaddress3"] ) );
+$permanentcity = strip_tags( trim_awesome( $_POST["permanentcity"] ) );
+$permanentcountry = strip_tags( trim_awesome( $_POST["permanentcountry"] ) );
+$permanentstate = strip_tags( trim_awesome( $_POST["permanentstate"] ) );
+$permanentstateother = strip_tags( trim_awesome( $_POST["permanentstateother"] ) );
+$permanentzip = strip_tags( trim_awesome( $_POST["permanentzip"] ) );
+$parentname = strip_tags( trim_awesome( $_POST["parentname"] ) );
+$parentmobile = strip_tags( trim_awesome( $_POST["parentmobile"] ) );
+$parentrelation = strip_tags( trim_awesome( $_POST["parentrelation"] ) );
+$parentorganisation = strip_tags( trim_awesome( $_POST["parentorganisation"] ) );
+$parentdesignation = strip_tags( trim_awesome( $_POST["parentdesignation"] ) );
+$parentqualification = strip_tags( trim_awesome( $_POST["parentqualification"] ) );
 
 
 $finalapplicationid = htmlspecialchars( $applicationid, ENT_QUOTES, 'UTF-8' );
@@ -102,33 +102,33 @@ $finalparentqualification = htmlspecialchars( $parentqualification, ENT_QUOTES, 
 
 if ( $mysql == true ) {
 	$sqlcontact = "INSERT INTO `vedica_admn_2017`.`users_contact_details` (`application_id`, `email_id`, `mobile_number`, `phone_number`, `current_address_line1`, `current_address_line2`, `current_address_line3`, `current_address_city`, `current_address_state`, `current_address_state_other`, `current_address_country`, `current_address_pin`, `permanent_same_as_current_address`, `permanent_address_line1`, `permanent_address_line2`, `permanent_address_line3`, `permanent_address_city`, `permanent_address_state`, `permanent_address_state_other`, `permanent_address_country`, `permanent_address_pin`, `parent_name`, `parent_mobile`, `parent_relation`, `parent_organisation`, `parent_designation`, `parent_qualification`) VALUES (
-			'".mysql_real_escape_string( $finalapplicationid )."',
-			'".mysql_real_escape_string( $finalemail )."',
-			'".mysql_real_escape_string( $finalmobilenumber )."',
-			'".mysql_real_escape_string( $finalphonenumber )."',
-			'".mysql_real_escape_string( $finalcurrentaddress1 )."',
-			'".mysql_real_escape_string( $finalcurrentaddress2 )."',
-			'".mysql_real_escape_string( $finalcurrentaddress3 )."',
-			'".mysql_real_escape_string( $finalcurrentcity )."',
-			'".mysql_real_escape_string( $finalcurrentstate )."',
-			'".mysql_real_escape_string( $finalcurrentstateother )."',
-			'".mysql_real_escape_string( $finalcurrentcountry )."',
-			'".mysql_real_escape_string( $finalcurrentzip )."',
-			'".mysql_real_escape_string( $finalpermanentsameascurrent )."',
-			'".mysql_real_escape_string( $finalpermanentaddress1 )."',
-			'".mysql_real_escape_string( $finalpermanentaddress2 )."',
-			'".mysql_real_escape_string( $finalpermanentaddress3 )."',
-			'".mysql_real_escape_string( $finalpermanentcity )."',
-			'".mysql_real_escape_string( $finalpermanentstate )."',
-			'".mysql_real_escape_string( $finalpermanentstateother )."',
-			'".mysql_real_escape_string( $finalpermanentcountry )."',
-			'".mysql_real_escape_string( $finalpermanentzip )."',
-			'".mysql_real_escape_string( $finalparentname )."',
-			'".mysql_real_escape_string( $finalparentmobile )."',
-			'".mysql_real_escape_string( $finalparentrelation )."',
-			'".mysql_real_escape_string( $finalparentorganisation )."',
-			'".mysql_real_escape_string( $finalparentdesignation )."',
-			'".mysql_real_escape_string( $finalparentqualification )."'
+			".mysql_real_escape_string_awesome( $finalapplicationid ).",
+			".mysql_real_escape_string_awesome( $finalemail ).",
+			".mysql_real_escape_string_awesome( $finalmobilenumber ).",
+			".mysql_real_escape_string_awesome( $finalphonenumber ).",
+			".mysql_real_escape_string_awesome( $finalcurrentaddress1 ).",
+			".mysql_real_escape_string_awesome( $finalcurrentaddress2 ).",
+			".mysql_real_escape_string_awesome( $finalcurrentaddress3 ).",
+			".mysql_real_escape_string_awesome( $finalcurrentcity ).",
+			".mysql_real_escape_string_awesome( $finalcurrentstate ).",
+			".mysql_real_escape_string_awesome( $finalcurrentstateother ).",
+			".mysql_real_escape_string_awesome( $finalcurrentcountry ).",
+			".mysql_real_escape_string_awesome( $finalcurrentzip ).",
+			".mysql_real_escape_string_awesome( $finalpermanentsameascurrent ).",
+			".mysql_real_escape_string_awesome( $finalpermanentaddress1 ).",
+			".mysql_real_escape_string_awesome( $finalpermanentaddress2 ).",
+			".mysql_real_escape_string_awesome( $finalpermanentaddress3 ).",
+			".mysql_real_escape_string_awesome( $finalpermanentcity ).",
+			".mysql_real_escape_string_awesome( $finalpermanentstate ).",
+			".mysql_real_escape_string_awesome( $finalpermanentstateother ).",
+			".mysql_real_escape_string_awesome( $finalpermanentcountry ).",
+			".mysql_real_escape_string_awesome( $finalpermanentzip ).",
+			".mysql_real_escape_string_awesome( $finalparentname ).",
+			".mysql_real_escape_string_awesome( $finalparentmobile ).",
+			".mysql_real_escape_string_awesome( $finalparentrelation ).",
+			".mysql_real_escape_string_awesome( $finalparentorganisation ).",
+			".mysql_real_escape_string_awesome( $finalparentdesignation ).",
+			".mysql_real_escape_string_awesome( $finalparentqualification )."
 			)
 		ON DUPLICATE KEY
 		UPDATE

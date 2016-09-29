@@ -19,8 +19,8 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include dirname( __FILE__ ).'/language/en.php';
 }
 
-$useremail = strip_tags( trim( $_POST["useremail"] ) );
-$verification = strip_tags( trim( $_POST["captcha"] ) );
+$useremail = strip_tags( trim_awesome( $_POST["useremail"] ) );
+$verification = strip_tags( trim_awesome( $_POST["captcha"] ) );
 
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 $finalverification = htmlspecialchars( $verification, ENT_QUOTES, 'UTF-8' );
@@ -31,7 +31,7 @@ if ( !CSRF::check( 'resend-form' ) ) {
 
 	$datetime = date( "Y-m-d H:i:s" );
 
-	$searchblock = mysql_query( "SELECT login_system_email_activation_status, login_system_email_activation_attempts, login_system_email_activation_blocked_time FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."'" );
+	$searchblock = mysql_query( "SELECT login_system_email_activation_status, login_system_email_activation_attempts, login_system_email_activation_blocked_time FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 	$resultblock = mysql_num_rows( $searchblock );
 	$blockResult = mysql_fetch_array( $searchblock );
 
@@ -39,10 +39,10 @@ if ( !CSRF::check( 'resend-form' ) ) {
 		if ( $mysql == true ) {
 			if ( $blockResult['login_system_email_activation_status'] == 0 ) {
 				if ( $datetime > $blockResult['login_system_email_activation_blocked_time'] ) {
-					$search = mysql_query( "SELECT * FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."'" );
+					$search = mysql_query( "SELECT * FROM ".$mysqltable_name_4." WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 					$result = mysql_num_rows( $search );
 
-					$searchuser = mysql_query( "SELECT f_name, l_name, application_id FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
+					$searchuser = mysql_query( "SELECT f_name, l_name, application_id FROM ".$admission_users." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 					$resultusercount = mysql_num_rows( $searchuser );
 					$resultuser = mysql_fetch_array( $searchuser );
 
@@ -55,21 +55,21 @@ if ( !CSRF::check( 'resend-form' ) ) {
 						$finalemailtoken = md5( uniqid( rand(), true ) );
 						$expiretokenemail = date( "Y-m-d H:i:s", strtotime( '+1 hour' ) );
 
-						$sqlupdate = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_attempts = login_system_email_activation_attempts+1, login_system_email_activation_ip = '".mysql_real_escape_string( $finaluserip )."', login_system_email_activation_token = '".mysql_real_escape_string( $finalemailtoken )."',login_system_email_activation_expire = '".mysql_real_escape_string( $expiretokenemail )."', login_system_email_activation_date = '".mysql_real_escape_string( $datetime )."'  WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+						$sqlupdate = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_attempts = login_system_email_activation_attempts+1, login_system_email_activation_ip = ".mysql_real_escape_string_awesome( $finaluserip ).", login_system_email_activation_token = ".mysql_real_escape_string_awesome( $finalemailtoken ).",login_system_email_activation_expire = ".mysql_real_escape_string_awesome( $expiretokenemail ).", login_system_email_activation_date = ".mysql_real_escape_string_awesome( $datetime )."  WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 						$updatesql = mysql_query( $sqlupdate );
 
 						if ( $blockResult['login_system_email_activation_attempts'] == 5 ) {
 
 							$blockedtime = date( "Y-m-d H:i:s", strtotime( '+1 hour' ) );
 
-							$blocked = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_blocked_time = '".mysql_real_escape_string( $blockedtime )."' WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+							$blocked = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_blocked_time = ".mysql_real_escape_string_awesome( $blockedtime )." WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 							$blockedquery = mysql_query( $blocked );
 
 							echo $lang['resend_activation_token_account_locked'];
 
 						} elseif ( $blockResult['login_system_email_activation_attempts'] >= 6 ) {
 
-							$sqlupdate = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_attempts = 0, login_system_email_activation_blocked_time = '0000-00-00 00:00:00', login_system_email_activation_ip = '".mysql_real_escape_string( $finaluserip )."', login_system_email_activation_token = '".mysql_real_escape_string( $finalemailtoken )."',login_system_email_activation_expire = '".mysql_real_escape_string( $expiretokenemail )."', login_system_email_activation_date = '".mysql_real_escape_string( $datetime )."'  WHERE login_system_email_activation_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+							$sqlupdate = "UPDATE ".$mysqltable_name_4." SET login_system_email_activation_attempts = 0, login_system_email_activation_blocked_time = '0000-00-00 00:00:00', login_system_email_activation_ip = ".mysql_real_escape_string_awesome( $finaluserip ).", login_system_email_activation_token = ".mysql_real_escape_string_awesome( $finalemailtoken ).",login_system_email_activation_expire = ".mysql_real_escape_string_awesome( $expiretokenemail ).", login_system_email_activation_date = ".mysql_real_escape_string_awesome( $datetime )."  WHERE login_system_email_activation_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 							$updatesql = mysql_query( $sqlupdate );
 
 							include dirname( __FILE__ ).'/phpmailer/PHPMailerAutoload.php';

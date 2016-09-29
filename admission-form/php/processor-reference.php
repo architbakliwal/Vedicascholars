@@ -42,14 +42,14 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	die();
 }
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$refreetitle = strip_tags( trim( $_POST['refreetitle'] ) );
-$refreename = strip_tags( trim( $_POST['refreename'] ) );
-$refreeorganization = strip_tags( trim( $_POST['refreeorganization'] ) );
-$refreedesignation = strip_tags( trim( $_POST['refreedesignation'] ) );
-$refreecontact = strip_tags( trim( $_POST['refreecontact'] ) );
-$refreeemail = strip_tags( trim( $_POST['refreeemail'] ) );
-$refreeknowing = strip_tags( trim( $_POST['refreeknowing'] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
+$refreetitle = strip_tags( trim_awesome( $_POST['refreetitle'] ) );
+$refreename = strip_tags( trim_awesome( $_POST['refreename'] ) );
+$refreeorganization = strip_tags( trim_awesome( $_POST['refreeorganization'] ) );
+$refreedesignation = strip_tags( trim_awesome( $_POST['refreedesignation'] ) );
+$refreecontact = strip_tags( trim_awesome( $_POST['refreecontact'] ) );
+$refreeemail = strip_tags( trim_awesome( $_POST['refreeemail'] ) );
+$refreeknowing = strip_tags( trim_awesome( $_POST['refreeknowing'] ) );
 
 
 
@@ -66,14 +66,14 @@ $finalrefreeknowing = htmlspecialchars( $refreeknowing, ENT_QUOTES, 'UTF-8' );
 
 if ( $mysql == true ) {
 	$sqlrefree = "INSERT INTO `vedica_admn_2017`.`users_reference_details` (`application_id`, `title_of_refree`, `name_of_refree`, `organization`, `designation`, `phone_number`, `email_id`, `capacity_of_knowing`) VALUES (
-			'".mysql_real_escape_string( $finalapplicationid )."',
-			'".mysql_real_escape_string( $finalrefreetitle )."',
-			'".mysql_real_escape_string( $finalrefreename )."',
-			'".mysql_real_escape_string( $finalrefreeorganization )."',
-			'".mysql_real_escape_string( $finalrefreedesignation )."',
-			'".mysql_real_escape_string( $finalrefreecontact )."',
-			'".mysql_real_escape_string( $finalrefreeemail )."',
-			'".mysql_real_escape_string( $finalrefreeknowing )."'
+			".mysql_real_escape_string_awesome( $finalapplicationid ).",
+			".mysql_real_escape_string_awesome( $finalrefreetitle ).",
+			".mysql_real_escape_string_awesome( $finalrefreename ).",
+			".mysql_real_escape_string_awesome( $finalrefreeorganization ).",
+			".mysql_real_escape_string_awesome( $finalrefreedesignation ).",
+			".mysql_real_escape_string_awesome( $finalrefreecontact ).",
+			".mysql_real_escape_string_awesome( $finalrefreeemail ).",
+			".mysql_real_escape_string_awesome( $finalrefreeknowing )."
 			)
 		ON DUPLICATE KEY
 		UPDATE

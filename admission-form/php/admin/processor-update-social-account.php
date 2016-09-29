@@ -19,14 +19,14 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include '../language/en.php';
 }
 
-$update_social_email = strip_tags( trim( $_POST["update_social_useremail"] ) );
+$update_social_email = strip_tags( trim_awesome( $_POST["update_social_useremail"] ) );
 $update_final_social_email = htmlspecialchars( $update_social_email, ENT_QUOTES, 'UTF-8' );
 
 if ( !CSRF::check( 'update-social-account' ) ) {
 	echo $lang['update_social_account_wrong_security_token'];
 } else {
 
-	$emailsearch = mysql_query( "SELECT * FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_email = '".mysql_real_escape_string( $update_final_social_email )."'" );
+	$emailsearch = mysql_query( "SELECT * FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_email = ".mysql_real_escape_string_awesome( $update_final_social_email )."" );
 	$emailresult = mysql_num_rows( $emailsearch );
 	$emailquery = mysql_fetch_array( $emailsearch );
 
@@ -36,7 +36,7 @@ if ( !CSRF::check( 'update-social-account' ) ) {
 
 	} else {
 
-		$update1 = "UPDATE ".$mysqltable_name_5." SET login_system_register_social_networks_email = '".mysql_real_escape_string( $update_final_social_email )."' WHERE login_system_register_social_networks_provider_user_id = '".mysql_real_escape_string( $_SESSION['loginProviderID'] )."'";
+		$update1 = "UPDATE ".$mysqltable_name_5." SET login_system_register_social_networks_email = ".mysql_real_escape_string_awesome( $update_final_social_email )." WHERE login_system_register_social_networks_provider_user_id = ".mysql_real_escape_string_awesome( $_SESSION['loginProviderID'] )."";
 		$updatequery1 = mysql_query( $update1 );
 
 		if ( $updatequery1 ) {

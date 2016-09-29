@@ -19,7 +19,7 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include dirname( __FILE__ ).'/language/en.php';
 }
 
-$useremail = strip_tags( trim( $_POST["useremail"] ) );
+$useremail = strip_tags( trim_awesome( $_POST["useremail"] ) );
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 
 if ( !CSRF::check( 'complete-social-register-form' ) ) {
@@ -41,17 +41,17 @@ if ( !CSRF::check( 'complete-social-register-form' ) ) {
 			$datetime = date( "Y-m-d H:i:s" );
 			$expiretokenemail = date( "Y-m-d H:i:s", strtotime( '+1 hour' ) );
 
-			$duplicate = mysql_query( "SELECT * FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_email = '".mysql_real_escape_string( $finaluseremail )."'" );
+			$duplicate = mysql_query( "SELECT * FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_email = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 			$result = mysql_num_rows( $duplicate );
 			if ( $result == 0 ) {
 
-				$usersuccess = mysql_query( "SELECT login_system_register_social_networks_provider_user_id FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_provider_user_id = '".mysql_real_escape_string( $_SESSION['loginProviderID'] )."'" );
+				$usersuccess = mysql_query( "SELECT login_system_register_social_networks_provider_user_id FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_provider_user_id = ".mysql_real_escape_string_awesome( $_SESSION['loginProviderID'] )."" );
 				$usersql = mysql_num_rows( $usersuccess );
 
-				$updatesuccess = "UPDATE ".$mysqltable_name_5." SET login_system_register_social_networks_email = '".mysql_real_escape_string( $finaluseremail )."', login_system_register_social_networks_date = '".mysql_real_escape_string( $datetime )."' WHERE login_system_register_social_networks_provider_user_id = '".mysql_real_escape_string( $_SESSION['loginProviderID'] )."'";
+				$updatesuccess = "UPDATE ".$mysqltable_name_5." SET login_system_register_social_networks_email = ".mysql_real_escape_string_awesome( $finaluseremail ).", login_system_register_social_networks_date = ".mysql_real_escape_string_awesome( $datetime )." WHERE login_system_register_social_networks_provider_user_id = ".mysql_real_escape_string_awesome( $_SESSION['loginProviderID'] )."";
 				$updatesession = mysql_query( $updatesuccess );
 
-				$usersearch = mysql_query( "SELECT login_system_register_social_networks_email FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_provider_user_id = '".mysql_real_escape_string( $_SESSION['loginProviderID'] )."'" );
+				$usersearch = mysql_query( "SELECT login_system_register_social_networks_email FROM ".$mysqltable_name_5." WHERE login_system_register_social_networks_provider_user_id = ".mysql_real_escape_string_awesome( $_SESSION['loginProviderID'] )."" );
 				$userquery = mysql_num_rows( $usersearch );
 
 				if ( $userquery ) {

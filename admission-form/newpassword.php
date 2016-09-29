@@ -52,8 +52,8 @@ if ( $_GET['provider'] ) {
 
 		<?php
 
-$useremail = strip_tags( trim( $_GET["email"] ) );
-$passtoken = strip_tags( trim( $_GET["token"] ) );
+$useremail = strip_tags( trim_awesome( $_GET["email"] ) );
+$passtoken = strip_tags( trim_awesome( $_GET["token"] ) );
 
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 $finalpasstoken = htmlspecialchars( $passtoken, ENT_QUOTES, 'UTF-8' );

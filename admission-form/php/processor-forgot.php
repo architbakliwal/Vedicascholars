@@ -19,8 +19,8 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 	include dirname( __FILE__ ).'/language/en.php';
 }
 
-$useremail = strip_tags( trim( $_POST["useremail"] ) );
-$verification = strip_tags( trim( $_POST["captcha"] ) );
+$useremail = strip_tags( trim_awesome( $_POST["useremail"] ) );
+$verification = strip_tags( trim_awesome( $_POST["captcha"] ) );
 
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 $finalverification = htmlspecialchars( $verification, ENT_QUOTES, 'UTF-8' );
@@ -31,18 +31,18 @@ if ( !CSRF::check( 'forgot-form' ) ) {
 
 	$datetime = date( "Y-m-d H:i:s" );
 
-	$searchblock = mysql_query( "SELECT login_system_forgot_password_attempts, login_system_forgot_password_blocked_time FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_useremail = '".mysql_real_escape_string( $finaluseremail )."'" );
+	$searchblock = mysql_query( "SELECT login_system_forgot_password_attempts, login_system_forgot_password_blocked_time FROM ".$mysqltable_name_3." WHERE login_system_forgot_password_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 	$resultblock = mysql_num_rows( $searchblock );
 	$blockResult = mysql_fetch_array( $searchblock );
 
-	$searchid = mysql_query( "SELECT login_system_registrations_user_id FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
+	$searchid = mysql_query( "SELECT login_system_registrations_user_id FROM ".$admission_users." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 	$resultid = mysql_num_rows( $searchid );
 	$queryid = mysql_fetch_array( $searchid );
 
 	if ( $SMTP == true ) {
 		if ( $mysql == true ) {
 			if ( $datetime > $blockResult['login_system_forgot_password_blocked_time'] ) {
-				$search = mysql_query( "SELECT application_id, f_name, l_name FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
+				$search = mysql_query( "SELECT application_id, f_name, l_name FROM ".$admission_users." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 				$result = mysql_num_rows( $search );
 				$resultInfo = mysql_fetch_array( $search );
 				$finalusername = $resultInfo['application_id'];
@@ -63,12 +63,12 @@ if ( !CSRF::check( 'forgot-form' ) ) {
 
 					if ( $resultblock == 0 ) {
 
-						$sql = "INSERT INTO ".$mysqltable_name_3." (login_system_forgot_password_user_id,login_system_forgot_password_username,login_system_forgot_password_expire,login_system_forgot_password_useremail,login_system_forgot_password_token,login_system_forgot_password_date,login_system_forgot_password_ip,login_system_forgot_password_attempts) VALUES ('".mysql_real_escape_string( $queryid['login_system_registrations_user_id'] )."','".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $expiretokenpass )."','".mysql_real_escape_string( $finaluseremail )."','".mysql_real_escape_string( $finalpasstoken )."','".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finaluserip )."','1')";
+						$sql = "INSERT INTO ".$mysqltable_name_3." (login_system_forgot_password_user_id,login_system_forgot_password_username,login_system_forgot_password_expire,login_system_forgot_password_useremail,login_system_forgot_password_token,login_system_forgot_password_date,login_system_forgot_password_ip,login_system_forgot_password_attempts) VALUES (".mysql_real_escape_string_awesome( $queryid['login_system_registrations_user_id'] ).",".mysql_real_escape_string_awesome( $finalusername ).",".mysql_real_escape_string_awesome( $expiretokenpass ).",".mysql_real_escape_string_awesome( $finaluseremail ).",".mysql_real_escape_string_awesome( $finalpasstoken ).",".mysql_real_escape_string_awesome( $datetime ).",".mysql_real_escape_string_awesome( $finaluserip ).",'1')";
 						$insert = mysql_query( $sql );
 
 					} else {
 
-						$updatefail= "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_attempts = login_system_forgot_password_attempts+1, login_system_forgot_password_ip = '".mysql_real_escape_string( $finaluserip )."' ,login_system_forgot_password_expire = '".mysql_real_escape_string( $expiretokenpass )."', login_system_forgot_password_token = '".mysql_real_escape_string( $finalpasstoken )."', login_system_forgot_password_date = '".mysql_real_escape_string( $datetime )."' WHERE login_system_forgot_password_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+						$updatefail= "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_attempts = login_system_forgot_password_attempts+1, login_system_forgot_password_ip = ".mysql_real_escape_string_awesome( $finaluserip )." ,login_system_forgot_password_expire = ".mysql_real_escape_string_awesome( $expiretokenpass ).", login_system_forgot_password_token = ".mysql_real_escape_string_awesome( $finalpasstoken ).", login_system_forgot_password_date = ".mysql_real_escape_string_awesome( $datetime )." WHERE login_system_forgot_password_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 						$updatequery = mysql_query( $updatefail );
 
 					}
@@ -77,14 +77,14 @@ if ( !CSRF::check( 'forgot-form' ) ) {
 
 						$blockedtime = date( "Y-m-d H:i:s", strtotime( '+1 hour' ) );
 
-						$blocked = "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_blocked_time = '".mysql_real_escape_string( $blockedtime )."' WHERE login_system_forgot_password_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+						$blocked = "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_blocked_time = ".mysql_real_escape_string_awesome( $blockedtime )." WHERE login_system_forgot_password_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 						$blockedquery = mysql_query( $blocked );
 
 						echo $lang['forgot_account_locked'];
 
 					} elseif ( $blockResult['login_system_forgot_password_attempts'] >= 6 ) {
 
-						$sqlupdate = "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_attempts = '0', login_system_forgot_password_blocked_time = '0000-00-00 00:00:00', login_system_forgot_password_ip = '".mysql_real_escape_string( $finaluserip )."', login_system_forgot_password_token = '".mysql_real_escape_string( $finalpasstoken )."', login_system_forgot_password_expire = '".mysql_real_escape_string( $expiretokenpass )."', login_system_forgot_password_date = '".mysql_real_escape_string( $datetime )."'  WHERE login_system_forgot_password_useremail = '".mysql_real_escape_string( $finaluseremail )."'";
+						$sqlupdate = "UPDATE ".$mysqltable_name_3." SET login_system_forgot_password_attempts = '0', login_system_forgot_password_blocked_time = '0000-00-00 00:00:00', login_system_forgot_password_ip = ".mysql_real_escape_string_awesome( $finaluserip ).", login_system_forgot_password_token = ".mysql_real_escape_string_awesome( $finalpasstoken ).", login_system_forgot_password_expire = ".mysql_real_escape_string_awesome( $expiretokenpass ).", login_system_forgot_password_date = ".mysql_real_escape_string_awesome( $datetime )."  WHERE login_system_forgot_password_useremail = ".mysql_real_escape_string_awesome( $finaluseremail )."";
 						$updatesql = mysql_query( $sqlupdate );
 
 						include dirname( __FILE__ ).'/phpmailer/PHPMailerAutoload.php';

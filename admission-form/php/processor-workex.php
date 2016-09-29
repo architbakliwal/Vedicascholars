@@ -42,20 +42,20 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	die();
 }
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$isworkex = strip_tags( trim( $_POST['isworkex'] ) );
-$employementtype = strip_tags( trim( $_POST['employementtype'] ) );
-$organizationname = strip_tags( trim( $_POST['organizationname'] ) );
-$organizationtype = strip_tags( trim( $_POST['organizationtype'] ) );
-$organizationtypeother = strip_tags( trim( $_POST['organizationtypeother'] ) );
-$workstarted = strip_tags( trim( $_POST['workstarted'] ) );
-$workcompleted = strip_tags( trim( $_POST['workcompleted'] ) );
-$comapnyjoinedas = strip_tags( trim( $_POST['comapnyjoinedas'] ) );
-$currentdesignation = strip_tags( trim( $_POST['currentdesignation'] ) );
-$annualrenumeration = strip_tags( trim( $_POST['annualrenumeration'] ) );
-$rolesandresponsibility = strip_tags( trim( $_POST['rolesandresponsibility'] ) );
-$extraworkexcount = strip_tags( trim( $_POST['extraworkexcount'] ) );
-$totalworkex = strip_tags( trim( $_POST['totalworkex'] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
+$isworkex = strip_tags( trim_awesome( $_POST['isworkex'] ) );
+$employementtype = strip_tags( trim_awesome( $_POST['employementtype'] ) );
+$organizationname = strip_tags( trim_awesome( $_POST['organizationname'] ) );
+$organizationtype = strip_tags( trim_awesome( $_POST['organizationtype'] ) );
+$organizationtypeother = strip_tags( trim_awesome( $_POST['organizationtypeother'] ) );
+$workstarted = strip_tags( trim_awesome( $_POST['workstarted'] ) );
+$workcompleted = strip_tags( trim_awesome( $_POST['workcompleted'] ) );
+$comapnyjoinedas = strip_tags( trim_awesome( $_POST['comapnyjoinedas'] ) );
+$currentdesignation = strip_tags( trim_awesome( $_POST['currentdesignation'] ) );
+$annualrenumeration = strip_tags( trim_awesome( $_POST['annualrenumeration'] ) );
+$rolesandresponsibility = strip_tags( trim_awesome( $_POST['rolesandresponsibility'] ) );
+$extraworkexcount = strip_tags( trim_awesome( $_POST['extraworkexcount'] ) );
+$totalworkex = strip_tags( trim_awesome( $_POST['totalworkex'] ) );
 
 
 
@@ -78,20 +78,20 @@ $finaltotalworkex = htmlspecialchars( $totalworkex, ENT_QUOTES, 'UTF-8' );
 
 if ( $mysql == true ) {
 	$sqlworkex = "INSERT INTO `vedica_admn_2017`.`users_work_experience_details` (`application_id`, `work_experience`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`, `extra_workex_count`, `total_work_experience`) VALUES (
-				'".mysql_real_escape_string( $finalapplicationid )."',
-				'".mysql_real_escape_string( $finalisworkex )."',
-				'".mysql_real_escape_string( $finalemployementtype )."',
-				'".mysql_real_escape_string( $finalorganizationname )."',
-				'".mysql_real_escape_string( $finalorganizationtype )."',
-				'".mysql_real_escape_string( $finalorganizationtypeother )."',
-				'".mysql_real_escape_string( $finalworkstarted )."',
-				'".mysql_real_escape_string( $finalworkcompleted )."',
-				'".mysql_real_escape_string( $finalcomapnyjoinedas )."',
-				'".mysql_real_escape_string( $finalcurrentdesignation )."',
-				'".mysql_real_escape_string( $finalannualrenumeration )."',
-				'".mysql_real_escape_string( $finalrolesandresponsibility )."',
-				'".mysql_real_escape_string( $finalextraworkexcount )."',
-				'".mysql_real_escape_string( $finaltotalworkex )."'
+				".mysql_real_escape_string_awesome( $finalapplicationid ).",
+				".mysql_real_escape_string_awesome( $finalisworkex ).",
+				".mysql_real_escape_string_awesome( $finalemployementtype ).",
+				".mysql_real_escape_string_awesome( $finalorganizationname ).",
+				".mysql_real_escape_string_awesome( $finalorganizationtype ).",
+				".mysql_real_escape_string_awesome( $finalorganizationtypeother ).",
+				".mysql_real_escape_string_awesome( $finalworkstarted ).",
+				".mysql_real_escape_string_awesome( $finalworkcompleted ).",
+				".mysql_real_escape_string_awesome( $finalcomapnyjoinedas ).",
+				".mysql_real_escape_string_awesome( $finalcurrentdesignation ).",
+				".mysql_real_escape_string_awesome( $finalannualrenumeration ).",
+				".mysql_real_escape_string_awesome( $finalrolesandresponsibility ).",
+				".mysql_real_escape_string_awesome( $finalextraworkexcount ).",
+				".mysql_real_escape_string_awesome( $finaltotalworkex )."
 			)
 			ON DUPLICATE KEY
 			UPDATE
@@ -143,19 +143,19 @@ if ( $mysql == true ) {
 		$itotalworkex = "totalworkex{$x}";
 
 
-		${'employementtype' . $x} = strip_tags( trim( $_POST[$iemployementtype] ) );
-		${'organizationname' . $x} = strip_tags( trim( $_POST[$iorganizationname] ) );
-		${'organizationtype' . $x} = strip_tags( trim( $_POST[$iorganizationtype] ) );
-		${'organizationtypeother' . $x} = strip_tags( trim( $_POST[$iorganizationtypeother] ) );
-		${'industrytype' . $x} = strip_tags( trim( $_POST[$iindustrytype] ) );
-		${'workstarted' . $x} = strip_tags( trim( $_POST[$iworkstarted] ) );
-		${'workcompleted' . $x} = strip_tags( trim( $_POST[$iworkcompleted] ) );
-		${'comapnyjoinedas' . $x} = strip_tags( trim( $_POST[$icomapnyjoinedas] ) );
-		${'currentdesignation' . $x} = strip_tags( trim( $_POST[$icurrentdesignation] ) );
-		${'annualrenumeration' . $x} = strip_tags( trim( $_POST[$iannualrenumeration] ) );
-		${'rolesandresponsibility' . $x} = strip_tags( trim( $_POST[$irolesandresponsibility] ) );
-		${'extraworkexcount' . $x} = strip_tags( trim( $_POST[$iextraworkexcount] ) );
-		${'totalworkex' . $x} = strip_tags( trim( $_POST[$itotalworkex] ) );
+		${'employementtype' . $x} = strip_tags( trim_awesome( $_POST[$iemployementtype] ) );
+		${'organizationname' . $x} = strip_tags( trim_awesome( $_POST[$iorganizationname] ) );
+		${'organizationtype' . $x} = strip_tags( trim_awesome( $_POST[$iorganizationtype] ) );
+		${'organizationtypeother' . $x} = strip_tags( trim_awesome( $_POST[$iorganizationtypeother] ) );
+		${'industrytype' . $x} = strip_tags( trim_awesome( $_POST[$iindustrytype] ) );
+		${'workstarted' . $x} = strip_tags( trim_awesome( $_POST[$iworkstarted] ) );
+		${'workcompleted' . $x} = strip_tags( trim_awesome( $_POST[$iworkcompleted] ) );
+		${'comapnyjoinedas' . $x} = strip_tags( trim_awesome( $_POST[$icomapnyjoinedas] ) );
+		${'currentdesignation' . $x} = strip_tags( trim_awesome( $_POST[$icurrentdesignation] ) );
+		${'annualrenumeration' . $x} = strip_tags( trim_awesome( $_POST[$iannualrenumeration] ) );
+		${'rolesandresponsibility' . $x} = strip_tags( trim_awesome( $_POST[$irolesandresponsibility] ) );
+		${'extraworkexcount' . $x} = strip_tags( trim_awesome( $_POST[$iextraworkexcount] ) );
+		${'totalworkex' . $x} = strip_tags( trim_awesome( $_POST[$itotalworkex] ) );
 
 		${'finalemployementtype' . $x} = htmlspecialchars( ${'employementtype' . $x}, ENT_QUOTES, 'UTF-8' );
 		${'finalorganizationname' . $x} = htmlspecialchars( ${'organizationname' . $x}, ENT_QUOTES, 'UTF-8' );
@@ -173,17 +173,17 @@ if ( $mysql == true ) {
 
 
 		$sqlworkexextra = "INSERT INTO `vedica_admn_2017`.`added_work_experience_details` (`application_id`, `employement_type`, `name_of_organization`, `organization_type`, `organization_type_other`, `started_work_date`, `completed_work_date`, `joined_as`, `current_designation`, `annual_renumeration`, `roles_and_responsibilty`) VALUES (
-				'".mysql_real_escape_string( $finalapplicationid )."',
-				'".mysql_real_escape_string( ${'finalemployementtype' . $x} )."',
-				'".mysql_real_escape_string( ${'finalorganizationname' . $x} )."',
-				'".mysql_real_escape_string( ${'finalorganizationtype' . $x} )."',
-				'".mysql_real_escape_string( ${'finalorganizationtypeother' . $x} )."',
-				'".mysql_real_escape_string( ${'finalworkstarted' . $x} )."',
-				'".mysql_real_escape_string( ${'finalworkcompleted' . $x} )."',
-				'".mysql_real_escape_string( ${'finalcomapnyjoinedas' . $x} )."',
-				'".mysql_real_escape_string( ${'finalcurrentdesignation' . $x} )."',
-				'".mysql_real_escape_string( ${'finalannualrenumeration' . $x} )."',
-				'".mysql_real_escape_string( ${'finalrolesandresponsibility' . $x} )."'
+				".mysql_real_escape_string_awesome( $finalapplicationid ).",
+				".mysql_real_escape_string_awesome( ${'finalemployementtype' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalorganizationname' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalorganizationtype' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalorganizationtypeother' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalworkstarted' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalworkcompleted' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalcomapnyjoinedas' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalcurrentdesignation' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalannualrenumeration' . $x} ).",
+				".mysql_real_escape_string_awesome( ${'finalrolesandresponsibility' . $x} )."
 				);";
 
 

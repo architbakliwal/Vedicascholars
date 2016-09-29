@@ -42,14 +42,14 @@ if ( strlen( trim( $_SESSION['userName'] ) ) == 0 ) {
 	die();
 }
 
-$applicationid = strip_tags( trim( $_SESSION['userName'] ) );
-$personalstatus = strip_tags( trim( $_POST["personalstatus"] ) );
-$contactstatus = strip_tags( trim( $_POST["contactstatus"] ) );
-$academicestatus = strip_tags( trim( $_POST["academicestatus"] ) );
-$workexstatus = strip_tags( trim( $_POST["workexstatus"] ) );
-$refreestatus = strip_tags( trim( $_POST["refreestatus"] ) );
-$additionalinfostatus = strip_tags( trim( $_POST["additionalinfostatus"] ) );
-$docstatus = strip_tags( trim( $_POST["docstatus"] ) );
+$applicationid = strip_tags( trim_awesome( $_SESSION['userName'] ) );
+$personalstatus = strip_tags( trim_awesome( $_POST["personalstatus"] ) );
+$contactstatus = strip_tags( trim_awesome( $_POST["contactstatus"] ) );
+$academicestatus = strip_tags( trim_awesome( $_POST["academicestatus"] ) );
+$workexstatus = strip_tags( trim_awesome( $_POST["workexstatus"] ) );
+$refreestatus = strip_tags( trim_awesome( $_POST["refreestatus"] ) );
+$additionalinfostatus = strip_tags( trim_awesome( $_POST["additionalinfostatus"] ) );
+$docstatus = strip_tags( trim_awesome( $_POST["docstatus"] ) );
 
 $datetime = date( "Y-m-d H:i:s" );
 

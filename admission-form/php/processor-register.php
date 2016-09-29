@@ -20,21 +20,21 @@ if ( isset( $_GET['lang'] ) and array_key_exists( $_GET['lang'], $language ) ) {
 }
 
 
-$firstname = strip_tags( trim( $_POST["firstname"] ) );
-$middlename = strip_tags( trim( $_POST["middlename"] ) );
-$lastname = strip_tags( trim( $_POST["lastname"] ) );
-$useremail = strip_tags( trim( $_POST["useremail"] ) );
-$mobile = strip_tags( trim( $_POST["mobile"] ) );
-$city = strip_tags( trim( $_POST["city"] ) );
-$password = strip_tags( trim( $_POST["password"] ) );
-$retypepassword = strip_tags( trim( $_POST["retypepassword"] ) );
-$verification = strip_tags( trim( $_POST["captcha"] ) );
+$firstname = strip_tags( trim_awesome( $_POST["firstname"] ) );
+$middlename = strip_tags( trim_awesome( $_POST["middlename"] ) );
+$lastname = strip_tags( trim_awesome( $_POST["lastname"] ) );
+$useremail = strip_tags( trim_awesome( $_POST["useremail"] ) );
+$mobile = strip_tags( trim_awesome( $_POST["mobile"] ) );
+$city = strip_tags( trim_awesome( $_POST["city"] ) );
+$password = strip_tags( trim_awesome( $_POST["password"] ) );
+$retypepassword = strip_tags( trim_awesome( $_POST["retypepassword"] ) );
+$verification = strip_tags( trim_awesome( $_POST["captcha"] ) );
 
 $finalprogram = htmlspecialchars( $program, ENT_QUOTES, 'UTF-8' );
 $finalfirstname = htmlspecialchars( $firstname, ENT_QUOTES, 'UTF-8' );
 $finalmiddlename = htmlspecialchars( $middlename, ENT_QUOTES, 'UTF-8' );
 $finallastname = htmlspecialchars( $lastname, ENT_QUOTES, 'UTF-8' );
-$finalusername = htmlspecialchars( '', ENT_QUOTES, 'UTF-8' );
+// $finalusername = htmlspecialchars( '', ENT_QUOTES, 'UTF-8' );
 $finaluseremail = htmlspecialchars( $useremail, ENT_QUOTES, 'UTF-8' );
 $finalmobile = htmlspecialchars( $mobile, ENT_QUOTES, 'UTF-8' );
 $finalcity = htmlspecialchars( $city, ENT_QUOTES, 'UTF-8' );
@@ -45,7 +45,7 @@ $finalverification = htmlspecialchars( $verification, ENT_QUOTES, 'UTF-8' );
 
 if ( $SMTP == true ) {
 	if ( $mysql == true ) {
-		$duplicate = mysql_query( "SELECT * FROM ".$admission_users." WHERE email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
+		$duplicate = mysql_query( "SELECT * FROM ".$admission_users." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 		$result = mysql_num_rows( $duplicate );
 		if ( $result == 0 ) {
 
@@ -60,27 +60,30 @@ if ( $SMTP == true ) {
 			$finalsalt = hash( 'sha512', uniqid( mt_rand( 1, mt_getrandmax() ), true ) );
 			$finalpassword = $hasher->HashPassword( $finalpass . $finalsalt . $passwordsalt );
 
-			$sqlregister = "INSERT INTO ".$admission_users." (login_system_registrations_date,login_system_registrations_user_id,f_name,m_name,l_name,application_id,email_id,mobile_number,city,password,salt,registration_ip, application_status) VALUES (CURRENT_TIMESTAMP,'".$finaluserid."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."','".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $finaluseremail )."','".mysql_real_escape_string( $finalmobile )."','".mysql_real_escape_string( $finalcity )."','".mysql_real_escape_string( $finalpassword )."','".mysql_real_escape_string( $finalsalt )."','".mysql_real_escape_string( $finaluserip )."','".mysql_real_escape_string( 'Draft' )."')";
+			$sqlregister = "INSERT INTO ".$admission_users." (login_system_registrations_date,login_system_registrations_user_id,f_name,m_name,l_name,application_id,email_id,mobile_number,city,password,salt,registration_ip, application_status) VALUES (CURRENT_TIMESTAMP,'".$finaluserid."',".mysql_real_escape_string_awesome( $finalfirstname ).",".mysql_real_escape_string_awesome( $finalmiddlename ).",".mysql_real_escape_string_awesome( $finallastname ).",'',".mysql_real_escape_string_awesome( $finaluseremail ).",".mysql_real_escape_string_awesome( $finalmobile ).",".mysql_real_escape_string_awesome( $finalcity ).",".mysql_real_escape_string_awesome( $finalpassword ).",".mysql_real_escape_string_awesome( $finalsalt ).",".mysql_real_escape_string_awesome( $finaluserip ).",".mysql_real_escape_string_awesome( 'Draft' ).")";
+
 			$insertregister = mysql_query( $sqlregister );
 
-			$searchid = mysql_query( "SELECT uid,login_system_registrations_user_id FROM ".$admission_users." WHERE application_id = '".mysql_real_escape_string( $finalusername )."' AND email_id = '".mysql_real_escape_string( $finaluseremail )."'" );
+			$searchid = mysql_query( "SELECT uid,login_system_registrations_user_id FROM ".$admission_users." WHERE email_id = ".mysql_real_escape_string_awesome( $finaluseremail )."" );
 			$resultid = mysql_num_rows( $searchid );
 			$queryid = mysql_fetch_array( $searchid );
 
-			$uid = mysql_real_escape_string( $queryid['uid'] );
+			$uid = $queryid['uid'];
 			$applicationid = str_pad( $uid, 6, '0', STR_PAD_LEFT );
 			$applicationid = 'VS'. $year . $applicationid;
 
 			$finalusername = $applicationid;
 
-			$setapplicationid = "UPDATE ".$admission_users." SET application_id = '".mysql_real_escape_string( $finalusername )."' WHERE login_system_registrations_user_id = '".mysql_real_escape_string( $queryid['login_system_registrations_user_id'] )."'";
+			$setapplicationid = "UPDATE ".$admission_users." SET application_id = ".mysql_real_escape_string_awesome( $finalusername )." WHERE login_system_registrations_user_id = ".mysql_real_escape_string_awesome( $queryid['login_system_registrations_user_id'] )."";
+
 			$setapplicationidquery1 = mysql_query( $setapplicationid );
 
-			$sqlactivation = "INSERT INTO ".$mysqltable_name_4." (login_system_email_activation_user_id,login_system_email_activation_username,login_system_email_activation_expire,login_system_email_activation_useremail,login_system_email_activation_token,login_system_email_activation_date,login_system_email_activation_ip,login_system_email_activation_attempts,login_system_email_activation_status) VALUES ('".mysql_real_escape_string( $queryid['login_system_registrations_user_id'] )."','".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $expiretokenemail )."','".mysql_real_escape_string( $finaluseremail )."','".mysql_real_escape_string( $finalemailtoken )."','".mysql_real_escape_string( $datetime )."','".mysql_real_escape_string( $finaluserip )."','0','0')";
+			$sqlactivation = "INSERT INTO ".$mysqltable_name_4." (login_system_email_activation_user_id,login_system_email_activation_username,login_system_email_activation_expire,login_system_email_activation_useremail,login_system_email_activation_token,login_system_email_activation_date,login_system_email_activation_ip,login_system_email_activation_attempts,login_system_email_activation_status) VALUES (".mysql_real_escape_string_awesome( $queryid['login_system_registrations_user_id'] ).",".mysql_real_escape_string_awesome( $finalusername ).",".mysql_real_escape_string_awesome( $expiretokenemail ).",".mysql_real_escape_string_awesome( $finaluseremail ).",".mysql_real_escape_string_awesome( $finalemailtoken ).",".mysql_real_escape_string_awesome( $datetime ).",".mysql_real_escape_string_awesome( $finaluserip ).",'0','0')";
+
 			$insertactivation = mysql_query( $sqlactivation );
 
 
-			$sqlpersonal = "INSERT INTO `vedica_admn_2017`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`) VALUES ('".mysql_real_escape_string( $finalusername )."','".mysql_real_escape_string( $finalfirstname )."','".mysql_real_escape_string( $finalmiddlename )."','".mysql_real_escape_string( $finallastname )."')
+			$sqlpersonal = "INSERT INTO `vedica_admn_2017`.`users_personal_details` (`application_id`, `f_name`, `m_name`, `l_name`) VALUES (".mysql_real_escape_string_awesome( $finalusername ).",".mysql_real_escape_string_awesome( $finalfirstname ).",".mysql_real_escape_string_awesome( $finalmiddlename ).",".mysql_real_escape_string_awesome( $finallastname ).")
 						ON DUPLICATE KEY
 						UPDATE
 						f_name = VALUES(f_name),
@@ -92,9 +95,9 @@ if ( $SMTP == true ) {
 
 
 			$sqlcontact = "INSERT INTO `vedica_admn_2017`.`users_contact_details` (`application_id`, `email_id`, `mobile_number`) VALUES (
-					'".mysql_real_escape_string( $finalusername )."',
-					'".mysql_real_escape_string( $finaluseremail )."',
-					'".mysql_real_escape_string( $finalmobile )."'
+					".mysql_real_escape_string_awesome( $finalusername ).",
+					".mysql_real_escape_string_awesome( $finaluseremail ).",
+					".mysql_real_escape_string_awesome( $finalmobile )."
 					)
 				ON DUPLICATE KEY
 				UPDATE
