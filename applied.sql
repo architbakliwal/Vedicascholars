@@ -122,16 +122,16 @@ SELECT act.`login_system_email_activation_date` AS 'Registered Date',
        info.`failure_info`,
        info.`acheivement_as_alumnus`,
        info.`support_info`
-FROM `admission_users` a
-LEFT JOIN `login_system_email_activation` act ON a.application_id = act.login_system_email_activation_username
-LEFT JOIN `login_system_login_attempts` log ON a.application_id = log.login_system_login_attempts_username
-LEFT JOIN `admission_section_status` ad ON a.application_id = ad.application_id
-LEFT JOIN `users_personal_details` p ON a.application_id = p.application_id
-LEFT JOIN `users_contact_details` c ON a.application_id = c.application_id
-LEFT JOIN `users_academic_details` ac ON a.application_id = ac.application_id
-LEFT JOIN `added_academic_details` xac ON a.application_id = xac.application_id
-LEFT JOIN `users_work_experience_details` w ON a.application_id = w.application_id
-LEFT JOIN `added_work_experience_details` xw ON a.application_id = xw.application_id
-LEFT JOIN `users_reference_details` r ON a.application_id = r.application_id
-LEFT JOIN `users_documents_uploads` doc ON a.application_id = doc.application_id
-LEFT JOIN `user_additional_info` info ON a.application_id = info.application_id
+FROM `login_system_login_attempts` log
+LEFT JOIN `login_system_email_activation` act ON log.login_system_login_attempts_username = act.login_system_email_activation_username
+LEFT JOIN `admission_users` a ON log.login_system_login_attempts_username = a.application_id
+LEFT JOIN `admission_section_status` ad ON log.login_system_login_attempts_username = ad.application_id
+LEFT JOIN `users_personal_details` p ON log.login_system_login_attempts_username = p.application_id
+LEFT JOIN `users_contact_details` c ON log.login_system_login_attempts_username = c.application_id
+LEFT JOIN `users_academic_details` ac ON log.login_system_login_attempts_username = ac.application_id
+LEFT JOIN `added_academic_details` xac ON log.login_system_login_attempts_username = xac.application_id
+LEFT JOIN `users_work_experience_details` w ON log.login_system_login_attempts_username = w.application_id
+LEFT JOIN `added_work_experience_details` xw ON log.login_system_login_attempts_username = xw.application_id
+LEFT JOIN `users_reference_details` r ON log.login_system_login_attempts_username = r.application_id
+LEFT JOIN `users_documents_uploads` doc ON log.login_system_login_attempts_username = doc.application_id
+LEFT JOIN `user_additional_info` info ON log.login_system_login_attempts_username = info.application_id
